@@ -1,0 +1,48 @@
+.section {
+    padding: 2rem 2rem 4rem;
+
+    @media screen and (min-width: 768px) {
+        padding: 4rem 2rem 6rem;
+    }
+
+    &__container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-family: var(--display-font-family);
+        font-size: 3rem;
+    }
+
+    &__lead {
+        font-family: var(--headings-font-family);
+        font-size: 1.25rem;
+
+        @media screen and (min-width: 1366px) {
+            font-size: 1.4rem;
+        }
+        @media screen and (min-width: 1920px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    &--light {
+        --white: #fffffa;
+        background-color: var(--white);
+        color: var(--black);
+
+        a {
+            color: var(--dark-yellow);
+        }
+    }
+
+    &--dark {
+        background-color: var(--dark-blue);
+        color: var(--white);
+
+        a {
+            color: var(--light-blue);
+        }
+    }
+}

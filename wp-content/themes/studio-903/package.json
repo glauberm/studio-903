@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "license": "UNLICENSED",
+    "dependencies": {
+        "autoprefixer": "^10.4.13",
+        "cssnano": "^5.1.14",
+        "postcss": "^8.4.19",
+        "postcss-cli": "^10.0.0",
+        "sass": "^1.56.1"
+    },
+    "scripts": {
+        "watch": "sass index.scss studio-903.css -w",
+        "build": "sass index.scss studio-903.css && postcss studio-903.css --use autoprefixer cssnano --output studio-903.css"
+    }
+}

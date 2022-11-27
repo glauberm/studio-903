@@ -1,0 +1,14 @@
+.about-sections {
+    &__title {
+        font-family: var(--display-font-family);
+        font-size: 2rem;
+    }
+
+    &__item {
+        margin-bottom: 2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

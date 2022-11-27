@@ -1,0 +1,39 @@
+:root {
+    // Colors
+    --white: #eef;
+    --light-gray: #bbc;
+    --black: #1c1f26;
+    --light-blue: #9dc2fa;
+    --blue: #113262;
+    --dark-blue: #222a36;
+    --light-yellow: #fadb9d;
+    --yellow: #ad8c4b;
+    --dark-yellow: #8f6920;
+    // Fonts
+    --display-font-family: 'Bebas Neue', Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal, 'Helvetica Inserat',
+        'Bitstream Vera Sans Bold', 'Arial Black', sans-serif;
+    --headings-font-family: 'Domine', Georgia, Times, 'Times New Roman', serif;
+    --base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
+    // Sizes
+    --body-min-width: 360px;
+    --container-width: 1200px;
+    --header-height: 125px;
+
+    @media screen and (min-width: 1920px) {
+        --container-width: 1440px;
+    }
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    min-width: var(--body-min-width);
+    font-size: 16px;
+    font-family: var(--base-font-family);
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+}

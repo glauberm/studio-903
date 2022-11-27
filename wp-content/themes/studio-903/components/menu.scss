@@ -1,0 +1,164 @@
+.menu {
+    &__trigger-input {
+        @media screen and (min-width: 1024px) {
+            display: none;
+        }
+
+        &:checked ~ .menu__bg,
+        &:checked ~ .menu__content {
+            display: block;
+        }
+    }
+
+    &__trigger-label {
+        display: block;
+        width: 4rem;
+        padding: 1rem;
+        cursor: pointer;
+        position: relative;
+        z-index: 3;
+
+        @media screen and (min-width: 768px) {
+            padding: 2rem;
+        }
+        @media screen and (min-width: 1024px) {
+            display: none;
+        }
+
+        svg {
+            min-width: 2rem;
+        }
+    }
+
+    &__bg {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--yellow);
+        opacity: 0.95;
+        z-index: 1;
+
+        @media screen and (min-width: 1024px) {
+            display: none !important;
+        }
+    }
+
+    &__content {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+
+        @media screen and (min-width: 1024px) {
+            display: flex;
+            justify-content: center;
+            position: unset;
+            left: unset;
+            width: unset;
+        }
+    }
+
+    &__nav {
+        @media screen and (min-width: 1024px) {
+            flex-grow: 1;
+        }
+
+        .menu {
+            padding: 1rem 2rem;
+            text-align: left;
+
+            @media screen and (min-width: 1024px) {
+                padding: 0;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            li {
+                &:focus-within {
+                    .sub-menu {
+                        display: flex;
+                    }
+                }
+
+                a {
+                    padding: 1rem;
+                    font-family: var(--display-font-family);
+                    font-size: 3rem;
+                    line-height: 1;
+
+                    @media screen and (min-width: 1024px) {
+                        padding: 2rem;
+                        font-family: var(--base-font-family);
+                        font-size: 1rem;
+                        line-height: 1.5;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        ~ .sub-menu {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sub-menu {
+            text-align: left;
+            flex-direction: column;
+            padding-left: 2rem;
+
+            @media screen and (min-width: 1024px) {
+                padding: 0;
+                display: none;
+                position: absolute;
+                background-color: var(--dark-blue);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            }
+
+            &:hover {
+                @media screen and (min-width: 1024px) {
+                    display: flex;
+                }
+            }
+
+            li a {
+                width: 100%;
+                font-size: 2.25rem;
+                padding: 0.75rem;
+
+                @media screen and (min-width: 1024px) {
+                    font-size: 1rem;
+                    padding: 1rem;
+                }
+
+                &:hover,
+                &:focus {
+                    background-color: var(--black);
+                }
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .menu-item-has-children > a {
+                display: flex;
+                align-items: center;
+
+                &::after {
+                    content: '';
+                    display: inline-block;
+                    margin-left: 0.5em;
+                    border-top: 4px solid;
+                    border-right: 4px solid transparent;
+                    border-bottom: 0;
+                    border-left: 4px solid transparent;
+                }
+            }
+        }
+    }
+}

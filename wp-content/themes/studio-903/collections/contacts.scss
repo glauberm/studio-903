@@ -1,0 +1,40 @@
+.contacts {
+    @media screen and (min-width: 768px) {
+        text-align: right;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+    }
+
+    &__item {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__link {
+        display: inline-flex;
+        text-decoration: none;
+        border: 1px solid var(--yellow);
+    }
+
+    &__icon {
+        padding: 0.5rem;
+        background-color: var(--yellow);
+
+        path {
+            fill: var(--white);
+        }
+    }
+
+    &__text {
+        padding: 0.5rem;
+        padding-left: 0.75rem;
+        color: var(--light-yellow);
+        font-weight: bold;
+    }
+}

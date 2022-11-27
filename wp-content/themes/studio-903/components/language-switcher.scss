@@ -1,0 +1,60 @@
+.language-switcher {
+    position: relative;
+
+    &:focus-within {
+        .sub-menu {
+            display: flex;
+        }
+    }
+
+    &__trigger {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        color: var(--white);
+
+        @media screen and (min-width: 768px) {
+            padding: 2rem;
+        }
+
+        &:hover,
+        &:focus {
+            ~ .sub-menu {
+                display: flex;
+            }
+        }
+
+        &::after {
+            content: '';
+            display: inline-block;
+            margin-left: 0.5em;
+            border-top: 4px solid;
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+        }
+    }
+
+    &__menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        background-color: var(--dark-blue);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+        &:hover {
+            display: flex;
+        }
+
+        li a {
+            padding: 1rem;
+            width: 100%;
+
+            &:hover,
+            &:focus {
+                background-color: var(--black);
+            }
+        }
+    }
+}
