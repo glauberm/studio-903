@@ -33,9 +33,8 @@ abstract class S903_Abstract_Post_Type extends S903_Abstract_Menuable {
 			post_type: $this->id,
 			args: array(
 				'label'        => $this->label,
-				'public'       => false,
+				'public'       => true,
 				'show_ui'      => true,
-				'rewrite'      => false,
 				'show_in_menu' => $this->menu,
 				'supports'     => $this->supports,
 			)
