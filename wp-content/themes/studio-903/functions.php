@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( 'S903_VERSION' ) ) {
-	define( 'S903_VERSION', '0.1.0' );
+	define( 'S903_VERSION', '0.1.2' );
 }
 
 add_image_size( 'client-thumbnail', 400, 200, false );
