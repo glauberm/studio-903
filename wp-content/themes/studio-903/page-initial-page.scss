@@ -1,0 +1,240 @@
+.page {
+    background-color: var(--dark-blue);
+
+    .header {
+        a {
+            color: var(--white-blue);
+        }
+        &__logo {
+            g {
+                fill: var(--white-blue);
+            }
+        }
+        &__menu {
+            g {
+                fill: var(--white-blue);
+            }
+            a {
+                color: var(--white-blue);
+            }
+        }
+        &__socials {
+            path {
+                fill: var(--white-blue);
+            }
+        }
+    }
+
+    .menu {
+        &__bg {
+            background-color: var(--yellow);
+        }
+        &__nav {
+            .sub-menu {
+                @media screen and (min-width: 1024px) {
+                    background-color: var(--dark-blue);
+                }
+                li a {
+                    &:hover,
+                    &:focus {
+                        background-color: var(--black);
+                    }
+                }
+            }
+        }
+    }
+
+    .language-switcher {
+        &__trigger {
+            color: var(--white-blue);
+        }
+        &__menu {
+            background-color: var(--dark-blue);
+
+            li a {
+                &:hover,
+                &:focus {
+                    background-color: var(--black);
+                }
+            }
+        }
+    }
+
+    .cover {
+        &__bg::after {
+            background: var(--dark-blue);
+            opacity: 0.9;
+        }
+        &__title {
+            color: var(--light-yellow);
+        }
+        &__subtitle {
+            color: var(--light-gray);
+        }
+    }
+
+    .about-section {
+        background-color: var(--dark-blue);
+        color: var(--white-blue);
+
+        a {
+            color: var(--light-blue);
+        }
+
+        &__lead {
+            margin-bottom: 4rem;
+            color: var(--white-blue);
+            font-family: var(--headings-font-family);
+            font-size: 1.25rem;
+
+            @media screen and (min-width: 1366px) {
+                font-size: 1.4rem;
+            }
+            @media screen and (min-width: 1920px) {
+                font-size: 1.5rem;
+            }
+
+            p {
+                margin-bottom: 2rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            @media screen and (min-width: 768px) {
+                margin-bottom: 0;
+                color: var(--light-gray);
+                padding: 0 2rem;
+
+                p,
+                li {
+                    text-align: right !important;
+                }
+            }
+        }
+
+        .container {
+            @media screen and (min-width: 768px) {
+                display: flex;
+            }
+        }
+
+        .about-sections {
+            @media screen and (min-width: 768px) {
+                padding: 0 2rem;
+            }
+            &__title {
+                color: var(--light-yellow);
+            }
+        }
+    }
+
+    .clients-section {
+        display: flow-root;
+        background-color: var(--white-yellow);
+        color: var(--black);
+
+        a {
+            color: var(--dark-yellow);
+        }
+
+        &__content {
+            font-family: var(--headings-font-family);
+            font-size: 1.175rem;
+
+            @media screen and (min-width: 1366px) {
+                width: 25%;
+                float: left;
+                position: sticky;
+                top: 2rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+
+                &:last-child {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        &__title {
+            margin-bottom: 1rem;
+            color: var(--dark-yellow);
+            font-family: var(--display-font-family);
+            font-size: 3rem;
+        }
+
+        &__text {
+            margin-bottom: 2rem;
+            color: var(--blue);
+        }
+
+        &__grid {
+            @media screen and (min-width: 1366px) {
+                padding-left: 25%;
+            }
+        }
+
+        .container {
+            clear: both;
+        }
+
+        .clients {
+            &__item {
+                color: var(--light-yellow);
+            }
+
+            &__link {
+                &:hover,
+                &:focus {
+                    &::after {
+                        background-color: var(--dark-yellow);
+                        color: var(--white-blue);
+                    }
+                }
+            }
+
+            &__image {
+                color: var(--dark-yellow);
+            }
+        }
+    }
+
+    .footer {
+        &__main {
+            background-color: var(--dark-blue);
+        }
+
+        &__aside {
+            background-color: var(--black);
+            color: var(--light-gray);
+        }
+
+        &__menu {
+            .menu > li > a {
+                color: var(--light-yellow);
+            }
+            .sub-menu > li > a {
+                color: var(--white-blue);
+            }
+        }
+
+        .contacts {
+            &__link {
+                color: var(--yellow);
+            }
+            &__icon {
+                background-color: var(--yellow);
+
+                path {
+                    fill: var(--white-blue);
+                }
+            }
+            &__text {
+                color: var(--light-yellow);
+            }
+        }
+    }
+}

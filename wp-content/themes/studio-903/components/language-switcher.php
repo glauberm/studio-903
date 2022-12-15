@@ -5,8 +5,8 @@ $s903_translations = pll_the_languages( array( 'raw' => 1 ) );
 <div class="language-switcher">
 	<button class="language-switcher__trigger">
 	<?php
-	foreach ($s903_translations as $s903_translation) {
-		if (true === $s903_translation['current_lang']) {
+	foreach ( $s903_translations as $s903_translation ) {
+		if ( true === $s903_translation['current_lang'] ) {
 			?>
 				<?php echo mb_strtoupper( $s903_translation['slug'] ); ?>
 			<?php
@@ -18,7 +18,7 @@ $s903_translations = pll_the_languages( array( 'raw' => 1 ) );
 
 	<ul class="language-switcher__menu sub-menu">
 	<?php
-	foreach ($s903_translations as $s903_translation) {
+	foreach ( $s903_translations as $s903_translation ) {
 		?>
 		<li>
 			<a

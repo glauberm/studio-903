@@ -1,0 +1,11 @@
+.StudioRental {
+    &__row {
+        display: flex;
+        gap: 3rem;
+        // flex-wrap: wrap;
+    }
+
+    &__form {
+        flex: 1 0 35%;
+    }
+}

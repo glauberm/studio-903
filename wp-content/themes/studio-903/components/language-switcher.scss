@@ -10,11 +10,10 @@
     &__trigger {
         display: flex;
         align-items: center;
-        padding: 1rem;
-        color: var(--white);
+        padding: 1em;
 
         @media screen and (min-width: 768px) {
-            padding: 2rem;
+            padding: 2em;
         }
 
         &:hover,
@@ -40,21 +39,15 @@
         flex-direction: column;
         position: absolute;
         right: 0;
-        background-color: var(--dark-blue);
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
 
         &:hover {
             display: flex;
         }
 
         li a {
-            padding: 1rem;
+            padding: 1em;
             width: 100%;
-
-            &:hover,
-            &:focus {
-                background-color: var(--black);
-            }
         }
     }
 }

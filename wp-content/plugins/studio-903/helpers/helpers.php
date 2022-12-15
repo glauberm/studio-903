@@ -10,7 +10,6 @@ add_action(
 		remove_post_type_support( 'page', 'trackbacks' );
 		remove_post_type_support( 'page', 'custom-fields' );
 		remove_post_type_support( 'page', 'comments' );
-		remove_post_type_support( 'page', 'page-attributes' );
 		remove_post_type_support( 'page', 'post-formats' );
 	}
 );

@@ -1,11 +1,62 @@
 .footer {
-    font-size: 0.8em;
-    padding: 2em;
-    background-color: var(--black);
-    color: var(--light-gray);
+    &__main {
+        padding: 2em;
+    }
 
-    &__container {
-        max-width: var(--container-width);
-        margin: 0 auto;
+    &__row,
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+
+        @media screen and (min-width: 1024px) {
+            gap: 5em;
+        }
+    }
+
+    &__nav {
+        padding-top: 1em;
+    }
+
+    &__favicon {
+        display: inline-block;
+        padding-left: 6em;
+
+        svg {
+            margin: 0 auto;
+        }
+    }
+
+    &__menu {
+        a {
+            display: inline-block;
+            text-decoration: none;
+            font-family: var(--display-font-family);
+        }
+        .menu {
+            list-style: none;
+            padding: 0;
+
+            > li {
+                margin-bottom: 1em;
+
+                > a {
+                    font-size: 1.75em;
+                }
+            }
+        }
+        .sub-menu {
+            list-style: none;
+            padding: 0 0 0 1em;
+
+            > li > a {
+                font-size: 1.5em;
+            }
+        }
+    }
+
+    &__aside {
+        font-size: 0.8em;
+        padding: 2em;
     }
 }

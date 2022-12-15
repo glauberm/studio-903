@@ -1,6 +1,8 @@
 :root {
     // Colors
-    --white: #eef;
+    --white: #fff;
+    --white-blue: #eef;
+    --white-yellow: #fffffa;
     --light-gray: #bbc;
     --black: #1c1f26;
     --light-blue: #9dc2fa;
@@ -36,4 +38,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
+}
+
+.section {
+    padding: 2rem 2rem 4rem;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
 }

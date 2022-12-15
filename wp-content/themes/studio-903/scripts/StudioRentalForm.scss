@@ -1,0 +1,48 @@
+.StudioRentalForm {
+    &__row {
+        display: flex;
+        gap: 1em;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25em;
+        margin-bottom: 0.5em;
+        width: 100%;
+        position: relative;
+
+        input,
+        textarea,
+        select {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            padding: 0.5em 0.75em;
+            color: var(--black);
+
+            &:disabled {
+                background-color: var(--light-gray);
+                opacity: 0.25;
+            }
+
+            &:focus {
+                outline: 2px solid var(--yellow);
+                border-color: var(--yellow);
+            }
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    }
+
+    &__popover {
+        position: absolute;
+        top: 100%;
+        min-width: 480px;
+        z-index: 1;
+        padding: 1em;
+        background-color: var(--white);
+        box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
+    }
+}

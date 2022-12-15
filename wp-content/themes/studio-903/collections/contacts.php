@@ -28,14 +28,20 @@ if ( $s903_contacts_query->have_posts() ) {
 									echo 'https://wa.me/' . get_field( 'contact_phone' );
 									break;
 								case 'phone':
+								case 'mobile':
 									echo 'tel:' . get_field( 'contact_phone' );
 									break;
 								case 'email':
-									echo 'mailto:' . get_field( 'contact_mail' );
+									echo 'mailto:' . get_field( 'contact_email' );
+									break;
+								case 'address':
+									the_field( 'contact_address' );
 									break;
 							}
 							?>
 							"
+							target="_blank"
+							rel="noreferrer noopener"
 							class="contacts__link contacts__link--<?php the_field( 'contact_type' ); ?>"
 						>
 							<div class="contacts__icon">
@@ -52,6 +58,9 @@ if ( $s903_contacts_query->have_posts() ) {
 										break;
 									case 'email':
 										get_template_part( 'images/mail.svg' );
+										break;
+									case 'address':
+										get_template_part( 'images/address.svg' );
 										break;
 								}
 								?>

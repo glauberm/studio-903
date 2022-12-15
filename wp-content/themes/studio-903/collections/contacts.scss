@@ -1,15 +1,15 @@
 .contacts {
-    @media screen and (min-width: 768px) {
-        text-align: right;
-    }
-
     &__list {
         list-style: none;
         padding: 0;
     }
 
     &__item {
-        margin-bottom: 1rem;
+        margin-bottom: 1em;
+
+        &:first-child {
+            font-size: 1.2em;
+        }
 
         &:last-child {
             margin-bottom: 0;
@@ -19,22 +19,24 @@
     &__link {
         display: inline-flex;
         text-decoration: none;
-        border: 1px solid var(--yellow);
+        border: 1px solid;
     }
 
     &__icon {
-        padding: 0.5rem;
-        background-color: var(--yellow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5em;
 
-        path {
-            fill: var(--white);
+        svg {
+            width: 1.5em;
+            height: 1.5em;
         }
     }
 
     &__text {
-        padding: 0.5rem;
-        padding-left: 0.75rem;
-        color: var(--light-yellow);
+        padding: 0.5em;
+        padding-left: 0.5em;
         font-weight: bold;
     }
 }
