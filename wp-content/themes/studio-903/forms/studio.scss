@@ -1,0 +1,52 @@
+.form {
+    &__row {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+
+        @media screen and (min-width: 768px) {
+            flex-wrap: nowrap;
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25em;
+        width: 100%;
+        position: relative;
+        margin-bottom: 1em;
+
+        input,
+        textarea,
+        select {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            padding: 0.5em 0.75em;
+            color: var(--black);
+
+            &:disabled {
+                background-color: var(--light-gray);
+                opacity: 0.25;
+            }
+
+            &:focus {
+                outline: 2px solid var(--yellow);
+                border-color: var(--yellow);
+            }
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    }
+
+    &__button {
+        font-size: 1.175em;
+        border: 0 none;
+        background-color: var(--yellow);
+        color: var(--white-yellow);
+        padding: 0.5em 1em;
+        font-weight: bold;
+    }
+}

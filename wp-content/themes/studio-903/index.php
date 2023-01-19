@@ -6,5 +6,5 @@
 	text-align: center;
 	font-family: sans-serif;
 ">
-	<h1>Coming Soon</h1>
+    <h1>Coming Soon</h1>
 </div>

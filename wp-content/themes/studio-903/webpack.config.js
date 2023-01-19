@@ -9,10 +9,7 @@ module.exports = {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? false : 'source-map',
     entry: {
-        main: './scripts/main.jsx',
-        'page-initial-page': './page-initial-page.jsx',
-        'page-studio-rental': './page-studio-rental.jsx',
-        'page-locacao-de-estudio': './page-locacao-de-estudio.jsx',
+        s903: './scripts/index.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -22,15 +19,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 resolve: {
-                    extensions: ['.js', '.jsx'],
+                    extensions: ['.js'],
                 },
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: [['@babel/preset-env', { targets: 'defaults' }], '@babel/preset-react'],
+                        presets: [['@babel/preset-env', { targets: 'defaults' }]],
                     },
                 },
             },

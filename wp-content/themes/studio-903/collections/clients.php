@@ -3,7 +3,7 @@
 $s903_clients_query = new WP_Query(
 	array(
 		'post_type'      => 'client',
-		'posts_per_page' => 30,
+		'posts_per_page' => 20,
 		'nopagination'   => true,
 		'order'          => 'asc',
 		'orderby'        => 'menu_order',
@@ -13,35 +13,85 @@ $s903_clients_query = new WP_Query(
 if ( $s903_clients_query->have_posts() ) {
 	?>
 	<div class="clients">
-		<ul class="clients__list">
-		<?php
-		while ( $s903_clients_query->have_posts() ) {
-			$s903_clients_query->the_post();
 
-			$s903_client_image = get_field( 'client_image' );
-			?>
-				<li class="clients__item">
-					<a
-						href="<?php the_field( 'client_url' ); ?>"
-						target="_blank"
-						rel="noreferrer noopener"
-						title="<?php the_title(); ?>"
-						class="clients__link"
-					>
-						<img
-							class="clients__image"
-							src="<?php echo $s903_client_image['sizes']['client-thumbnail']; ?>"
-							alt="<?php the_title(); ?>"
-							loading="lazy"
-						/>
-					</a>
-				</li>
+		<div class="clients__group">
+			<ul class="clients__list clients__list--first">
 			<?php
-		}
-		?>
-		</ul>
+			while ( $s903_clients_query->have_posts() ) {
+				get_template_part(
+					'components/client',
+					args: array( 'query' => $s903_clients_query )
+				);
+			}
+			wp_reset_postdata();
+			?>
+			<?php
+			while ( $s903_clients_query->have_posts() ) {
+				get_template_part(
+					'components/client',
+					args: array(
+						'query'       => $s903_clients_query,
+						'aria_hidden' => true,
+					)
+				);
+			}
+			wp_reset_postdata();
+			?>
+			</ul>
+		</div>
+
+		<div class="clients__group">
+			<ul class="clients__list clients__list--reverse">
+			<?php
+			while ( $s903_clients_query->have_posts() ) {
+				get_template_part(
+					'components/client',
+					args: array( 'query' => $s903_clients_query )
+				);
+			}
+			wp_reset_postdata();
+			?>
+			<?php
+			while ( $s903_clients_query->have_posts() ) {
+				get_template_part(
+					'components/client',
+					args: array(
+						'query'       => $s903_clients_query,
+						'aria_hidden' => true,
+					)
+				);
+			}
+			wp_reset_postdata();
+			?>
+			</ul>
+		</div>
+
+		<div class="clients__group">
+			<ul class="clients__list">
+			<?php
+			while ( $s903_clients_query->have_posts() ) {
+				get_template_part(
+					'components/client',
+					args: array( 'query' => $s903_clients_query )
+				);
+			}
+			wp_reset_postdata();
+			?>
+			<?php
+			while ( $s903_clients_query->have_posts() ) {
+				get_template_part(
+					'components/client',
+					args: array(
+						'query'       => $s903_clients_query,
+						'aria_hidden' => true,
+					)
+				);
+			}
+			wp_reset_postdata();
+			?>
+			</ul>
+		</div>
+
 	</div>
 	<?php
 }
-
-wp_reset_postdata();

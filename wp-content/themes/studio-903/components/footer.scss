@@ -1,12 +1,13 @@
 .footer {
     &__main {
-        padding: 2em;
+        padding: 2em 2em 4em;
     }
 
     &__row,
     &__nav {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 2em;
 
         @media screen and (min-width: 1024px) {
@@ -18,45 +19,17 @@
         padding-top: 1em;
     }
 
-    &__favicon {
+    &__logo {
         display: inline-block;
-        padding-left: 6em;
 
         svg {
             margin: 0 auto;
-        }
-    }
+            max-width: 15rem;
+            height: auto;
 
-    &__menu {
-        a {
-            display: inline-block;
-            text-decoration: none;
-            font-family: var(--display-font-family);
-        }
-        .menu {
-            list-style: none;
-            padding: 0;
-
-            > li {
-                margin-bottom: 1em;
-
-                > a {
-                    font-size: 1.75em;
-                }
+            g {
+                fill: var(--white-blue);
             }
         }
-        .sub-menu {
-            list-style: none;
-            padding: 0 0 0 1em;
-
-            > li > a {
-                font-size: 1.5em;
-            }
-        }
-    }
-
-    &__aside {
-        font-size: 0.8em;
-        padding: 2em;
     }
 }

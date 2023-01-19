@@ -1,22 +1,21 @@
-// https://www.joshwcomeau.com/css/custom-css-reset/
+html {
+    box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 * {
     margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-    height: 100%;
-}
-
-body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+    min-height: 100%;
 }
 
 img,
@@ -26,6 +25,7 @@ canvas,
 svg {
     display: block;
     max-width: 100%;
+    height: auto;
 }
 
 input,
@@ -43,7 +43,16 @@ h4,
 h5,
 h6 {
     overflow-wrap: break-word;
+    font-size: 100%;
     font-weight: 400;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style: none;
 }
 
 address {

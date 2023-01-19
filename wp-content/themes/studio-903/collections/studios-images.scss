@@ -1,0 +1,119 @@
+.studios-images {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (min-width: 768px) {
+        flex-wrap: nowrap;
+    }
+
+    &__content {
+        padding: 2em;
+    }
+
+    &__heading {
+        text-align: left;
+        margin-bottom: 1em;
+    }
+
+    &__title {
+        font-size: 3em;
+        font-family: var(--headings-font-family);
+    }
+
+    &__description {
+        font-size: 1.25em;
+        font-family: var(--display-font-family);
+        color: var(--light-gray);
+    }
+
+    &__action {
+        &:focus-within .studios-images__popover {
+            display: block;
+        }
+    }
+
+    &__button {
+        border: 1px solid var(--yellow);
+        color: var(--light-yellow);
+        background: transparent;
+        padding: 1em;
+        font-weight: bold;
+
+        &:focus ~ .studios-images__popover {
+            display: block;
+        }
+    }
+
+    &__popover {
+        display: none;
+        position: absolute;
+        padding: 1em;
+        left: 0;
+        max-width: 100%;
+        z-index: 10;
+
+        @media screen and (min-width: 768px) {
+            left: unset;
+            max-width: unset;
+        }
+    }
+
+    &__box {
+        padding: 2em;
+        background-color: var(--white-blue);
+        color: var(--black);
+    }
+
+    &__list-container {
+        position: absolute;
+        width: calc(20% + 1em);
+        left: 0;
+
+        @media screen and (min-width: 768px) {
+            position: static;
+            width: auto;
+            left: unset;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        padding: 1em;
+    }
+
+    &__radio:checked ~ &__label img {
+        outline: 3px solid #5d78a2;
+        // color: var(--lu-blue);
+    }
+
+    &__gallery {
+        width: 80%;
+        margin-left: auto;
+
+        @media screen and (min-width: 768px) {
+            width: auto;
+            margin-left: unset;
+            flex: 1 0 55%;
+        }
+    }
+
+    &__image {
+        display: none;
+    }
+
+    &__image {
+        aspect-ratio: 1;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__image--active {
+        display: block;
+    }
+}

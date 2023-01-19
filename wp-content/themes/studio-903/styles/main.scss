@@ -1,20 +1,62 @@
-@charset 'utf-8';
+:root {
+    // Colors
+    --white: #fff;
+    --white-blue: #fafeff;
+    --white-yellow: #fffefa;
+    --light-gray: #c6ccd7;
+    --black: #1c1f26;
+    --light-blue: #9dc2fa;
+    --blue: #113262;
+    --dark-blue: #222a36;
+    --light-yellow: #fadb9d;
+    --yellow: #ad8c4b;
+    --dark-yellow: #8f6920;
+    --light-red: #ebbab2;
+    --red: #913527;
+    --dark-red: #61231a;
+    // Fonts
+    --base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
+    --headings-font-family: 'Bebas Neue', Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal,
+        'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black', sans-serif;
+    --display-font-family: 'Domine', Georgia, Times, 'Times New Roman', serif;
+    // Sizes
+    --body-min-width: 360px;
+    --container-width: 1200px;
+    --header-height: 125px;
 
-@import './reset.scss';
+    @media screen and (min-width: 1920px) {
+        --container-width: 1440px;
+    }
+}
 
-@import './global.scss';
+body {
+    min-width: var(--body-min-width);
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: var(--base-font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+}
 
-@import '../components/header.scss';
-@import '../components/menu.scss';
-@import '../components/language-switcher.scss';
-@import '../components/footer.scss';
-@import '../components/cover.scss';
+.section {
+    padding: 2rem 2rem 4rem;
+}
 
-@import '../collections/about-sections.scss';
-@import '../collections/clients.scss';
-@import '../collections/contacts.scss';
-@import '../collections/socials.scss';
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
 
-@import '../forms/studio-rental.scss';
-
-@import './helpers.scss';
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}

@@ -1,14 +1,19 @@
 <?php
+
 /**
  * Plugin Name: Studio 903
  */
 
-defined( 'ABSPATH' ) || die();
+declare(strict_types=1);
 
-define( 'S903_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'S903_ABSURL', plugin_dir_url( __FILE__ ) );
-define( 'S903_VERSION', '0.1.0' );
+if (!defined('ABSPATH')) {
+    exit;
+};
 
-require_once S903_ABSPATH . 'menu/menu.php';
-require_once S903_ABSPATH . 'post-types/post-types.php';
-require_once S903_ABSPATH . 'helpers/helpers.php';
+require __DIR__ . '/vendor/autoload.php';
+
+use Studio903\Editor;
+use Studio903\Studio903;
+use Studio903\TidyingRay;
+
+$studio903 = new Studio903(new Editor(), new TidyingRay());

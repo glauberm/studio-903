@@ -12,7 +12,6 @@
 
     &__trigger-label {
         display: block;
-        width: 4em;
         padding: 1em;
         cursor: pointer;
         position: relative;
@@ -26,7 +25,7 @@
         }
 
         svg {
-            min-width: 2em;
+            width: 3em;
         }
     }
 
@@ -85,8 +84,8 @@
                 }
 
                 a {
-                    padding: 1em;
-                    font-family: var(--display-font-family);
+                    padding: 0.5em;
+                    font-family: var(--headings-font-family);
                     font-size: 3em;
                     line-height: 1;
 

@@ -28,7 +28,7 @@
         order: 1;
         display: inline-block;
         text-decoration: none;
-        padding: 2em 0 2em 1em;
+        padding: 2em 1em;
 
         @media screen and (min-width: 1024px) {
             padding: 2em;
@@ -38,6 +38,9 @@
 
         svg {
             margin: 0 auto;
+            width: 100%;
+            height: auto;
+            max-width: 12.5rem;
         }
     }
 
@@ -68,7 +71,7 @@
         }
 
         .socials__link {
-            padding: 1em 0.5em 1em 1.5em;
+            padding: 1em 0.5em;
 
             @media screen and (min-width: 768px) {
                 padding: 1em;

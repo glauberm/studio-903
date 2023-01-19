@@ -1,4 +1,4 @@
-<svg version="1.1" width="200" height="92.5" viewBox="0 0 800 370" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="800" height="370" viewBox="0 0 800 370" xmlns="http://www.w3.org/2000/svg">
 	<title>STUDIO 903</title>
 	<defs>
 		<linearGradient id="logo-gradient" x1="0" x2="0" y1="0" y2="1">
