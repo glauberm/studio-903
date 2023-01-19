@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( 'S903_VERSION' ) ) {
-	define( 'S903_VERSION', '0.1.2' );
+	define( 'S903_VERSION', '0.2.0' );
 }
 
 require get_template_directory() . '/functions/setup.php';
