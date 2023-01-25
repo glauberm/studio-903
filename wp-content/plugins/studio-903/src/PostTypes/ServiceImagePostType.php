@@ -8,7 +8,9 @@ use Studio903\PostTypes\AbstractPostType;
 
 class ServiceImagePostType extends AbstractPostType
 {
-    protected string $pageTitle = 'Services images';
+    protected string $label = 'Services images';
+
+    protected string $pageTitle = 'All Services images';
 
     protected string $menuTitle = 'Images';
 }

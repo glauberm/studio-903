@@ -8,6 +8,8 @@ use Studio903\PostTypes\AbstractPostType;
 
 class StudioPostType extends AbstractPostType
 {
+    protected string $label = 'Studios';
+
     protected string $pageTitle = 'All studios';
 
     protected string $menuTitle = 'Studios';

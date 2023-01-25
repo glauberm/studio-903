@@ -8,6 +8,8 @@ use Studio903\PostTypes\AbstractPostType;
 
 class CreatorPostType extends AbstractPostType
 {
+    protected string $label = 'Artists + Creators';
+
     protected string $pageTitle = 'All artists + creators';
 
     protected string $menuTitle = 'Artists + creators';

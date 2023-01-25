@@ -8,7 +8,9 @@ use Studio903\PostTypes\AbstractPostType;
 
 class ClientPostType extends AbstractPostType
 {
-    protected string $pageTitle = 'All clients';
+    protected string $label = 'Clients';
+
+    protected string $pageTitle = 'All Clients';
 
     protected string $menuTitle = 'Clients';
 

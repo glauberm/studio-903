@@ -8,7 +8,10 @@ use Studio903\Menu\AbstractMenuable;
 
 abstract class AbstractPostType extends AbstractMenuable
 {
-    protected $supports  = [
+    protected string $label;
+
+    /** @var string[] $supports */
+    protected array $supports  = [
         'title',
         'revisions',
         'page-attributes',
@@ -20,14 +23,14 @@ abstract class AbstractPostType extends AbstractMenuable
 
         add_action(
             'init',
-            function () use ($slug, $parent) {
+            function () use ($slug) {
                 register_post_type(
                     post_type: $slug,
                     args: [
-                        'label' => $this->pageTitle,
+                        'label' => $this->label,
                         'public' => true,
                         'show_ui' => true,
-                        'show_in_menu' => $parent ? "edit.php?post_type={$parent}" : $slug,
+                        'show_in_menu' => $slug,
                         'supports' => $this->supports,
                     ]
                 );
