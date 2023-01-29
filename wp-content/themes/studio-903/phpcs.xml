@@ -9,6 +9,7 @@
 	<rule ref="WordPress-Extra">
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
 		<exclude name="WordPress.Security.EscapeOutput"/>
+        <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" />
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">

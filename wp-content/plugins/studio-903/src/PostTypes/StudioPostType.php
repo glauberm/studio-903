@@ -10,7 +10,7 @@ class StudioPostType extends AbstractPostType
 {
     protected string $label = 'Studios';
 
-    protected string $pageTitle = 'All studios';
+    protected string $pageTitle = 'Studios';
 
     protected string $menuTitle = 'Studios';
 

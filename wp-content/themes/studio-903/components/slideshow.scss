@@ -1,4 +1,4 @@
-.studios-images {
+.slideshow {
     display: flex;
     flex-wrap: wrap;
 
@@ -27,7 +27,7 @@
     }
 
     &__action {
-        &:focus-within .studios-images__popover {
+        &:focus-within .slideshow__popover {
             display: block;
         }
     }
@@ -39,7 +39,7 @@
         padding: 1em;
         font-weight: bold;
 
-        &:focus ~ .studios-images__popover {
+        &:focus ~ .slideshow__popover {
             display: block;
         }
     }
@@ -85,14 +85,13 @@
 
     &__radio:checked ~ &__label img {
         outline: 3px solid #5d78a2;
-        // color: var(--lu-blue);
     }
 
     &__gallery {
         width: 80%;
         margin-left: auto;
 
-        @media screen and (min-width: 768px) {
+        @include breakpoint-sm {
             width: auto;
             margin-left: unset;
             flex: 1 0 55%;

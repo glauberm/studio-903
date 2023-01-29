@@ -1,4 +1,4 @@
-## STUDIO 903
+# Studio 903
 
 ## Running the project locally
 
@@ -13,7 +13,10 @@ wp core download
 3. Create a new `wp-config.php` file:
 
 ```
-wp config create --dbname=<YOUR_DB_NAME> --dbuser=<YOUR_DB_USER> --dbpass=<YOUR_DB_PASS>
+wp config create \
+    --dbname=<YOUR_DB_NAME> \
+    --dbuser=<YOUR_DB_USER> \
+    --dbpass=<YOUR_DB_PASS>
 ```
 
 4. Enable `WP_DEBUG`:
@@ -25,22 +28,35 @@ wp config set WP_DEBUG true --raw --type=constant
 5. Install WordPress core:
 
 ```
-wp core install --title='STUDIO 903' --url=localhost:8080 --admin_user=<YOUR_ADMIN_USER> --admin_password=<YOUR_ADMIN_PASSWORD> --admin_email=<YOUR_ADMIN_EMAIL>
+wp core install \
+    --title='Studio 903' \
+    --url=localhost:8080 \
+    --admin_user=<YOUR_ADMIN_USER> \
+    --admin_password=<YOUR_ADMIN_PASSWORD> \
+    --admin_email=<YOUR_ADMIN_EMAIL>
 ```
 
-6. Install required plugins:
+6. Install plugins (`advanced-custom-fields` and `polylang` are required):
 
 ```
-wp plugin install advanced-custom-fields polylang --activate
+wp plugin install \
+    advanced-custom-fields \
+    polylang \
+    regenerate-thumbnails \
+    post-types-order \
+    user-role-editor \
+    google-sitemap-generator \
+    wordpress-importer \
+    --activate
 ```
 
-7. Activate the STUDIO 903 plugin:
+7. Activate the Studio 903 plugin:
 
 ```
 wp plugin activate studio-903
 ```
 
-8. Activate the STUDIO 903 theme:
+8. Activate the Studio 903 theme:
 
 ```
 wp theme activate studio-903

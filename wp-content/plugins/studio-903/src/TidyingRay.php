@@ -9,9 +9,11 @@ class TidyingRay
     public function __construct()
     {
         $this->hideAttachmentFeatures();
+        $this->hideProfileFeatures();
         $this->removeAdminMenus();
         $this->removeEmojis();
         $this->removePageFeatures();
+        $this->editPageLabels();
     }
 
     private function hideAttachmentFeatures(): void
@@ -20,23 +22,49 @@ class TidyingRay
             'admin_head',
             function () {
                 echo <<<'HTML'
-            <style>
-                .attachment-info .setting.has-description,
-                .attachment-info #alt-text-description,
-                .attachment-info .setting[data-setting='caption'],
-                .attachment-info .setting[data-setting='description'],
-                .attachment-info .actions a,
-                .attachment-info .actions .links-separator,
-                .attachment-info ~ .setting.has-description,
-                .attachment-info ~ #alt-text-description,
-                .attachment-info ~ .setting[data-setting='caption'],
-                .attachment-info ~ .setting[data-setting='description'],
-                .attachment-info ~ .actions a,
-                .attachment-info ~ .actions .links-separator {
-                    display: none;
-                }
-            </style>
-            HTML;
+                <style>
+                    .attachment-info .setting.has-description,
+                    .attachment-info #alt-text-description,
+                    .attachment-info .setting[data-setting='caption'],
+                    .attachment-info .setting[data-setting='description'],
+                    .attachment-info .actions a,
+                    .attachment-info .actions .links-separator,
+                    .attachment-info ~ .setting.has-description,
+                    .attachment-info ~ #alt-text-description,
+                    .attachment-info ~ .setting[data-setting='caption'],
+                    .attachment-info ~ .setting[data-setting='description'],
+                    .attachment-info ~ .actions a,
+                    .attachment-info ~ .actions .links-separator {
+                        display: none !important;
+                    }
+                </style>
+                HTML;
+            }
+        );
+    }
+
+    private function hideProfileFeatures(): void
+    {
+        add_action(
+            'admin_head',
+            function () {
+                echo <<<'HTML'
+                <style>
+                    #your-profile .user-rich-editing-wrap,
+                    #your-profile .user-comment-shortcuts-wrap,
+                    #your-profile .user-first-name-wrap,
+                    #your-profile .user-last-name-wrap,
+                    #your-profile .user-display-name-wrap,
+                    #your-profile .user-url-wrap,
+                    #your-profile .user-description-wrap,
+                    #your-profile .pw-weak,
+                    #application-passwords-section,
+                    #application-passwords-section ~ h2,
+                    #your-profile .user-capabilities-wrap {
+                        display: none !important;
+                    }
+                </style>
+                HTML;
             }
         );
     }
@@ -100,6 +128,32 @@ class TidyingRay
                 remove_post_type_support('page', 'comments');
                 remove_post_type_support('page', 'page-attributes');
                 remove_post_type_support('page', 'post-formats');
+            }
+        );
+    }
+
+    private function editPageLabels(): void
+    {
+        add_action(
+            'init',
+            function () {
+                $get_post_type = get_post_type_object('page');
+
+                $labels = $get_post_type->labels;
+
+                $labels->name = 'Sections';
+                $labels->singular_name = 'Section';
+                $labels->add_new = 'Add Section';
+                $labels->add_new_item = 'Add Section';
+                $labels->edit_item = 'Edit Section';
+                $labels->new_item = 'Section';
+                $labels->view_item = 'View Section';
+                $labels->search_items = 'Search Sections';
+                $labels->not_found = 'No Section found';
+                $labels->not_found_in_trash = 'No Section found in Trash';
+                $labels->all_items = 'All Sections';
+                $labels->menu_name = 'Sections';
+                $labels->name_admin_bar = 'Sections';
             }
         );
     }

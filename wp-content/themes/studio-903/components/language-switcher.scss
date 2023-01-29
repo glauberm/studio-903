@@ -11,8 +11,9 @@
         display: flex;
         align-items: center;
         padding: 1em;
+        color: var(--white-blue);
 
-        @media screen and (min-width: 768px) {
+        @include breakpoint-sm {
             padding: 2em;
         }
 
@@ -39,7 +40,8 @@
         flex-direction: column;
         position: absolute;
         right: 0;
-        box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
+        box-shadow: var(--default-shadow);
+        background-color: var(--dark-blue);
 
         &:hover {
             display: flex;
@@ -48,6 +50,11 @@
         li a {
             padding: 1em;
             width: 100%;
+
+            &:hover,
+            &:focus {
+                background-color: var(--black);
+            }
         }
     }
 }

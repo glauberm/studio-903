@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Studio903;
 
-use Studio903\PostTypes\AboutsPostType;
+use Studio903\PostTypes\AboutPostType;
+use Studio903\PostTypes\BenefitsPostType;
 use Studio903\PostTypes\ClientPostType;
 use Studio903\PostTypes\ContactPostType;
 use Studio903\PostTypes\CreatorImagePostType;
@@ -19,12 +20,13 @@ class Studio903
 {
     public function __construct(public readonly Editor $editor, public readonly TidyingRay $tidyingRay)
     {
-        $this->registerPostTypes();
+        $this->register();
     }
 
-    private function registerPostTypes()
+    private function register()
     {
-        new AboutsPostType('about-sections');
+        new AboutPostType('about');
+        new BenefitsPostType('benefits');
         new StudioPostType('studio');
         new StudioImagePostType('studio_image', parent: 'studio');
         new ServicePostType('service');

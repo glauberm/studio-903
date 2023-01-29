@@ -10,7 +10,7 @@ class ContactPostType extends AbstractPostType
 {
     protected string $label = 'Contact methods';
 
-    protected string $pageTitle = 'All contact methods';
+    protected string $pageTitle = 'Contact methods';
 
     protected string $menuTitle = 'Contact methods';
 

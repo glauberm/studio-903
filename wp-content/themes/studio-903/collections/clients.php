@@ -19,7 +19,7 @@ if ( $s903_clients_query->have_posts() ) {
 			<?php
 			while ( $s903_clients_query->have_posts() ) {
 				get_template_part(
-					'components/client',
+					'collections/clients-item',
 					args: array( 'query' => $s903_clients_query )
 				);
 			}
@@ -28,7 +28,7 @@ if ( $s903_clients_query->have_posts() ) {
 			<?php
 			while ( $s903_clients_query->have_posts() ) {
 				get_template_part(
-					'components/client',
+					'collections/clients-item',
 					args: array(
 						'query'       => $s903_clients_query,
 						'aria_hidden' => true,
@@ -45,7 +45,7 @@ if ( $s903_clients_query->have_posts() ) {
 			<?php
 			while ( $s903_clients_query->have_posts() ) {
 				get_template_part(
-					'components/client',
+					'collections/clients-item',
 					args: array( 'query' => $s903_clients_query )
 				);
 			}
@@ -54,7 +54,7 @@ if ( $s903_clients_query->have_posts() ) {
 			<?php
 			while ( $s903_clients_query->have_posts() ) {
 				get_template_part(
-					'components/client',
+					'collections/clients-item',
 					args: array(
 						'query'       => $s903_clients_query,
 						'aria_hidden' => true,
@@ -67,11 +67,11 @@ if ( $s903_clients_query->have_posts() ) {
 		</div>
 
 		<div class="clients__group">
-			<ul class="clients__list">
+			<ul class="clients__list clients__list--last">
 			<?php
 			while ( $s903_clients_query->have_posts() ) {
 				get_template_part(
-					'components/client',
+					'collections/clients-item',
 					args: array( 'query' => $s903_clients_query )
 				);
 			}
@@ -80,7 +80,7 @@ if ( $s903_clients_query->have_posts() ) {
 			<?php
 			while ( $s903_clients_query->have_posts() ) {
 				get_template_part(
-					'components/client',
+					'collections/clients-item',
 					args: array(
 						'query'       => $s903_clients_query,
 						'aria_hidden' => true,

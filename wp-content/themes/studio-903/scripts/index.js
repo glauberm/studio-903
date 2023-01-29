@@ -1,7 +1,7 @@
 import '../styles/index.scss';
 
-import studios from '../collections/studios';
-import studiosImages from '../collections/studios-images';
+import navigator from '../components/navigator';
+import slideshow from '../components/slideshow';
 
-studios();
-studiosImages();
+navigator();
+slideshow();

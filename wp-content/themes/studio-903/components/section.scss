@@ -1,0 +1,9 @@
+.section {
+    text-align: center;
+    padding: 2rem 2rem 4rem;
+
+    &__title {
+        font-family: var(--headings-font-family);
+        font-size: clamp(3em, 4.5vw, 4em);
+    }
+}

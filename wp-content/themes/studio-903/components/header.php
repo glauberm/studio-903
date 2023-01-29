@@ -4,12 +4,7 @@
     </a>
 
     <div class="header__menu">
-        <?php
-			get_template_part(
-				'components/menu',
-				args: array( 'variation' => 'header' )
-			);
-			?>
+        <?php get_template_part( 'components/menu' ); ?>
     </div>
 
     <div class="header__socials">

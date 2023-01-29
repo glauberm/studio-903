@@ -10,9 +10,9 @@ class ClientPostType extends AbstractPostType
 {
     protected string $label = 'Clients';
 
-    protected string $pageTitle = 'All Clients';
+    protected string $pageTitle = 'Clients';
 
     protected string $menuTitle = 'Clients';
 
-    protected string $icon = 'dashicons-businessman';
+    protected string $icon = 'dashicons-building';
 }

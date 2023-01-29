@@ -12,27 +12,28 @@ $s903_studios_query = new WP_Query(
 
 if ( $s903_studios_query->have_posts() ) {
 	?>
-	<div class="studios">
+	<div class="navigator">
 
-		<div class="studios__nav-container">
-			<ul class="studios__nav">
+		<div class="navigator__container">
+			<ul class="navigator__list">
 			<?php
 			while ( $s903_studios_query->have_posts() ) {
 				global $post;
+
 				$s903_studios_query->the_post();
 				?>
-					<li class="studios__nav-item">
+					<li class="navigator__list-item">
 						<input
 							name="s903-studio-active"
 							id="s903-studio-<?php the_ID(); ?>-radio"
+                            value="s903-studio-<?php the_ID(); ?>"
 							type="radio"
-							class="studios__radio visually-hidden"
-							value="s903-studio-<?php the_ID(); ?>"
+							class="navigator__radio visually-hidden"
 							<?php echo 0 === $s903_studios_query->current_post ? 'checked' : ''; ?>
 						/>
 						<label
                             for="s903-studio-<?php the_ID(); ?>-radio"
-                            class="studios__label"
+                            class="navigator__label"
                         >
 							<?php the_title(); ?>
 						</label>
@@ -52,10 +53,10 @@ if ( $s903_studios_query->have_posts() ) {
 			<div
 				id="s903-studio-<?php the_ID(); ?>"
 				class="
-					studios__div
+                    navigator__div
 					<?php
 						echo 0 === $s903_studios_query->current_post
-							? 'studios__div--active'
+							? 'navigator__div--active'
 							: '';
 					?>
 				"

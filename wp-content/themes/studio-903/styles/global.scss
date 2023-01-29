@@ -1,19 +1,19 @@
 :root {
     // Colors
-    --white: #fff;
-    --white-blue: #fafeff;
-    --white-yellow: #fffefa;
-    --light-gray: #c6ccd7;
-    --black: #1c1f26;
-    --light-blue: #9dc2fa;
-    --blue: #113262;
-    --dark-blue: #222a36;
-    --light-yellow: #fadb9d;
-    --yellow: #ad8c4b;
-    --dark-yellow: #8f6920;
-    --light-red: #ebbab2;
-    --red: #913527;
-    --dark-red: #61231a;
+    --white: hsl(0, 0%, 100%);
+    --white-blue: hsl(216, 100%, 99%);
+    --white-yellow: hsl(40, 100%, 99%);
+    --light-gray: hsl(216, 18%, 80%);
+    --light-blue: hsl(216, 90%, 80%);
+    --unsatured-blue: hsl(216, 27%, 50%);
+    --blue: hsl(216, 70%, 23%);
+    --dark-blue: hsl(216, 23%, 17%);
+    --black: hsl(216, 15%, 13%);
+    --light-yellow: hsl(40, 90%, 80%);
+    --yellow: hsl(40, 40%, 49%);
+    --dark-yellow: hsl(40, 63%, 34%);
+    // Shadows
+    --default-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
     // Fonts
     --base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
     --headings-font-family: 'Bebas Neue', Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal,
@@ -38,25 +38,5 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
-}
-
-.section {
-    padding: 2rem 2rem 4rem;
-}
-
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-}
-
-.visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+    background-color: var(--dark-blue);
 }

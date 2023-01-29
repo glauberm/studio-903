@@ -1,7 +1,12 @@
-.about-sections {
+.about {
+    @include breakpoint-sm {
+        padding: 0 2em;
+    }
+
     &__title {
         font-family: var(--headings-font-family);
         font-size: 2.5em;
+        color: var(--light-yellow);
     }
 
     &__item {

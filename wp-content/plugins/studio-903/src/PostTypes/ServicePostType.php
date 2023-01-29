@@ -10,7 +10,7 @@ class ServicePostType extends AbstractPostType
 {
     protected string $label = 'Services';
 
-    protected string $pageTitle = 'All services';
+    protected string $pageTitle = 'Services';
 
     protected string $menuTitle = 'Services';
 

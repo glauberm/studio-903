@@ -17,23 +17,34 @@ if ( $s903_studios_images_query->have_posts() ) {
 	?>
 	<div
 		id="s903-studio-<?php echo $args['s903_studio_id']; ?>-image"
-		class="studios-images"
+		class="slideshow"
 	>
-        <div class="studios-images__content">
-            <div class="studios-images__heading">
-                <h3 class="studios-images__title"><?php echo $args['s903_studio_title']; ?></h3>
-                <p class="studios-images__description"><?php echo $args['s903_studio_description']; ?></p>
-                <div class="studios-images__action">
-                    <button class="studios-images__button" type="button">Verificar disponibilidade</button>
-                    <div class="studios-images__popover">
-                        <div class="studios-images__box">
+        <div class="slideshow__content">
+            <div class="slideshow__heading">
+                <h3 class="slideshow__title">
+                    <?php echo $args['s903_studio_title']; ?>
+                </h3>
+
+                <p class="slideshow__description">
+                    <?php echo $args['s903_studio_description']; ?>
+                </p>
+
+                <div class="slideshow__action">
+                    <button class="slideshow__button" type="button">
+                        Verificar disponibilidade
+                    </button>
+
+                    <div class="slideshow__popover">
+                        <div class="slideshow__box">
                         <?php get_template_part( 'forms/studio' ); ?>
                         </div>
                     </div>
                 </div>
+
             </div>
-            <div class="studios-images__list-container">
-                <ul class="studios-images__list">
+
+            <div class="slideshow__list-container">
+                <ul class="slideshow__list">
                     <?php
                     while ( $s903_studios_images_query->have_posts() ) {
                         global $post;
@@ -45,14 +56,14 @@ if ( $s903_studios_images_query->have_posts() ) {
                             <input
                                 name="s903-studio-<?php echo $args['s903_studio_id']; ?>-image-active"
                                 id="s903-studio-<?php echo $args['s903_studio_id']; ?>-image-<?php the_ID(); ?>-radio"
-                                type="radio"
-                                class="studios-images__radio visually-hidden"
                                 value="s903-studio-<?php echo $args['s903_studio_id']; ?>-image-<?php the_ID(); ?>"
+                                type="radio"
+                                class="slideshow__radio visually-hidden"
                                 <?php echo 0 === $s903_studios_images_query->current_post ? 'checked' : ''; ?>
                             />
                             <label
                                 for="s903-studio-<?php echo $args['s903_studio_id']; ?>-image-<?php the_ID(); ?>-radio"
-                                class="studios-images__label"
+                                class="slideshow__label"
                             >
                                 <img
                                     src="<?php echo $s903_studio_image_image['sizes']['thumbnail']; ?>"
@@ -68,7 +79,7 @@ if ( $s903_studios_images_query->have_posts() ) {
             </div>
         </div>
 
-		<div class="studios-images__gallery">
+		<div class="slideshow__gallery">
 			<?php
 			while ( $s903_studios_images_query->have_posts() ) {
 				global $post;
@@ -79,10 +90,10 @@ if ( $s903_studios_images_query->have_posts() ) {
 					<div
 						id="s903-studio-<?php echo $args['s903_studio_id']; ?>-image-<?php the_ID(); ?>"
 						class="
-							studios-images__image
+							slideshow__image
 							<?php
 								echo 0 === $s903_studios_images_query->current_post
-									? 'studios-images__image--active'
+									? 'slideshow__image--active'
 									: '';
 							?>
 						"

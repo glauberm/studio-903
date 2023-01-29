@@ -10,7 +10,7 @@ class ServiceImagePostType extends AbstractPostType
 {
     protected string $label = 'Services images';
 
-    protected string $pageTitle = 'All Services images';
+    protected string $pageTitle = 'Services images';
 
     protected string $menuTitle = 'Images';
 }

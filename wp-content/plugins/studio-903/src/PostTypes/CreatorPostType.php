@@ -10,7 +10,7 @@ class CreatorPostType extends AbstractPostType
 {
     protected string $label = 'Artists + Creators';
 
-    protected string $pageTitle = 'All artists + creators';
+    protected string $pageTitle = 'Artists + creators';
 
     protected string $menuTitle = 'Artists + creators';
 
