@@ -1,22 +1,14 @@
 <?php
 
-$s903_contacts_query = new WP_Query(
-	array(
-		'post_type'      => 'contact',
-		'posts_per_page' => 10,
-		'nopagination'   => true,
-		'order'          => 'asc',
-		'orderby'        => 'menu_order',
-	)
-);
+$s903_contact_collection = s903()->contacts->collection();
 
-if ( $s903_contacts_query->have_posts() ) {
+if ( $s903_contact_collection->have_posts() ) {
 	?>
 	<div class="contacts">
 		<ul class="contacts__list">
 		<?php
-		while ( $s903_contacts_query->have_posts() ) {
-			$s903_contacts_query->the_post();
+		while ( $s903_contact_collection->have_posts() ) {
+			$s903_contact_collection->the_post();
 			?>
 				<li class="contacts__item">
 					<address>

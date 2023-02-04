@@ -1,0 +1,19 @@
+.contact-cta {
+    text-align: center;
+
+    &__link {
+        display: inline-flex !important;
+        padding: 0.85em 1.5em 0.85em 1em !important;
+        // color: var(--lightest-yellow) !important;
+        gap: 0.75em;
+        justify-content: center;
+        margin: 0 auto;
+        border: 1px solid var(--light-yellow);
+        border-radius: 3em;
+        font-size: 0.9em;
+
+        svg path {
+            fill: var(--light-yellow);
+        }
+    }
+}

@@ -18,23 +18,40 @@ use Studio903\PostTypes\StudioPostType;
 
 class Studio903
 {
+    public AboutPostType $abouts;
+    public BenefitsPostType $benefits;
+    public StudioPostType $studios;
+    public StudioImagePostType $studiosImages;
+    public ServicePostType $services;
+    public ServiceImagePostType $servicesImages;
+    public CreatorPostType $creators;
+    public CreatorImagePostType $creatorsImages;
+    public ClientPostType $clients;
+    public ContactPostType $contacts;
+    public SocialPostType $socials;
+
     public function __construct(public readonly Editor $editor, public readonly TidyingRay $tidyingRay)
     {
-        $this->register();
+        $this->abouts = new AboutPostType('about');
+        // $this->benefits = new BenefitsPostType('benefits');
+        $this->studios = new StudioPostType('studio');
+        $this->studiosImages = new StudioImagePostType('studio_image', parent: 'studio');
+        $this->services = new ServicePostType('service');
+        $this->servicesImages = new ServiceImagePostType('service_image', parent: 'service');
+        $this->creators = new CreatorPostType('creator');
+        $this->creatorsImages = new CreatorImagePostType('creator_image', parent: 'creator');
+        $this->clients = new ClientPostType('client');
+        $this->contacts = new ContactPostType('contact');
+        $this->socials = new SocialPostType('social');
     }
 
-    private function register()
+    public function html(?string $string): void
     {
-        new AboutPostType('about');
-        new BenefitsPostType('benefits');
-        new StudioPostType('studio');
-        new StudioImagePostType('studio_image', parent: 'studio');
-        new ServicePostType('service');
-        new ServiceImagePostType('service_image', parent: 'service');
-        new CreatorPostType('creator');
-        new CreatorImagePostType('creator_image', parent: 'creator');
-        new ClientPostType('client');
-        new ContactPostType('contact');
-        new SocialPostType('social');
+        echo $string ? esc_html($string) : null;
+    }
+
+    public function attr(?string $string): void
+    {
+        echo $string ? esc_attr($string) : null;
     }
 }

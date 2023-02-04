@@ -9,24 +9,21 @@
 @import '../components/header.scss';
 @import '../components/menu.scss';
 @import '../components/language-switcher.scss';
-@import '../components/footer.scss';
-@import '../components/container.scss';
+@import '../components/contact-cta.scss';
+@import '../components/form.scss';
+@import '../components/cover.scss';
 @import '../components/section.scss';
-@import '../components/navigator.scss';
+@import '../components/slideshows-navigator.scss';
 @import '../components/slideshow.scss';
+@import '../components/footer.scss';
 
 @import '../collections/about.scss';
 @import '../collections/clients.scss';
 @import '../collections/contacts.scss';
 @import '../collections/socials.scss';
 
-@import '../sections/cover.scss';
 @import '../sections/about.scss';
 @import '../sections/clients.scss';
 @import '../sections/studio.scss';
 @import '../sections/services.scss';
 @import '../sections/creators.scss';
-
-@import '../forms/studio.scss';
-
-@import './helpers.scss';

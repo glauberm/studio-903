@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Studio903\PostTypes;
 
 use Studio903\PostTypes\AbstractPostType;
+use WP_Query;
 
 class StudioImagePostType extends AbstractPostType
 {
@@ -13,6 +14,20 @@ class StudioImagePostType extends AbstractPostType
     protected string $pageTitle = 'Studios images';
 
     protected string $menuTitle = 'Images';
+
+    public function collection(string $studioId): WP_Query
+    {
+        return new WP_Query([
+            'post_type'      => 'studio_image',
+            'posts_per_page' => 20,
+            'nopagination'   => true,
+            'order'          => 'asc',
+            'orderby'        => 'menu_order',
+            'meta_key'       => 'studio_image_studio',
+            'meta_value'     => $studioId,
+            'meta_type'      => 'UNSIGNED',
+        ]);
+    }
 
     protected function getCustomColumns(): ?array
     {

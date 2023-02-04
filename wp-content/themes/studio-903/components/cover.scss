@@ -72,4 +72,25 @@
         max-width: var(--container-width);
         color: var(--white-blue);
     }
+
+    &__cta {
+        display: flex;
+        gap: 1em;
+
+        a {
+            padding: 0.85em 1.5em;
+            border: 1px solid;
+            border-radius: 4em;
+            color: var(--light-yellow);
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+
+            &:first-child {
+                background-color: var(--light-yellow);
+                color: var(--darkest-yellow);
+                border-color: var(--light-yellow);
+            }
+        }
+    }
 }

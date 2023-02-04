@@ -63,15 +63,15 @@
         gap: 3rem;
         animation: scroll-x 60s linear infinite;
 
-        &--first {
+        &--0 {
             animation-delay: -30s;
         }
 
-        &--reverse {
+        &--1 {
             animation-direction: reverse;
         }
 
-        &--last {
+        &--2 {
             animation-delay: -15s;
         }
     }
@@ -84,6 +84,7 @@
         padding: 1rem;
         border: 1px solid;
         color: var(--light-yellow);
+        box-shadow: 0 0 0 0.5em var(--white) inset;
     }
 
     &__link {

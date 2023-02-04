@@ -1,5 +1,5 @@
 <div class="header">
-    <a class="header__logo" href="<?php echo bloginfo( 'wpurl' ); ?>">
+    <a class="header__logo" href="<?php bloginfo( 'url' ); ?>">
         <?php get_template_part( 'images/logo.svg' ); ?>
     </a>
 
@@ -7,15 +7,8 @@
         <?php get_template_part( 'components/menu' ); ?>
     </div>
 
-    <div class="header__socials">
-        <?php
-        get_template_part(
-            'collections/socials',
-            args: array(
-                'posts_per_page' => 1,
-            )
-        );
-        ?>
+    <div class="header__cta">
+        <?php get_template_part( 'components/contact-cta' ); ?>
     </div>
 
     <div class="header__lang-switcher">

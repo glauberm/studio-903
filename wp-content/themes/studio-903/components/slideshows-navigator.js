@@ -1,5 +1,5 @@
 export default function navigator() {
-    const radios = document.getElementsByClassName('navigator__radio');
+    const radios = document.getElementsByClassName('slideshows-navigator__radio');
 
     for (const radio of radios) {
         radio.addEventListener('change', function ({ target }) {
@@ -8,16 +8,16 @@ export default function navigator() {
             let nextSibling = targetDiv.nextElementSibling;
 
             while (prevSibling) {
-                prevSibling.classList.remove('navigator__div--active');
+                prevSibling.classList.remove('slideshows-navigator__slideshow--active');
                 prevSibling = prevSibling.previousElementSibling;
             }
 
             while (nextSibling) {
-                nextSibling.classList.remove('navigator__div--active');
+                nextSibling.classList.remove('slideshows-navigator__slideshow--active');
                 nextSibling = nextSibling.nextElementSibling;
             }
 
-            targetDiv.classList.add('navigator__div--active');
+            targetDiv.classList.add('slideshows-navigator__slideshow--active');
         });
     }
 }

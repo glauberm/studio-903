@@ -1,6 +1,4 @@
 <?php
-$s903_is_en = pll_current_language() === 'en';
-$s903_is_pt = pll_current_language() === 'pt';
 
 get_header(
     args: array(
@@ -23,7 +21,7 @@ get_header(
 <main class="main">
 	<?php
 	get_template_part(
-		'sections/cover',
+		'components/cover',
 		args: array(
 			'video'    => get_field( 'cover_video' ),
 			'poster'   => get_field( 'cover_poster' ),
@@ -31,22 +29,63 @@ get_header(
 			'subtitle' => get_field( 'cover_subtitle' ),
 		)
 	);
-	?>
 
-    <?php get_template_part( 'sections/about', args: array( 'pagename' => 'about', 'lang' => 'en' ) ); ?>
-    <?php get_template_part( 'sections/about', args: array( 'pagename' => 'sobre', 'lang' => 'pt' ) ); ?>
+    get_template_part(
+        'components/section',
+        args: array(
+            'query'              => s903()->abouts->section(),
+            'name'               => 'about-section',
+            'text_field'         => 'about_section_text',
+            'slot_template'      => 'collections/about',
+            'is_title_invisible' => true,
+        ),
+    );
 
-    <?php get_template_part( 'sections/clients', args: array( 'pagename' => 'clients', 'lang' => 'en' ) ); ?>
-    <?php get_template_part( 'sections/clients', args: array( 'pagename' => 'clientes', 'lang' => 'pt' ) ); ?>
+    get_template_part(
+        'components/section',
+        args: array(
+            'query'               => s903()->clients->section(),
+            'name'                => 'clients-section',
+            'container_classname' => 'grid',
+            'slot_template'       => 'collections/clients',
+        ),
+    );
 
-    <?php get_template_part( 'sections/studio', args: array( 'pagename' => 'studio', 'lang' => 'en' ) ); ?>
-    <?php get_template_part( 'sections/studio', args: array( 'pagename' => 'estudio', 'lang' => 'pt' ) ); ?>
+    get_template_part(
+        'components/section',
+        args: array(
+            'query'         => s903()->studios->section(),
+            'name'          => 'studio-section',
+            'slot_template' => 'collections/studio',
+        ),
+    );
 
-    <?php get_template_part( 'sections/services', args: array( 'pagename' => 'services', 'lang' => 'en' ) ); ?>
-    <?php get_template_part( 'sections/services', args: array( 'pagename' => 'servicos', 'lang' => 'pt' ) ); ?>
+    get_template_part(
+        'components/section',
+        args: array(
+            'query'         => s903()->services->section(),
+            'name'          => 'services-section',
+            'slot_template' => 'collections/services',
+        ),
+    );
 
-    <?php get_template_part( 'sections/creators', args: array( 'pagename' => 'artists-and-creators', 'lang' => 'en' ) ); ?>
-    <?php get_template_part( 'sections/creators', args: array( 'pagename' => 'artistas-e-criadores', 'lang' => 'pt' ) ); ?>
+    get_template_part(
+        'components/section',
+        args: array(
+            'query'         => s903()->creators->section(),
+            'name'          => 'creators-section',
+            'slot_template' => 'collections/creators',
+        ),
+    );
+    ?>
+
+    <!--
+        get_template_part( 'sections/clients', args: array( 'pagename' => 'clientes', 'lang' => 'pt' ) );
+        get_template_part( 'sections/studio', args: array( 'pagename' => 'estudio', 'lang' => 'pt' ) );
+        get_template_part( 'sections/services', args: array( 'pagename' => 'servicos', 'lang' => 'pt' ) );
+        get_template_part( 'sections/creators', args: array( 'pagename' => 'artistas-e-criadores', 'lang' => 'pt' ) );
+        break;
+    -->
 
 </main>
 

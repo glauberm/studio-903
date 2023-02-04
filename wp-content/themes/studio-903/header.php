@@ -51,6 +51,14 @@
             font-display: block;
             src: url("<?php echo get_template_directory_uri() . '/fonts/domine-v19-latin-regular.woff2'; ?>") format('woff2');
         }
+
+        @font-face {
+            font-family: 'Domine';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url("<?php echo get_template_directory_uri() . '/fonts/domine-v19-latin-700.woff2'; ?>") format('woff2');
+        }
     </style>
 
     <?php wp_head(); ?>

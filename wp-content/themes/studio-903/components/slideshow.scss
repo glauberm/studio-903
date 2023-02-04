@@ -1,3 +1,5 @@
+$slideshow-image-size: clamp(100px, 10vw, 150px);
+
 .slideshow {
     display: flex;
     flex-wrap: wrap;
@@ -8,11 +10,15 @@
 
     &__content {
         padding: 2em;
+        flex: 0 0 578px;
+        flex-basis: calc(calc(3 * $slideshow-image-size) + 8em);
     }
 
     &__heading {
         text-align: left;
         margin-bottom: 1em;
+        padding: 2em;
+        background-color: var(--black);
     }
 
     &__title {
@@ -26,22 +32,14 @@
         color: var(--light-gray);
     }
 
-    &__action {
-        &:focus-within .slideshow__popover {
-            display: block;
-        }
-    }
-
-    &__button {
+    &__label {
+        display: inline-block;
         border: 1px solid var(--yellow);
         color: var(--light-yellow);
         background: transparent;
-        padding: 1em;
+        padding: 1em 1.65em;
+        border-radius: 4em;
         font-weight: bold;
-
-        &:focus ~ .slideshow__popover {
-            display: block;
-        }
     }
 
     &__popover {
@@ -58,6 +56,10 @@
         }
     }
 
+    &__checkbox:checked ~ .slideshow__popover {
+        display: block;
+    }
+
     &__box {
         padding: 2em;
         background-color: var(--white-blue);
@@ -69,7 +71,7 @@
         width: calc(20% + 1em);
         left: 0;
 
-        @media screen and (min-width: 768px) {
+        @include breakpoint-sm {
             position: static;
             width: auto;
             left: unset;
@@ -77,14 +79,21 @@
     }
 
     &__list {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         gap: 1em;
         padding: 1em;
+        max-height: calc(150px * 3);
+        overflow-y: auto;
+    }
+
+    &__label-img {
+        width: $slideshow-image-size;
     }
 
     &__radio:checked ~ &__label img {
-        outline: 3px solid #5d78a2;
+        border: 3px solid var(--dark-blue);
+        outline: 2px solid var(--yellow);
     }
 
     &__gallery {
@@ -92,17 +101,13 @@
         margin-left: auto;
 
         @include breakpoint-sm {
-            width: auto;
+            width: 100%;
             margin-left: unset;
-            flex: 1 0 55%;
         }
     }
 
     &__image {
         display: none;
-    }
-
-    &__image {
         aspect-ratio: 1;
 
         img {

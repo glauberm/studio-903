@@ -3,8 +3,13 @@
         <div class="container">
             <div class="footer__row">
 
-                <div class="footer__logo">
-                    <?php get_template_part( 'images/logo.svg' ); ?>
+                <div>
+                    <div class="footer__logo">
+                        <?php get_template_part( 'images/logo.svg' ); ?>
+                    </div>
+                    <div>
+                        <?php get_template_part( 'collections/socials' ); ?>
+                    </div>
                 </div>
 
                 <div></div>

@@ -10,10 +10,24 @@
     }
 
     &__item {
-        margin-bottom: 2em;
+        margin-bottom: 1em;
 
         &:last-child {
             margin-bottom: 0;
+        }
+    }
+
+    &__flex {
+        display: flex;
+    }
+
+    &__img {
+        flex: 1 0 auto;
+        margin-right: 1.25em;
+        margin-top: 0.5em;
+
+        img {
+            border-radius: 150px;
         }
     }
 }

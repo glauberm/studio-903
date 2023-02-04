@@ -1,22 +1,14 @@
 <?php
 
-$s903_socials_query = new WP_Query(
-	array(
-		'post_type'      => 'social',
-		'posts_per_page' => $args['posts_per_page'] ?? 5,
-		'nopagination'   => true,
-		'order'          => 'asc',
-		'orderby'        => 'menu_order',
-	)
-);
+$s903_socials_collection = s903()->socials->collection();
 
-if ( $s903_socials_query->have_posts() ) {
+if ( $s903_socials_collection->have_posts() ) {
 	?>
 	<div class="socials">
 		<ul class="socials__list">
 		<?php
-		while ( $s903_socials_query->have_posts() ) {
-			$s903_socials_query->the_post();
+		while ( $s903_socials_collection->have_posts() ) {
+			$s903_socials_collection->the_post();
 			?>
 				<li class="socials__item">
 					<a
@@ -39,6 +31,9 @@ if ( $s903_socials_query->have_posts() ) {
 								break;
 						}
 						?>
+                        <span class="socials__text">
+                            <?php the_title(); ?>
+                        </span>
 					</a>
 				</li>
 			<?php
