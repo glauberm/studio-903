@@ -1,0 +1,101 @@
+@mixin button-gradient-focus {
+    box-shadow: 0 0 3em 0 var(--light-yellow);
+}
+
+@mixin button-gradient-active {
+    transition: none;
+    box-shadow: none;
+    background: var(--yellow);
+    text-shadow: none;
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 1.1em 1.5em;
+    border-radius: 4em;
+    font-size: 1em;
+    line-height: 100%;
+    cursor: pointer;
+    transition: color var(--default-transition), background-color var(--default-transition),
+        background-image var(--default-transition), border-color var(--default-transition);
+
+    &--small {
+        font-size: clamp(0.8em, 0.9vw, 0.9em);
+    }
+
+    &--big {
+        font-size: clamp(1em, 1.125vw, 1.1em);
+    }
+
+    &--outline {
+        color: var(--light-yellow);
+        border: 1px solid var(--light-yellow);
+
+        &:hover,
+        &:focus {
+            outline: 0;
+            color: var(--black-yellow);
+            background-color: var(--light-yellow);
+        }
+
+        &:active {
+            background-color: var(--yellow);
+            border-color: var(--yellow);
+        }
+
+        svg {
+            width: clamp(1.5em, 1.125vw, 2.5em);
+            transition: transform var(--default-transition);
+
+            g,
+            path {
+                transition: fill var(--default-transition);
+                fill: var(--light-yellow);
+            }
+        }
+
+        &.button--with-icon {
+            color: var(--white-yellow);
+
+            &:hover,
+            &:focus {
+                color: var(--black-yellow);
+
+                svg {
+                    transform: translateX(0.175em);
+
+                    g,
+                    path {
+                        fill: var(--black-yellow);
+                    }
+                }
+            }
+        }
+    }
+
+    &--with-gradient {
+        background-color: var(--light-yellow);
+        background: linear-gradient(to bottom, var(--light-yellow), var(--yellow));
+        color: var(--black-yellow);
+        text-shadow: 0 1px 0 var(--light-yellow);
+        transition: box-shadow var(--slow-transition);
+        font-weight: bold;
+
+        &:hover,
+        &:focus {
+            @include button-gradient-focus;
+        }
+
+        &:active {
+            @include button-gradient-active;
+        }
+    }
+
+    &--with-icon {
+        gap: 0.75em;
+        padding: 1.1em 1.5em 1.1em 1em;
+    }
+}

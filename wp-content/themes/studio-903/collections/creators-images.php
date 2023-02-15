@@ -3,10 +3,9 @@
 $s903_creators_images_collection = s903()->creatorsImages->collection( $args['slideshow_id'] );
 
 if ( $s903_creators_images_collection->have_posts() ) {
-	get_template_part(
+    get_template_part(
         'components/slideshow',
         args: array(
-            // ...$args,
             'id'          => "{$args['navigator_id']}-{$args['slideshow_id']}",
             'title'       => $args['slideshow_title'],
             'description' => $args['slideshow_description'],

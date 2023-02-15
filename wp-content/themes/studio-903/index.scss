@@ -1,0 +1,24 @@
+@charset 'utf-8';
+
+@import './styles/reset.scss';
+@import './styles/breakpoints.scss';
+@import './styles/global.scss';
+@import './styles/button.scss';
+@import './styles/popover.scss';
+
+@import './components/header.scss';
+@import './components/menu.scss';
+@import './components/language-switcher.scss';
+@import './components/form.scss';
+@import './components/cover.scss';
+@import './components/section.scss';
+@import './components/slideshows-navigator.scss';
+@import './components/slideshow.scss';
+@import './components/back-cover.scss';
+@import './components/footer.scss';
+
+@import './collections/abouts.scss';
+@import './collections/clients.scss';
+@import './collections/benefits.scss';
+@import './collections/contacts.scss';
+@import './collections/socials.scss';

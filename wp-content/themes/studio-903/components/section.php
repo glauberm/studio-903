@@ -1,52 +1,59 @@
 <?php
 
-if ( $args['query']->have_posts() ) {
-    $args['query']->the_post();
+if ( $args['query']->have_posts() ) :
+    global $post;
 
+    $args['query']->the_post();
+    $s903_section_id = $post->post_name;
     ?>
-    <section class="<?php s903()->attr( "section {$args['name']}" ); ?>">
-        <div class="<?php s903()->attr( "container {$args['name']}__container" ); ?>">
-            <h2 class="<?php s903()->attr( "section__title {$args['name']}__title" ); ?>
+    <section
+        id="<?php s903()->attr( $s903_section_id ); ?>"
+        class="<?php s903()->attr( "section section--{$args['theme']} {$args['name']}" ); ?>"
+    >
+        <div
+            class="<?php s903()->attr( "container {$args['name']}__container" ); ?>"
+        >
+            <h2 class="
+                <?php s903()->attr( "section__title {$args['name']}__title" ); ?>
                 <?php
-                    array_key_exists( 'is_title_invisible', $args )
+                array_key_exists( 'is_title_invisible', $args )
                     && $args['is_title_invisible']
-                        ? s903()->attr( 'visually-hidden' )
-                        : '';
+                    ? s903()->attr( 'visually-hidden' )
+                    : null;
                 ?>
             ">
                 <?php the_title(); ?>
             </h2>
             <?php
 
-            if ( array_key_exists( 'text', $args ) ) {
+            if ( get_the_content() ) :
                 ?>
-                <div class="<?php s903()->attr( "section__text {$args['name']}__text" ); ?>">
-                    <?php the_field( $args['text_field'] ); ?>
+                <div
+                    class="<?php s903()->attr( "section__text {$args['name']}__text" ); ?>"
+                >
+                    <?php the_content(); ?>
                 </div>
                 <?php
-            }
+            endif;
             ?>
             <div class="
                 <?php
-                    array_key_exists( 'container_classname', $args )
+                array_key_exists( 'container_classname', $args )
                     && $args['container_classname']
-                        ? s903()->attr( "{$args['name']}__{$args['container_classname']}" )
-                        : '';
+                    ? s903()->attr( "{$args['name']}__{$args['container_classname']}" )
+                    : null;
                 ?>
             ">
-            <?php
+                <?php
                 get_template_part(
                     $args['slot_template'],
-                    args:
-                        array_key_exists( 'slot_args', $args )
-                        && $args['slot_args']
-                            ? $args['slot_args'] : array(),
+                    args: array( 'section_id' => $s903_section_id ),
                 );
-            ?>
+                ?>
             </div>
         </div>
     </section>
     <?php
-}
+endif;
 
 wp_reset_postdata();

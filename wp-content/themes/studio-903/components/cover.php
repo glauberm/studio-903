@@ -1,6 +1,10 @@
-<section class="cover cover-section">
+<div
+    id="cover"
+    class="cover"
+>
     <div class="cover__bg">
         <video
+            tabindex="-1"
             autoplay
             loop
             muted
@@ -10,15 +14,57 @@
         ></video>
     </div>
 
-    <div class="cover__content">
-        <div>
-            <h1 class="visually-hidden">Studio 903</h1>
-            <p class="cover__title"><?php s903()->html( $args['title'] ); ?></p>
-            <p class="cover__subtitle"><?php s903()->html( $args['subtitle'] ); ?></p>
-            <div class="cover__cta">
-                <a href="#">Faça um orçamento</a>
-                <a href="#">Contact us</a>
+    <div class="container">
+        <div class="cover__container">
+            <h1 class="cover__title">
+                <?php s903()->html( $args['title'] ); ?>
+            </h1>
+
+            <p class="cover__content">
+                <?php s903()->html( $args['content'] ); ?>
+            </p>
+
+            <div class="cover__ctas">
+
+                <input
+                    name="cover-cta"
+                    id="cover-cta"
+                    type="checkbox"
+                    class="cover__checkbox visually-hidden"
+                />
+
+                <label
+                    for="cover-cta"
+                    class="button button--big button--with-gradient cover__primary-cta"
+                >
+                    <?php s903()->html( $args['primary_cta'] ); ?>
+                </label>
+
+                <div class="popover cover__popover">
+                    <div class="cover__box">
+                        <?php
+                            get_template_part(
+                                'components/form',
+                                args: array(
+                                    'id'           => 'cover',
+                                    'close_target' => 'cover-cta',
+                                    'source'       => wp_strip_all_tags( $args['title'] ),
+                                )
+                            );
+                            ?>
+                    </div>
+                </div>
+
+                <?php
+                    get_template_part(
+                        'components/first-contact',
+                        args: array(
+                            'title' => $args['secondary_cta'],
+                            'size'  => 'big',
+                        )
+                    );
+                    ?>
             </div>
         </div>
     </div>
-</section>
+</div>

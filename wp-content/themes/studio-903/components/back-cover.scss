@@ -1,0 +1,59 @@
+.back-cover {
+    text-align: center;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        max-width: var(--container-width);
+        padding: 4em 4em 3.2em;
+
+        @include breakpoint-sm {
+            padding: 6em 2em 5.2em;
+        }
+    }
+
+    &__title {
+        line-height: 100%;
+        text-transform: uppercase;
+        font-family: var(--headings-font-family);
+        font-size: clamp(3em, 4.5vw, 4em);
+        margin-bottom: 0.2em;
+        color: var(--light-yellow);
+    }
+
+    &__content {
+        line-height: 1.25;
+        font-family: var(--display-font-family);
+        font-size: clamp(1.25em, 1.35vw, 1.5em);
+        max-width: var(--container-width);
+        color: var(--white-blue);
+    }
+
+    &__ctas {
+        max-width: fit-content;
+        margin: 0 auto;
+
+        > .button,
+        > .first-contact {
+            display: inline-block;
+            margin: 0 0.8em 0.8em 0;
+        }
+    }
+
+    &__checkbox:checked {
+        ~ .back-cover__popover {
+            display: block;
+        }
+
+        ~ .back-cover__primary-cta {
+            @include button-gradient-active;
+        }
+    }
+
+    &__checkbox:focus {
+        ~ .back-cover__primary-cta {
+            @include button-gradient-focus;
+            outline: 2px solid var(--light-yellow);
+        }
+    }
+}

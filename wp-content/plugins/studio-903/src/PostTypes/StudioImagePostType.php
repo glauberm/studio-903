@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Studio903\PostTypes;
 
 use Studio903\PostTypes\AbstractPostType;
+use WP_Post;
 use WP_Query;
 
 class StudioImagePostType extends AbstractPostType
@@ -13,12 +14,18 @@ class StudioImagePostType extends AbstractPostType
 
     protected string $pageTitle = 'Studios images';
 
-    protected string $menuTitle = 'Images';
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'thumbnail',
+        'revisions',
+        'page-attributes',
+    ];
 
     public function collection(string $studioId): WP_Query
     {
         return new WP_Query([
-            'post_type'      => 'studio_image',
+            'post_type'      => 'studio-image',
             'posts_per_page' => 20,
             'nopagination'   => true,
             'order'          => 'asc',
@@ -27,6 +34,13 @@ class StudioImagePostType extends AbstractPostType
             'meta_value'     => $studioId,
             'meta_type'      => 'UNSIGNED',
         ]);
+    }
+
+    public function getStudio(WP_Post $studioImage): WP_Post
+    {
+        $studioId = get_fields($studioImage)['studio_image_studio'];
+
+        return get_post($studioId);
     }
 
     protected function getCustomColumns(): ?array
@@ -49,7 +63,6 @@ class StudioImagePostType extends AbstractPostType
 
         return [
             'studio_image_image'  => __('Image'),
-            'title'  => __('Title'),
             'studio_image_studio' => __('Studio'),
         ];
     }
@@ -60,12 +73,12 @@ class StudioImagePostType extends AbstractPostType
 
         switch ($column) {
             case 'studio_image_image':
-                $image = get_field('studio_image_url', $post->ID);
+                $image = get_the_post_thumbnail_url($post->ID, 'thumbnail');
                 $post_link = get_edit_post_link($post);
 
                 echo <<<HTML
 					<a href="{$post_link}">
-						<img src="{$image['sizes']['thumbnail']}" alt="" />
+						<img src="{$image}" alt="" />
 					</a>
 				HTML;
                 break;

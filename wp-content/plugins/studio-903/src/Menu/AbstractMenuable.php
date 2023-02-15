@@ -16,28 +16,13 @@ abstract class AbstractMenuable
 
     protected string $icon;
 
-    public function __construct(protected readonly string $slug, protected readonly ?string $parent = null)
+    public function __construct(protected readonly string $slug)
     {
-        if ($parent) {
-            add_action('admin_menu', [$this, 'addSubmenu']);
-        } else {
-            add_action('admin_menu', [$this, 'addMenu']);
-        }
+        add_action('admin_menu', [$this, 'addMenu']);
     }
 
     public function addMenu()
     {
         MenuManager::addMenu($this->pageTitle, $this->menuTitle, $this->capability, $this->slug, $this->icon);
-    }
-
-    public function addSubmenu()
-    {
-        MenuManager::addSubmenu(
-            $this->parent,
-            $this->pageTitle,
-            $this->menuTitle,
-            $this->capability,
-            "edit.php?post_type={$this->slug}",
-        );
     }
 }

@@ -1,5 +1,8 @@
 <div class="header">
-    <a class="header__logo" href="<?php bloginfo( 'url' ); ?>">
+    <a
+        class="header__logo"
+        href="<?php s903()->attr( home_url() ); ?>"
+    >
         <?php get_template_part( 'images/logo.svg' ); ?>
     </a>
 
@@ -8,7 +11,15 @@
     </div>
 
     <div class="header__cta">
-        <?php get_template_part( 'components/contact-cta' ); ?>
+        <?php
+        get_template_part(
+            'components/first-contact',
+            args: array(
+                'size'     => 'small',
+                'has_icon' => true,
+            )
+        );
+        ?>
     </div>
 
     <div class="header__lang-switcher">

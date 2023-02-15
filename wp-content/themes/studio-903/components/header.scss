@@ -8,27 +8,21 @@
     position: relative;
     z-index: 1;
 
-    a {
-        display: inline-block;
-        text-decoration: none;
-        color: var(--white-blue);
-    }
-
-    button {
-        border: 0 none;
-        background: none;
-        cursor: pointer;
-    }
-
     &__logo {
         order: 1;
-        display: inline-block;
+        display: inline-flex;
         text-decoration: none;
-        padding: 2em 1em;
+        padding: 1em;
         margin: 0 auto;
+        height: var(--header-height);
+
+        &:focus {
+            outline: 0;
+            background-color: var(--black-blue);
+        }
 
         @include breakpoint-md {
-            padding: 2em;
+            padding: 1em 2em;
             order: 0;
             flex: 0 1 auto;
             margin: 0;
@@ -55,16 +49,10 @@
             flex: 3 0 auto;
             margin-left: auto;
         }
-
-        g {
-            fill: var(--white-blue);
-        }
-        a {
-            color: var(--white-blue);
-        }
     }
 
     &__cta {
+        text-align: center;
         order: 2;
 
         @include breakpoint-md {
@@ -74,29 +62,56 @@
         @include breakpoint-sm {
             margin-left: auto;
         }
-
-        svg {
-            width: 2.5em;
-
-            @include breakpoint-sm {
-                width: 1.5em;
-            }
-
-            path {
-                fill: var(--white-blue);
-            }
-        }
-
-        a {
-            padding: 1em 0.5em;
-
-            @include breakpoint-sm {
-                padding: 1em;
-            }
-        }
     }
 
     &__lang-switcher {
         order: 3;
     }
+
+    &--sticky {
+        position: sticky;
+        z-index: 100;
+        top: 0;
+        background-color: var(--darker-blue);
+    }
+
+    @include breakpoint-xs {
+        .first-contact {
+            display: flex;
+
+            &__label {
+                display: none;
+            }
+
+            .button {
+                padding: 0.75em;
+                border: 0;
+
+                &:hover,
+                &:focus {
+                    transform: none;
+
+                    svg {
+                        g,
+                        path {
+                            fill: var(--dark-yellow);
+                        }
+                    }
+                }
+
+                svg {
+                    width: 3.25em;
+
+                    g,
+                    path {
+                        fill: var(--white);
+                    }
+                }
+            }
+        }
+    }
+}
+
+#header {
+    transition: background-color var(--default-transition);
 }

@@ -3,24 +3,29 @@
     --white: hsl(0, 0%, 100%);
     --white-blue: hsl(215, 100%, 99%);
     --white-yellow: hsl(40, 100%, 99%);
-    --light-gray: hsl(215, 18%, 80%);
-    --unsatured-blue: hsl(215, 27%, 50%);
+    --gray-blue: hsl(215, 18%, 80%);
     --light-blue: hsl(215, 90%, 80%);
+    --unsatured-blue: hsl(215, 27%, 50%);
     --blue: hsl(215, 70%, 23%);
     --dark-blue: hsl(215, 23%, 17%);
-    --black: hsl(215, 15%, 13%);
-    --unsatured-yellow: hsl(40, 10%, 34%);
+    --darker-blue: hsl(215, 22%, 15%);
+    --black-blue: hsl(216, 15%, 13%);
     --lightest-yellow: hsl(40, 100%, 96%);
     --light-yellow: hsl(40, 90%, 80%);
     --yellow: hsl(40, 40%, 49%);
-    --dark-yellow: hsl(40, 63%, 34%);
+    --unsatured-yellow: hsl(40, 10%, 34%);
+    --dark-yellow: hsl(40, 65%, 26%);
     --darkest-yellow: hsl(40, 62%, 22%);
+    --black-yellow: hsl(41, 24%, 18%);
     // Shadows
     --default-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
+    // Transitions
+    --default-transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --slow-transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     // Fonts
     --base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
     --headings-font-family: 'Bebas Neue', Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal,
-        'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black', sans-serif;
+        'Helvetica Inserat', sans-serif;
     --display-font-family: 'Domine', Georgia, Times, 'Times New Roman', serif;
     // Sizes
     --body-min-width: 360px;
@@ -30,6 +35,12 @@
     @media screen and (min-width: 1920px) {
         --container-width: 1440px;
     }
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -44,9 +55,27 @@ body {
     background-color: var(--dark-blue);
 }
 
+a:focus {
+    outline: 2px solid currentColor;
+}
+
 .container {
+    width: 100%;
     max-width: var(--container-width);
     margin: 0 auto;
+}
+
+.jumbotron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 2rem 4rem;
+    min-height: calc(100vh - var(--header-height));
+    text-align: center;
+    font-family: var(--headings-font-family);
+    font-size: 12.5vw;
+    line-height: 100%;
+    color: var(--light-yellow);
 }
 
 .visually-hidden {

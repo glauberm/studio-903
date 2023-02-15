@@ -17,6 +17,14 @@ class ClientPostType extends AbstractPostType
 
     protected string $icon = 'dashicons-building';
 
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'thumbnail',
+        'revisions',
+        'page-attributes',
+    ];
+
     public function section(): WP_Query
     {
         switch (pll_current_language()) {

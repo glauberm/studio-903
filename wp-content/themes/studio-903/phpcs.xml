@@ -10,7 +10,6 @@
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
 		<exclude name="WordPress.Security.EscapeOutput"/>
         <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" />
-        <!-- <exclude name="WordPress.NamingConventions.PrefixAllGlobals" /> -->
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">

@@ -1,11 +1,64 @@
+@keyframes form-appear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes form-close-appear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes form-spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes form-message-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .form {
+    padding: 2em 2em 1.5em;
+    text-align: left;
+    background-color: var(--white-blue);
+    color: var(--black-blue);
+    box-shadow: var(--default-shadow);
+    max-width: 450px;
+    transform-origin: top center;
+    animation: form-appear var(--default-transition);
+
+    @include breakpoint-sm {
+        transform-origin: top left;
+    }
+
     &__row {
         display: flex;
-        gap: 1em;
         flex-wrap: wrap;
 
-        @media screen and (min-width: 768px) {
+        @include breakpoint-sm {
             flex-wrap: nowrap;
+            gap: 1em;
         }
     }
 
@@ -21,12 +74,12 @@
         textarea,
         select {
             background-color: var(--white);
-            border: 1px solid var(--light-gray);
+            border: 1px solid var(--gray-blue);
             padding: 0.5em 0.75em;
-            color: var(--black);
+            color: var(--black-blue);
 
             &:disabled {
-                background-color: var(--light-gray);
+                background-color: var(--gray-blue);
                 opacity: 0.25;
             }
 
@@ -34,19 +87,146 @@
                 outline: 2px solid var(--yellow);
                 border-color: var(--yellow);
             }
+
+            &:active {
+                outline: 2px solid var(--light-yellow);
+                border-color: var(--light-yellow);
+            }
+
+            &.with-error {
+                outline: 2px solid red;
+                border-color: red;
+            }
         }
 
         textarea {
             resize: vertical;
         }
+
+        label {
+            font-style: italic;
+        }
+
+        small {
+            opacity: 0.7;
+        }
+    }
+
+    &__details-checkbox-label {
+        color: var(--blue);
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__details-checkbox:focus ~ .form__details-checkbox-label {
+        text-decoration: none;
+    }
+
+    &__details-checkbox:checked {
+        ~ .form__details-checkbox-label {
+            display: none;
+        }
+
+        ~ .form__details-label,
+        ~ .form__details {
+            display: block;
+        }
+    }
+
+    &__submit {
+        display: flex;
+        gap: 1em;
+        align-items: center;
     }
 
     &__button {
-        font-size: 1.175em;
         border: 0 none;
-        background-color: var(--yellow);
-        color: var(--white-yellow);
-        padding: 0.5em 1em;
+        background-color: var(--blue);
+        color: var(--white-blue);
         font-weight: bold;
+
+        &:hover,
+        &:focus {
+            background-color: var(--dark-blue);
+        }
+
+        &:active {
+            color: var(--light-blue);
+        }
+    }
+
+    &__close-label {
+        display: block;
+        margin: 0.5em 0.5em 0 auto;
+        width: 3em;
+        height: 3em;
+        border-radius: 4em;
+        padding: 0.5em;
+        background-color: var(--white-blue);
+        position: sticky;
+        bottom: 0.5em;
+        box-shadow: var(--default-shadow);
+        cursor: pointer;
+        transform: scale(0);
+        opacity: 0;
+        animation: form-close-appear var(--default-transition);
+        animation-delay: 0.3s;
+        animation-fill-mode: forwards;
+        transition: background-color var(--default-transition);
+
+        &:hover {
+            background-color: var(--gray-blue);
+        }
+
+        &:active {
+            background-color: var(--unsatured-blue);
+        }
+
+        svg {
+            width: 100%;
+            fill: var(--blue);
+        }
+    }
+
+    &__hour-label-loading,
+    &__submit-loading {
+        opacity: 0.7;
+        animation: form-spinner 0.5s infinite linear;
+    }
+
+    &__hour-label {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    &__submit-loading {
+        svg {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
+
+    &__error,
+    &__hour-error,
+    &__success {
+        padding: 1em;
+        margin-bottom: 1em;
+        animation: form-message-appear var(--default-transition);
+    }
+
+    &__error,
+    &__hour-error {
+        background-color: var(--light-yellow);
+        color: var(--dark-yellow);
+    }
+
+    &__success {
+        background-color: var(--light-blue);
+        color: var(--blue);
     }
 }

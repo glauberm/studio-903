@@ -1,9 +1,4 @@
 .cover {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
     &__bg {
         position: fixed;
         top: 0;
@@ -23,7 +18,7 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: var(--black);
+            background: var(--black-blue);
             opacity: 0.9;
         }
     }
@@ -39,58 +34,67 @@
         }
     }
 
-    &__content {
-        flex: 1 0 auto;
+    &__container {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         max-width: var(--container-width);
-        padding: 2em;
+        padding: 2em 2em 1.2em;
 
         @include breakpoint-sm {
-            padding: 4em 2em;
+            padding: 4em 2em 3.2em;
         }
     }
 
     &__title {
-        display: inline-block;
-        line-height: 1.125;
-        font-weight: 600;
+        line-height: 100%;
         text-transform: uppercase;
         font-family: var(--headings-font-family);
-        font-weight: 400;
         font-size: clamp(3.65em, 5vw, 6em);
         margin-bottom: 0.1em;
         color: var(--light-yellow);
     }
 
-    &__subtitle {
-        display: inline-block;
+    &__content {
         line-height: 1.25;
         font-family: var(--display-font-family);
         font-weight: 400;
         font-size: clamp(1.35em, 1.75vw, 2em);
         max-width: var(--container-width);
         color: var(--white-blue);
-    }
-
-    &__cta {
-        display: flex;
-        gap: 1em;
 
         a {
-            padding: 0.85em 1.5em;
-            border: 1px solid;
-            border-radius: 4em;
             color: var(--light-yellow);
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 1.1em;
+            text-decoration: underline;
 
-            &:first-child {
-                background-color: var(--light-yellow);
-                color: var(--darkest-yellow);
-                border-color: var(--light-yellow);
+            &:hover,
+            &:focus {
+                text-decoration: none;
             }
+        }
+    }
+
+    &__ctas {
+        > .button,
+        > .first-contact {
+            display: inline-block;
+            margin: 0 0.8em 0.8em 0;
+        }
+    }
+
+    &__checkbox:checked {
+        ~ .cover__popover {
+            display: block;
+        }
+
+        ~ .cover__primary-cta {
+            @include button-gradient-active;
+        }
+    }
+
+    &__checkbox:focus {
+        ~ .cover__primary-cta {
+            @include button-gradient-focus;
+            outline: 2px solid var(--light-yellow);
         }
     }
 }

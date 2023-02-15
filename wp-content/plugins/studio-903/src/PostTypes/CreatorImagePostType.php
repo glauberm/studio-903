@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Studio903\PostTypes;
 
 use Studio903\PostTypes\AbstractPostType;
+use WP_Post;
 use WP_Query;
 
 class CreatorImagePostType extends AbstractPostType
@@ -15,10 +16,18 @@ class CreatorImagePostType extends AbstractPostType
 
     protected string $menuTitle = 'Images';
 
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'thumbnail',
+        'revisions',
+        'page-attributes',
+    ];
+
     public function collection(string $creatorId): WP_Query
     {
         return new WP_Query([
-            'post_type'      => 'creator_image',
+            'post_type'      => 'creator-image',
             'posts_per_page' => 20,
             'nopagination'   => true,
             'order'          => 'asc',
@@ -27,5 +36,12 @@ class CreatorImagePostType extends AbstractPostType
             'meta_value'     => $creatorId,
             'meta_type'      => 'UNSIGNED',
         ]);
+    }
+
+    public function getCreator(WP_Post $creatorImage): WP_Post
+    {
+        $creatorId = get_fields($creatorImage)['creator_image_creator'];
+
+        return get_post($creatorId);
     }
 }

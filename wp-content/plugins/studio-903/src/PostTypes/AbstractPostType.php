@@ -13,24 +13,28 @@ abstract class AbstractPostType extends AbstractMenuable
     /** @var string[] $supports */
     protected array $supports  = [
         'title',
+        'thumbnail',
+        'editor',
         'revisions',
         'page-attributes',
     ];
 
     public function __construct(string $slug, ?string $parent = null)
     {
-        parent::__construct($slug, $parent);
+        if (!$parent) {
+            parent::__construct($slug);
+        }
 
         add_action(
             'init',
-            function () use ($slug) {
+            function () use ($slug, $parent) {
                 register_post_type(
                     post_type: $slug,
                     args: [
                         'label' => $this->label,
                         'public' => true,
                         'show_ui' => true,
-                        'show_in_menu' => $slug,
+                        'show_in_menu' => $parent ?? $slug,
                         'supports' => $this->supports,
                     ]
                 );

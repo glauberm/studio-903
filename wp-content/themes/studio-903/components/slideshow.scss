@@ -1,119 +1,138 @@
-$slideshow-image-size: clamp(100px, 10vw, 150px);
+$slideshow-image-size: clamp(75px, 10vw, 150px);
+
+@keyframes slideshow-image-appear {
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 
 .slideshow {
     display: flex;
     flex-wrap: wrap;
 
-    @media screen and (min-width: 768px) {
+    @include breakpoint-sm {
         flex-wrap: nowrap;
     }
 
     &__content {
-        padding: 2em;
-        flex: 0 0 578px;
-        flex-basis: calc(calc(3 * $slideshow-image-size) + 8em);
+        order: 2;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint-sm {
+            order: 0;
+            flex: 0 0 calc(calc(3 * $slideshow-image-size) + 8em);
+            padding: 2em;
+        }
     }
 
     &__heading {
+        order: 1;
         text-align: left;
-        margin-bottom: 1em;
-        padding: 2em;
-        background-color: var(--black);
+        margin: 1em 0 0;
+        padding: 2em 2em 0.7em;
+
+        @include breakpoint-sm {
+            order: 0;
+            margin-left: 0;
+            margin: 0 0 1em;
+            width: auto;
+            padding: 3em 3em 1.7em;
+            box-shadow: var(--default-shadow);
+        }
     }
 
     &__title {
-        font-size: 3em;
+        font-size: clamp(2.75em, 4.25vw, 3em);
+        line-height: 100%;
+        margin-bottom: 0.25em;
         font-family: var(--headings-font-family);
     }
 
     &__description {
-        font-size: 1.25em;
+        font-size: clamp(1.25em, 1.3vw, 1.4em);
         font-family: var(--display-font-family);
-        color: var(--light-gray);
     }
 
     &__label {
-        display: inline-block;
-        border: 1px solid var(--yellow);
-        color: var(--light-yellow);
-        background: transparent;
-        padding: 1em 1.65em;
-        border-radius: 4em;
         font-weight: bold;
-    }
-
-    &__popover {
-        display: none;
-        position: absolute;
-        padding: 1em;
-        left: 0;
-        max-width: 100%;
-        z-index: 10;
-
-        @media screen and (min-width: 768px) {
-            left: unset;
-            max-width: unset;
-        }
+        margin-bottom: 0.8em;
     }
 
     &__checkbox:checked ~ .slideshow__popover {
         display: block;
     }
 
-    &__box {
-        padding: 2em;
-        background-color: var(--white-blue);
-        color: var(--black);
-    }
-
     &__list-container {
-        position: absolute;
-        width: calc(20% + 1em);
-        left: 0;
+        order: 0;
 
         @include breakpoint-sm {
-            position: static;
-            width: auto;
-            left: unset;
+            order: 1;
         }
     }
 
     &__list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        display: flex;
+        align-items: center;
         gap: 1em;
         padding: 1em;
-        max-height: calc(150px * 3);
-        overflow-y: auto;
+        overflow: auto;
+        width: fit-content;
+
+        @include breakpoint-sm {
+            display: grid;
+            align-items: flex-start;
+            grid-template-columns: 1fr 1fr 1fr;
+            aspect-ratio: 1;
+        }
+
+        li {
+            flex: 1 0 auto;
+        }
     }
 
-    &__label-img {
-        width: $slideshow-image-size;
+    &__thumbnail {
+        display: inline-block;
+        transition: transform var(--default-transition);
+        cursor: zoom-in;
+
+        img {
+            width: $slideshow-image-size;
+        }
     }
 
-    &__radio:checked ~ &__label img {
-        border: 3px solid var(--dark-blue);
-        outline: 2px solid var(--yellow);
+    &__radio:checked ~ label {
+        outline: 3px solid;
+        transform: scale(0.9);
     }
 
     &__gallery {
-        width: 80%;
-        margin-left: auto;
+        width: 100%;
+        margin-top: 1em;
 
         @include breakpoint-sm {
-            width: 100%;
-            margin-left: unset;
+            margin-top: 0;
         }
     }
 
     &__image {
         display: none;
         aspect-ratio: 1;
+        height: 100%;
+        width: 100%;
+        animation: slideshow-image-appear var(--default-transition);
 
         img {
             height: 100%;
             width: 100%;
             object-fit: cover;
+            background-color: var(--black-blue);
         }
     }
 

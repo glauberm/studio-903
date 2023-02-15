@@ -1,72 +1,66 @@
 <?php
 
-$s903_client_collection = s903()->clients->collection();
+$s903_clients_collection = s903()->clients->collection();
 
-if ( $s903_client_collection->have_posts() ) {
-    function s903_client_item( array $args ): void {
+if ( $s903_clients_collection->have_posts() ) :
+    function s903_clients_collection_item( bool $aria_hidden = false ) : void {
         ?>
-        <li
+        <li 
             class="clients__item"
-            <?php
-                array_key_exists( 'aria_hidden', $args ) && $args['aria_hidden']
-                    ? 'aria-hidden="true"'
-                    : '';
-            ?>
+            <?php $aria_hidden ? s903()->attr( 'aria-hidden=true' ) : ''; ?>
         >
             <a
-                href="<?php the_field( 'client_url' ); ?>"
+                href="<?php the_permalink(); ?>"
                 target="_blank"
                 rel="noreferrer noopener"
-                title="<?php the_title(); ?>"
+                title="<?php s903()->attr( get_the_title() ); ?>"
                 class="clients__link"
                 tabindex="-1"
             >
-                <img
-                    class="clients__image"
-                    src="
-                    <?php
-                        s903()->attr(
-                            get_field( 'client_image' )['sizes']['client-thumbnail']
-                        );
-                    ?>
-                    "
-                    alt="<?php the_title(); ?>"
-                    loading="lazy"
-                />
+                <?php
+                the_post_thumbnail(
+                    'client-thumbnail',
+                    array(
+                        'srcset'  => get_the_post_thumbnail_url( size: 'client-thumbnail' ) . ' 200w, ' .
+                                    get_the_post_thumbnail_url( size: 'client-thumbnail-lg' ) . ' 400w',
+                        'sizes'   => '(max-width: 767px) 200px, 300px',
+                        'loading' => 'lazy',
+                        'class'   => 'clients__image',
+                        'alt'     => esc_attr( get_the_title() ),
+                    )
+                );
+                ?>
             </a>
         </li>
         <?php
     }
-
     ?>
 
-	<div class="clients">
-    <?php
-    for ( $s903_i = 0; $s903_i < 3; $s903_i++ ) {
-        ?>
-		<div class="clients__group">
-			<ul class="<?php s903()->attr( "clients__list clients__list--{$s903_i}" ); ?>">
-			<?php
-
-			while ( $s903_client_collection->have_posts() ) {
-                $s903_client_collection->the_post();
-				s903_client_item( $args );
-			}
-
-			while ( $s903_client_collection->have_posts() ) {
-                $s903_client_collection->the_post();
-				s903_client_item( $args );
-			}
-
-			?>
-			</ul>
-		</div>
+    <div class="clients">
         <?php
-    }
-    ?>
-	</div>
+        for ( $s903_i = 0; $s903_i < 3; $s903_i++ ) :
+            ?>
+            <div class="clients__group">
+                <ul class="<?php s903()->attr( "clients__list clients__list--{$s903_i}" ); ?>">
+                    <?php
 
-	<?php
-}
+                    while ( $s903_clients_collection->have_posts() ) {
+                        $s903_clients_collection->the_post();
+                        s903_clients_collection_item( 0 !== $s903_i );
+                    }
+
+                    while ( $s903_clients_collection->have_posts() ) {
+                        $s903_clients_collection->the_post();
+                        s903_clients_collection_item( true );
+                    }
+                    ?>
+                </ul>
+            </div>
+            <?php
+        endfor;
+        ?>
+    </div>
+    <?php
+endif;
 
 wp_reset_postdata();

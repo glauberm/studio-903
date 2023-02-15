@@ -1,3 +1,23 @@
+@keyframes menu-bg {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.95;
+    }
+}
+
+@keyframes menu-list-item {
+    from {
+        transform: translateY(-1em);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 .menu {
     &__trigger-input {
         @include breakpoint-md {
@@ -8,13 +28,35 @@
         &:checked ~ .menu__content {
             display: block;
         }
+
+        &:checked ~ .menu__trigger-label {
+            background-color: var(--dark-yellow);
+
+            svg {
+                transform: scale(1.1);
+
+                g {
+                    fill: var(--light-yellow);
+
+                    rect:nth-child(1) {
+                        transform: rotate(37.5deg);
+                    }
+                    rect:nth-child(2) {
+                        opacity: 0;
+                    }
+                    rect:nth-child(3) {
+                        transform: rotate(-37.5deg);
+                    }
+                }
+            }
+        }
     }
 
     &__trigger-label {
         cursor: pointer;
         position: relative;
         z-index: 3;
-        padding: 1em;
+        padding: 1em 0.5em 1em 1em;
         display: block;
 
         @include breakpoint-sm {
@@ -27,6 +69,23 @@
 
         svg {
             width: 3em;
+            transition: transform var(--default-transition);
+
+            g {
+                fill: var(--light-yellow);
+                transition: fill var(--default-transition);
+
+                rect {
+                    transition: transform var(--default-transition), opacity var(--default-transition);
+
+                    &:nth-child(1) {
+                        transform-origin: top left;
+                    }
+                    &:nth-child(3) {
+                        transform-origin: bottom left;
+                    }
+                }
+            }
         }
     }
 
@@ -40,6 +99,7 @@
         opacity: 0.95;
         z-index: 1;
         background-color: var(--yellow);
+        animation: menu-bg var(--default-transition);
 
         @include breakpoint-md {
             display: none !important;
@@ -68,7 +128,7 @@
         }
 
         .menu {
-            padding: 1em 2em;
+            padding: 2.5em 2em 2em;
             text-align: left;
 
             @include breakpoint-md {
@@ -76,13 +136,16 @@
                 text-align: center;
                 display: flex;
                 justify-content: center;
+                gap: 1em;
             }
 
             li {
-                &:focus-within {
-                    .sub-menu {
-                        display: flex;
-                    }
+                &:nth-child(2) a {
+                    animation-delay: 0.3s;
+                }
+
+                &:nth-child(3) a {
+                    animation-delay: 0.4s;
                 }
 
                 a {
@@ -90,54 +153,55 @@
                     font-family: var(--headings-font-family);
                     font-size: 3em;
                     line-height: 1;
+                    display: inline-block;
+                    text-decoration: none;
+                    color: var(--white-blue);
+                    transition: color var(--default-transition), background-color var(--default-transition);
+                    opacity: 0;
+                    animation: menu-list-item var(--default-transition);
+                    animation-delay: 0.2s;
+                    animation-fill-mode: forwards;
 
                     @include breakpoint-md {
+                        display: inline-flex;
+                        align-items: center;
+                        height: var(--header-height);
                         padding: 2em;
                         font-family: var(--base-font-family);
                         font-size: 1em;
                         line-height: 1.5;
+                        opacity: 1;
+                        animation: none;
                     }
 
                     &:hover,
                     &:focus {
-                        ~ .sub-menu {
-                            display: flex;
+                        color: var(--light-yellow);
+                    }
+
+                    &:focus {
+                        outline: 0;
+                        background-color: var(--black-blue);
+                    }
+
+                    &:active {
+                        color: var(--white-yellow);
+                        background-color: var(--dark-yellow);
+                    }
+
+                    &.active {
+                        color: var(--white-yellow);
+                        background-color: transparent;
+
+                        @include breakpoint-md {
+                            color: var(--light-yellow);
+                            background-color: var(--black-blue);
+                        }
+
+                        &:focus {
+                            outline: 2px solid var(--yellow);
                         }
                     }
-                }
-            }
-        }
-
-        .sub-menu {
-            text-align: left;
-            flex-direction: column;
-            padding-left: 2em;
-
-            @include breakpoint-md {
-                padding: 0;
-                display: none;
-                position: absolute;
-                box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
-                background-color: var(--dark-blue);
-
-                &:hover {
-                    display: flex;
-                }
-            }
-
-            li a {
-                width: 100%;
-                font-size: 2.25em;
-                padding: 0.75em;
-
-                @include breakpoint-md {
-                    font-size: 1em;
-                    padding: 1em;
-                }
-
-                &:hover,
-                &:focus {
-                    background-color: var(--black);
                 }
             }
         }

@@ -1,1 +1,4 @@
+.env
+s903.log
+.phpunit.result.cache
 /vendor

@@ -9,7 +9,7 @@ module.exports = {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? false : 'source-map',
     entry: {
-        s903: './scripts/index.js',
+        s903: './index.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

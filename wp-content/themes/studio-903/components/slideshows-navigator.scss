@@ -5,12 +5,16 @@
 
     &__container {
         overflow-x: auto;
+        margin-left: -1em;
+        width: calc(100% + 2em);
+        padding: 1em 0;
     }
 
     &__list {
         display: inline-flex;
         gap: 0.5em;
-        margin-bottom: 1em;
+        margin-left: 1px;
+        margin-right: 1px;
     }
 
     &__list-item {
@@ -18,32 +22,32 @@
     }
 
     &__label {
-        font-size: 1.175em;
+        font-size: clamp(1em, 1.175vw, 1.175em);
         padding: 0.85em 1.5em 0.85em 1em;
-        color: var(--light-blue);
         display: flex;
         align-items: center;
         border-radius: 4em;
+        cursor: pointer;
+        transition: background-color var(--default-transition), color var(--default-transition);
+
+        img {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            border-radius: 32px;
+            margin-right: 0.75em;
+            opacity: 0.5;
+            transition: opacity var(--default-transition), transform var(--default-transition);
+        }
     }
 
-    &__label-img {
-        display: inline-flex;
-        width: 32px;
-        height: 32px;
-        border-radius: 32px;
-        margin-right: 0.75em;
-        opacity: 0.5;
+    &__radio:focus ~ &__label {
+        outline: 1px solid;
     }
 
-    &__radio:checked {
-        ~ .slideshows-navigator__label {
-            color: var(--light-yellow);
-            background-color: var(--black);
-        }
-
-        ~ .slideshows-navigator__label-img {
-            opacity: 1;
-        }
+    &__radio:checked ~ &__label img {
+        opacity: 1;
+        transform: scale(1.2);
     }
 
     &__slideshow {

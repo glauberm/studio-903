@@ -1,3 +1,14 @@
+@keyframes language-switcher-sub-menu {
+    from {
+        transform: translateY(-1em);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 .language-switcher {
     position: relative;
 
@@ -8,10 +19,14 @@
     }
 
     &__trigger {
+        border: 0 none;
+        background: none;
         display: flex;
         align-items: center;
-        padding: 1em;
         color: var(--white-blue);
+        cursor: pointer;
+        transition: color var(--default-transition);
+        padding: 1.5em 1em;
 
         @include breakpoint-sm {
             padding: 2em;
@@ -19,9 +34,16 @@
 
         &:hover,
         &:focus {
+            outline: 0;
+            color: var(--light-yellow);
+
             ~ .sub-menu {
                 display: flex;
             }
+        }
+
+        &:active {
+            color: var(--yellow);
         }
 
         &::after {
@@ -48,13 +70,29 @@
         }
 
         li a {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            color: var(--white-blue);
             padding: 1em;
             width: 100%;
+            transition: color var(--default-transition), background-color var(--default-transition);
 
             &:hover,
             &:focus {
-                background-color: var(--black);
+                outline: 0;
+                color: var(--light-yellow);
+                background-color: var(--black-blue);
+            }
+
+            &:active {
+                color: var(--light-blue);
             }
         }
+    }
+
+    .sub-menu {
+        animation: language-switcher-sub-menu var(--default-transition);
+        transform-origin: top center;
     }
 }

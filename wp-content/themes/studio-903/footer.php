@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
     <?php get_template_part( 'components/footer' ); ?>
 </footer>
 

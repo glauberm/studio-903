@@ -24,18 +24,4 @@ class MenuManager
 
         self::$initialPosition++;
     }
-
-    public static function addSubmenu(string $parent, string $pageTitle, string $menuTitle, string $capability, string $slug): void
-    {
-        add_action(
-            'admin_menu',
-            add_submenu_page(
-                parent_slug: $parent,
-                page_title: $pageTitle,
-                menu_title: $menuTitle,
-                capability: $capability,
-                menu_slug: $slug,
-            )
-        );
-    }
 }

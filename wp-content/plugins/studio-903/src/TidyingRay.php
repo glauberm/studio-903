@@ -6,17 +6,22 @@ namespace Studio903;
 
 class TidyingRay
 {
-    public function __construct()
+    public static function tidyUp(): void
     {
-        $this->hideAttachmentFeatures();
-        $this->hideProfileFeatures();
-        $this->removeAdminMenus();
-        $this->removeEmojis();
-        $this->removePageFeatures();
-        $this->editPageLabels();
+        self::adjustAttachmentFeatures();
+        self::adjustProfileFeatures();
+        self::adjustEditorSettings();
+        self::adjustMceButtons();
+        self::adjustAdminMenus();
+        self::adjustPageFeatures();
+        self::adjustPageLabels();
+        self::removeMediaButtons();
+        self::forcePasteAsText();
+        self::registerAcfEssentialToolbar();
+        self::removeEmojis();
     }
 
-    private function hideAttachmentFeatures(): void
+    private static function adjustAttachmentFeatures(): void
     {
         add_action(
             'admin_head',
@@ -43,7 +48,7 @@ class TidyingRay
         );
     }
 
-    private function hideProfileFeatures(): void
+    private static function adjustProfileFeatures(): void
     {
         add_action(
             'admin_head',
@@ -69,7 +74,39 @@ class TidyingRay
         );
     }
 
-    private function removeAdminMenus(): void
+    private static function adjustEditorSettings(): void
+    {
+        add_filter(
+            'wp_editor_settings',
+            function ($settings) {
+                $settings['textarea_rows'] = 4;
+                $settings['editor_height'] = 113;
+                $settings['quicktags'] = false;
+                return $settings;
+            }
+        );
+    }
+
+    private static function adjustMceButtons(): void
+    {
+        add_filter(
+            'mce_buttons',
+            function ($buttons) {
+                return [
+                    'link',
+                    'undo',
+                    'redo',
+                    'spellchecker',
+                ];
+            }
+        );
+
+        add_filter('mce_buttons_2', fn ($buttons) => []);
+        add_filter('mce_buttons_3', fn ($buttons) => []);
+        add_filter('mce_buttons_4', fn ($buttons) => []);
+    }
+
+    private static function adjustAdminMenus(): void
     {
         add_action(
             'admin_menu',
@@ -88,40 +125,14 @@ class TidyingRay
         );
     }
 
-    private function removeEmojis(): void
+    private static function adjustPageFeatures(): void
     {
         add_action(
             'init',
             function () {
-                remove_action('wp_head', 'print_emoji_detection_script', 7);
-                remove_action('admin_print_scripts', 'print_emoji_detection_script');
-                remove_action('wp_print_styles', 'print_emoji_styles');
-                remove_filter('the_content_feed', 'wp_staticize_emoji');
-                remove_action('admin_print_styles', 'print_emoji_styles');
-                remove_filter('comment_text_rss', 'wp_staticize_emoji');
-                remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-                add_filter(
-                    'tiny_mce_plugins',
-                    function ($plugins) {
-                        if (is_array($plugins)) {
-                            return array_diff($plugins, array('wpemoji'));
-                        } else {
-                            return array();
-                        }
-                    }
-                );
-            }
-        );
-    }
-
-    private function removePageFeatures(): void
-    {
-        add_action(
-            'init',
-            function () {
-                remove_post_type_support('page', 'editor');
+                // remove_post_type_support('page', 'editor');
                 remove_post_type_support('page', 'author');
-                remove_post_type_support('page', 'thumbnail');
+                // remove_post_type_support('page', 'thumbnail');
                 remove_post_type_support('page', 'excerpt');
                 remove_post_type_support('page', 'trackbacks');
                 remove_post_type_support('page', 'custom-fields');
@@ -132,7 +143,7 @@ class TidyingRay
         );
     }
 
-    private function editPageLabels(): void
+    private static function adjustPageLabels(): void
     {
         add_action(
             'init',
@@ -154,6 +165,75 @@ class TidyingRay
                 $labels->all_items = 'All Sections';
                 $labels->menu_name = 'Sections';
                 $labels->name_admin_bar = 'Sections';
+            }
+        );
+    }
+
+    private static function removeMediaButtons(): void
+    {
+        add_action(
+            'admin_head',
+            function () {
+                remove_action(
+                    'media_buttons',
+                    'media_buttons'
+                );
+            }
+        );
+    }
+
+    private static function forcePasteAsText(): void
+    {
+        add_filter(
+            'tiny_mce_before_init',
+            function ($args) {
+                $args['paste_as_text'] = true;
+
+                return $args;
+            }
+        );
+    }
+
+    private static function registerAcfEssentialToolbar(): void
+    {
+        add_filter(
+            'acf/fields/wysiwyg/toolbars',
+            function ($toolbars) {
+                $toolbars['Essential']    = array();
+                $toolbars['Essential'][1] = array(
+                    'link',
+                    'undo',
+                    'redo',
+                    'spellchecker',
+                );
+
+                return $toolbars;
+            }
+        );
+    }
+
+    private static function removeEmojis(): void
+    {
+        add_action(
+            'init',
+            function () {
+                remove_action('wp_head', 'print_emoji_detection_script', 7);
+                remove_action('admin_print_scripts', 'print_emoji_detection_script');
+                remove_action('wp_print_styles', 'print_emoji_styles');
+                remove_filter('the_content_feed', 'wp_staticize_emoji');
+                remove_action('admin_print_styles', 'print_emoji_styles');
+                remove_filter('comment_text_rss', 'wp_staticize_emoji');
+                remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+                add_filter(
+                    'tiny_mce_plugins',
+                    function ($plugins) {
+                        if (is_array($plugins)) {
+                            return array_diff($plugins, array('wpemoji'));
+                        } else {
+                            return array();
+                        }
+                    }
+                );
             }
         );
     }

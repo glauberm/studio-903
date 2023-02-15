@@ -30,7 +30,7 @@ class CreatorPostType extends AbstractPostType
     public function collection(): WP_Query
     {
         return new WP_Query([
-            'post_type'      => 'service',
+            'post_type'      => 'creator',
             'posts_per_page' => 10,
             'nopagination'   => true,
             'order'          => 'asc',
