@@ -3,13 +3,14 @@ import { debounce } from 'lodash';
 export default function form() {
     const forms = document.querySelectorAll('.form');
 
-    const onDateChange = (event) => {
-        destroyHours(form);
-        buildHours(form, event.target.value);
-    };
-
     for (const form of forms) {
-        form.querySelector('.form__date').addEventListener('change', debounce(onDateChange, 300));
+        form.querySelector('.form__date').addEventListener(
+            'change',
+            debounce(function (event) {
+                destroyHours(form);
+                buildHours(form, event.target.value);
+            }, 300)
+        );
 
         form.querySelector('.form__contact-key').addEventListener('change', function (event) {
             changeContactValueLabel(form, event.target.value);
