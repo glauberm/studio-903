@@ -40,6 +40,7 @@ wp core install \
 
 ```
 wp plugin install \
+    classic-editor \
     advanced-custom-fields \
     polylang \
     regenerate-thumbnails \

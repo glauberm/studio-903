@@ -17,17 +17,12 @@
 
     <meta name="googlebot" content="index,follow">
 
-    <?php if ( array_key_exists( 'preload', $args ) ) : ?>
-        <?php foreach ( $args['preload'] as $s903_preload ) : ?>
-            <link
-                rel="preload"
-                href="<?php echo $s903_preload['href']; ?>"
-                type="<?php echo $s903_preload['type']; ?>"
-                as="<?php echo $s903_preload['as']; ?>"
-                <?php echo 'font' === $s903_preload['as'] ? 'crossorigin' : ''; ?>
-            />
-        <?php endforeach ?>
-    <?php endif; ?>
+    <link
+        rel="preload"
+        href="<?php echo get_the_post_thumbnail_url( size: 'cover-poster' ); ?>"
+        type="image/jpeg"
+        as="image"
+    />
 
     <link
         rel="preload"

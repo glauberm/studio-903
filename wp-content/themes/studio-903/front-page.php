@@ -1,16 +1,6 @@
 <?php
 
-get_header(
-    args: array(
-        'preload' => array(
-            array(
-                'href' => get_field( 'cover_poster' ),
-                'type' => 'image/jpeg',
-                'as'   => 'image',
-            ),
-        ),
-    )
-);
+get_header();
 ?>
 
 <main id="main">

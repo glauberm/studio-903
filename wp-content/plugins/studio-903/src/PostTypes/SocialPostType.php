@@ -17,6 +17,13 @@ class SocialPostType extends AbstractPostType
 
     protected string $icon = 'dashicons-share';
 
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'revisions',
+        'page-attributes',
+    ];
+
     public function collection(): WP_Query
     {
         return new WP_Query([

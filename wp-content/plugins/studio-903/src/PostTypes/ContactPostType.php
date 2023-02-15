@@ -17,6 +17,13 @@ class ContactPostType extends AbstractPostType
 
     protected string $icon = 'dashicons-email';
 
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'revisions',
+        'page-attributes',
+    ];
+
     public function first(): WP_Query
     {
         return new WP_Query([
