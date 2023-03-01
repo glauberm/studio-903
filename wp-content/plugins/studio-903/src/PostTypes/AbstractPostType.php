@@ -49,7 +49,10 @@ abstract class AbstractPostType extends AbstractMenuable
 
     protected function getCustomColumns(): ?array
     {
-        return null;
+        return [
+            'thumbnail'  => __('Image'),
+            'title'  => __('Title'),
+        ];
     }
 
     private function setCustomColumns(string $slug): void
@@ -62,6 +65,19 @@ abstract class AbstractPostType extends AbstractMenuable
 
     public function setCustomColumn(string $column): void
     {
-        return;
+        global $post;
+
+        switch ($column) {
+            case 'thumbnail':
+                $image = get_the_post_thumbnail_url($post->ID, 'thumbnail');
+                $post_link = get_edit_post_link($post);
+
+                echo <<<HTML
+					<a href="{$post_link}">
+						<img src="{$image}" alt="" />
+					</a>
+				HTML;
+                break;
+        }
     }
 }

@@ -218,7 +218,7 @@ class Form
                     'date_select' => 'Selecione uma data',
                     'hour' => 'Hora',
                     'name' => 'Nome',
-                    'contact_key' => 'Contatamos você por',
+                    'contact_key' => 'Contato por',
                     'contact_phone_value' => 'Telefone',
                     'contact_email_value' => 'Email',
                     'contact_whatsapp_option' => 'WhatsApp',

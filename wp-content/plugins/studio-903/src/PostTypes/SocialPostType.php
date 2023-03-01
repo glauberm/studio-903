@@ -34,4 +34,14 @@ class SocialPostType extends AbstractPostType
             'orderby'        => 'menu_order',
         ]);
     }
+
+    protected function getCustomColumns(): ?array
+    {
+        return null;
+    }
+
+    public function setCustomColumn(string $column): void
+    {
+        return;
+    }
 }

@@ -17,6 +17,7 @@ class TidyingRay
         self::adjustPageLabels();
         self::removeMediaButtons();
         self::forcePasteAsText();
+        self::registerCustomAdminColumnsStyles();
         self::registerAcfEssentialToolbar();
         self::removeEmojis();
     }
@@ -190,6 +191,24 @@ class TidyingRay
                 $args['paste_as_text'] = true;
 
                 return $args;
+            }
+        );
+    }
+
+    private static function registerCustomAdminColumnsStyles(): void
+    {
+        add_action(
+            'admin_head',
+            function () {
+                $thumbnail_size = get_option('thumbnail_size_w', 150) . 'px';
+
+                echo <<<HTML
+                <style>
+                    .column-thumbnail {
+                        width: {$thumbnail_size};
+                    }
+                </style>
+                HTML;
             }
         );
     }

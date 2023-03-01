@@ -157,6 +157,11 @@
         &:active {
             color: var(--light-blue);
         }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     }
 
     &__close-label {

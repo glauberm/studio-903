@@ -44,4 +44,37 @@ class CreatorImagePostType extends AbstractPostType
 
         return get_post($creatorId);
     }
+
+    protected function getCustomColumns(): ?array
+    {
+        return [
+            'thumbnail'  => __('Image'),
+            'relationship' => 'Creator',
+        ];
+    }
+
+    public function setCustomColumn(string $column): void
+    {
+        global $post;
+
+        switch ($column) {
+            case 'thumbnail':
+                $image = get_the_post_thumbnail_url($post->ID, 'thumbnail');
+                $post_link = get_edit_post_link($post);
+
+                echo <<<HTML
+					<a href="{$post_link}">
+						<img src="{$image}" alt="" />
+					</a>
+				HTML;
+                break;
+            case 'relationship':
+                $creator = get_post(get_field('creator_image_creator'));
+
+                echo <<<HTML
+                    <span>{$creator->post_title}</span>
+                HTML;
+                break;
+        }
+    }
 }

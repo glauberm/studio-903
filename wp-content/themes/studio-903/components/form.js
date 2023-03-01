@@ -118,6 +118,9 @@ function submit(form) {
 
             return response.json().then((data) => {
                 form.querySelector('.form__success').hidden = false;
+                form.querySelector('.form__hour').textContent = '';
+                form.querySelector('.form__hour').disabled = true;
+                form.reset();
             });
         })
         .catch((error) => {

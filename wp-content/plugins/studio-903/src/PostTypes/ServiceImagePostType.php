@@ -44,4 +44,37 @@ class ServiceImagePostType extends AbstractPostType
 
         return get_post($serviceId);
     }
+
+    protected function getCustomColumns(): ?array
+    {
+        return [
+            'thumbnail'  => __('Image'),
+            'relationship' => 'Service',
+        ];
+    }
+
+    public function setCustomColumn(string $column): void
+    {
+        global $post;
+
+        switch ($column) {
+            case 'thumbnail':
+                $image = get_the_post_thumbnail_url($post->ID, 'thumbnail');
+                $post_link = get_edit_post_link($post);
+
+                echo <<<HTML
+					<a href="{$post_link}">
+						<img src="{$image}" alt="" />
+					</a>
+				HTML;
+                break;
+            case 'relationship':
+                $service = get_post(get_field('service_image_service'));
+
+                echo <<<HTML
+                    <span>{$service->post_title}</span>
+                HTML;
+                break;
+        }
+    }
 }
