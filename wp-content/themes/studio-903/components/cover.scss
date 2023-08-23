@@ -79,6 +79,9 @@
     }
 
     &__ctas {
+        max-width: fit-content;
+        margin: 0 auto;
+
         > .button,
         > .first-contact {
             display: inline-block;
