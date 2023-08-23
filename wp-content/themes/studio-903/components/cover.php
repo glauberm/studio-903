@@ -24,47 +24,53 @@
                 <?php s903()->html( $args['content'] ); ?>
             </p>
 
-            <div class="cover__ctas">
+            <?php
+            if ( pll_current_language() === 'pt' ) {
+                ?>
+                <div class="cover__ctas">
 
-                <input
-                    name="cover-cta"
-                    id="cover-cta"
-                    type="checkbox"
-                    class="cover__checkbox visually-hidden"
-                />
+                    <input
+                        name="cover-cta"
+                        id="cover-cta"
+                        type="checkbox"
+                        class="cover__checkbox visually-hidden"
+                    />
 
-                <label
-                    for="cover-cta"
-                    class="button button--big button--with-gradient cover__primary-cta"
-                >
-                    <?php s903()->html( $args['primary_cta'] ); ?>
-                </label>
+                    <label
+                        for="cover-cta"
+                        class="button button--big button--with-gradient cover__primary-cta"
+                    >
+                        <?php s903()->html( $args['primary_cta'] ); ?>
+                    </label>
 
-                <div class="popover cover__popover">
-                    <div class="cover__box">
-                        <?php
-                            get_template_part(
-                                'components/form',
-                                args: array(
-                                    'id'           => 'cover',
-                                    'close_target' => 'cover-cta',
-                                    'source'       => wp_strip_all_tags( $args['title'] ),
-                                )
-                            );
+                    <div class="popover cover__popover">
+                        <div class="cover__box">
+                            <?php
+                                get_template_part(
+                                    'components/form',
+                                    args: array(
+                                        'id'           => 'cover',
+                                        'close_target' => 'cover-cta',
+                                        'source'       => wp_strip_all_tags( $args['title'] ),
+                                    )
+                                );
                             ?>
+                        </div>
                     </div>
-                </div>
 
-                <?php
-                    get_template_part(
-                        'components/first-contact',
-                        args: array(
-                            'title' => $args['secondary_cta'],
-                            'size'  => 'big',
-                        )
-                    );
+                    <?php
+                        get_template_part(
+                            'components/first-contact',
+                            args: array(
+                                'title' => $args['secondary_cta'],
+                                'size'  => 'big',
+                            )
+                        );
                     ?>
-            </div>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </div>

@@ -5,23 +5,38 @@
 
     &__title {
         font-family: var(--headings-font-family);
-        font-size: 2.5em;
+        font-size: clamp(2.5em, 4.175vw, 2.75em);
         color: var(--light-yellow);
+    }
+
+    &__text {
+        padding: 0 1em;
     }
 
     &__item {
         text-align: left;
-        margin-bottom: 1em;
+        padding: 2em 0;
+        border-bottom: 1px dotted var(--black-blue);
+
+        @include breakpoint-sm {
+            padding: 2em;
+        }
+
+        &:first-child {
+            padding-top: 1em;
+        }
 
         &:last-child {
             margin-bottom: 0;
+            border-bottom: 0;
         }
     }
 
     &__flex {
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
-        gap: 1.25em;
+        gap: 1.5em;
 
         @include breakpoint-md {
             flex-wrap: nowrap;

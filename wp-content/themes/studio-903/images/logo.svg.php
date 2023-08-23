@@ -2,8 +2,8 @@
 	<title>Studio 903</title>
 	<defs>
 		<linearGradient id="logo-gradient" x1="0" x2="0" y1="0" y2="1">
-			<stop offset="0%" stop-color="#fadb9d" />
-			<stop offset="100%" stop-color="#ad8c4b" />
+			<stop offset="0%" stop-color="#fa9ecc" />
+			<stop offset="100%" stop-color="#af4b7d" />
 		</linearGradient>
 	</defs>
 	<g>

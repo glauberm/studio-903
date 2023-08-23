@@ -1,31 +1,32 @@
 :root {
     // Colors
     --white: hsl(0, 0%, 100%);
-    --white-blue: hsl(215, 100%, 99%);
-    --white-yellow: hsl(40, 100%, 99%);
-    --gray-blue: hsl(215, 18%, 80%);
-    --light-blue: hsl(215, 90%, 80%);
-    --unsatured-blue: hsl(215, 27%, 50%);
-    --blue: hsl(215, 70%, 23%);
-    --dark-blue: hsl(215, 23%, 17%);
-    --darker-blue: hsl(215, 22%, 15%);
+    --white-blue: hsl(230, 100%, 99%);
+    --white-yellow: hsl(330, 100%, 99%);
+    --gray-blue: hsl(230, 18%, 80%);
+    --light-blue: hsl(230, 90%, 80%);
+    --unsatured-blue: hsl(230, 27%, 50%);
+    --blue: hsl(230, 70%, 23%);
+    --dark-blue: hsl(230, 23%, 17%);
+    --darker-blue: hsl(230, 22%, 15%);
     --black-blue: hsl(216, 15%, 13%);
-    --lightest-yellow: hsl(40, 100%, 96%);
-    --light-yellow: hsl(40, 90%, 80%);
-    --yellow: hsl(40, 40%, 49%);
-    --unsatured-yellow: hsl(40, 10%, 34%);
-    --dark-yellow: hsl(40, 65%, 26%);
-    --darkest-yellow: hsl(40, 62%, 22%);
-    --black-yellow: hsl(41, 24%, 18%);
+    --lightest-yellow: hsl(330, 100%, 96%);
+    --light-yellow: hsl(330, 90%, 80%);
+    --yellow: hsl(330, 40%, 49%);
+    --unsatured-yellow: hsl(330, 10%, 34%);
+    --dark-yellow: hsl(330, 65%, 26%);
+    --darkest-yellow: hsl(330, 62%, 22%);
+    --black-yellow: hsl(330, 24%, 18%);
     // Shadows
     --default-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
     // Transitions
     --default-transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --slow-transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     // Fonts
-    --base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
-    --headings-font-family: 'Bebas Neue', Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal,
-        'Helvetica Inserat', sans-serif;
+    --base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
+    --headings-font-family: 'Bebas Neue', Impact, Haettenschweiler,
+        'Franklin Gothic Bold', Charcoal, 'Helvetica Inserat', sans-serif;
     --display-font-family: 'Domine', Georgia, Times, 'Times New Roman', serif;
     // Sizes
     --body-min-width: 360px;
