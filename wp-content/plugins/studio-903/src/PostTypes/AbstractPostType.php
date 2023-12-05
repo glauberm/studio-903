@@ -43,6 +43,7 @@ abstract class AbstractPostType extends AbstractMenuable
 
         if ($this->getCustomColumns()) {
             $this->setCustomColumns($slug);
+            add_filter("manage_edit-{$slug}_sortable_columns", [$this, 'registerSortableCustomColumns']);
             add_action("manage_{$slug}_posts_custom_column", [$this, 'setCustomColumn']);
         }
     }
@@ -79,5 +80,16 @@ abstract class AbstractPostType extends AbstractMenuable
 				HTML;
                 break;
         }
+    }
+
+    public function registerSortableCustomColumns(array $columns): array
+    {
+        $customColumns = $this->getCustomColumns();
+
+        foreach ($customColumns as $key => $value) {
+            $columns[$key] = $key;
+        }
+
+        return $columns;
     }
 }

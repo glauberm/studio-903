@@ -31,11 +31,10 @@ get_header();
     get_template_part(
         'components/section',
         args: array(
-            'query'               => s903()->clients->section(),
-            'name'                => 'clients-section',
-            'theme'               => 'light',
-            'slot_template'       => 'collections/clients',
-            'container_classname' => 'grid',
+            'query'         => s903()->clients->section(),
+            'name'          => 'clients-section',
+            'theme'         => 'light',
+            'slot_template' => 'collections/clients',
         ),
     );
 

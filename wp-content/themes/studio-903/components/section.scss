@@ -11,11 +11,12 @@
         font-family: var(--headings-font-family);
         font-size: clamp(3em, 4.5vw, 4em);
         line-height: 100%;
+        text-transform: uppercase;
     }
 
     &__text {
         font-family: var(--display-font-family);
-        font-size: clamp(1.125em, 1.25vw, 1.25em);
+        font-size: clamp(1.25em, 1.35vw, 1.5em);
         max-width: calc(var(--container-width) / 2);
         margin-left: auto;
         margin-right: auto;
@@ -26,203 +27,175 @@
     }
 
     &--dark {
-        background-color: var(--dark-blue);
-        color: var(--white-blue);
+        background-color: var(--darkest-purple);
+        color: var(--white-purple);
 
         a {
-            color: var(--light-blue);
+            color: var(--light-purple);
         }
 
         .section {
             &__title {
-                color: var(--light-yellow);
+                color: var(--lightest-yellow);
             }
             &__text {
-                color: var(--light-blue);
+                color: var(--light-pink);
             }
         }
 
         .slideshows-navigator {
             &__label {
-                color: var(--light-yellow);
+                color: var(--light-purple);
 
                 &:hover {
-                    background-color: var(--black-blue);
+                    background-color: var(--black-purple);
                 }
             }
             &__radio:checked ~ label {
                 color: var(--lightest-yellow);
-                background-color: var(--black-blue);
+                background-color: var(--black-purple);
             }
             &__radio:focus ~ label {
-                outline-color: var(--light-yellow);
+                outline-color: var(--lightest-yellow);
             }
         }
 
         .slideshow {
-            &__heading {
-                background-color: var(--black-blue);
-            }
             &__title {
                 color: var(--lightest-yellow);
             }
             &__description {
-                color: var(--gray-blue);
+                color: var(--light-purple);
             }
             &__label {
-                background-color: var(--light-yellow);
-                color: var(--black-yellow);
+                background-color: var(--light-pink);
+                color: var(--black-pink);
 
                 &:hover {
-                    background-color: var(--yellow);
+                    background-color: var(--pink);
                 }
                 &:active {
-                    color: var(--light-yellow);
-                    background-color: var(--dark-yellow);
+                    color: var(--light-pink);
+                    background-color: var(--dark-pink);
                 }
             }
             &__checkbox:checked ~ label,
             &__checkbox:focus ~ label {
-                background-color: var(--yellow);
+                background-color: var(--pink);
             }
             &__checkbox:focus ~ label {
-                outline: 2px solid var(--light-yellow);
+                outline: 2px solid var(--light-pink);
+            }
+            &__thumbnail::after {
+                background-color: var(--darkest-purple);
             }
             &__thumbnail img {
-                background-color: var(--black-blue);
+                background-color: var(--black-purple);
             }
             &__radio:checked ~ label {
-                outline-color: var(--yellow);
+                outline-color: var(--pink);
             }
             &__radio:focus ~ label {
-                outline-color: var(--light-yellow);
+                outline-color: var(--light-pink);
             }
             &__image img {
-                background-color: var(--black-blue);
+                background-color: var(--black-purple);
             }
         }
     }
 
     &--light {
-        background-color: var(--lightest-yellow);
-        color: var(--dark-blue);
+        background-color: var(--lightest-pink);
+        color: var(--dark-purple);
 
         a {
-            color: var(--dark-yellow);
+            color: var(--dark-pink);
         }
 
         .section {
             &__title {
-                color: var(--blue);
+                color: var(--dark-pink);
             }
             &__text {
-                color: var(--dark-yellow);
+                color: var(--purple);
             }
         }
 
         .slideshows-navigator {
             &__label {
-                color: var(--blue);
+                color: var(--pink);
 
                 &:hover {
-                    background-color: var(--white-yellow);
+                    background-color: var(--white-pink);
                 }
             }
             &__radio:focus ~ label {
-                outline-color: var(--yellow);
+                outline-color: var(--pink);
             }
             &__radio:checked ~ label {
-                background-color: var(--white-yellow);
-                color: var(--black-blue);
+                background-color: var(--white-pink);
+                color: var(--dark-pink);
             }
         }
 
         .slideshow {
-            &__heading {
-                background-color: var(--white-yellow);
-            }
             &__title {
-                color: var(--dark-blue);
+                color: var(--dark-pink);
             }
             &__description {
-                color: var(--unsatured-yellow);
+                color: var(--pink);
             }
             &__label {
-                background-color: var(--blue);
-                color: var(--white-blue);
+                background-color: var(--purple);
+                color: var(--white-purple);
 
                 &:hover {
-                    background-color: var(--dark-blue);
+                    background-color: var(--dark-purple);
                 }
                 &:active {
-                    color: var(--blue);
-                    background-color: var(--black-blue);
+                    color: var(--purple);
+                    background-color: var(--black-purple);
                 }
             }
             &__checkbox:checked ~ label,
             &__checkbox:focus ~ label {
-                background-color: var(--dark-blue);
+                background-color: var(--dark-purple);
             }
             &__checkbox:focus ~ label {
-                outline: 2px solid var(--light-blue);
+                outline: 2px solid var(--light-purple);
+            }
+            &__thumbnail::after {
+                background-color: var(--lightest-pink);
             }
             &__thumbnail img {
-                background-color: var(--yellow);
+                background-color: var(--pink);
             }
             &__radio:checked ~ label {
-                outline-color: var(--light-blue);
+                outline-color: var(--light-purple);
             }
             &__image img {
-                background-color: var(--yellow);
+                background-color: var(--pink);
             }
         }
     }
 
     &.about-section {
-        .section__text {
-            flex: 1 0 40%;
-            color: var(--gray-blue);
-            font-size: clamp(1.25rem, 1.35vw, 1.5rem);
-            max-width: auto;
-            margin: unset;
-            text-align: left;
-            max-width: unset;
-            // visually-hidden
-            position: absolute !important;
-            width: 1px !important;
-            height: 1px !important;
-            padding: 0 !important;
-            margin: -1px !important;
-            overflow: hidden !important;
-            clip: rect(0, 0, 0, 0) !important;
-            white-space: nowrap !important;
-            border: 0 !important;
-
-            @include breakpoint-md {
-                text-align: right;
-            }
-        }
-
+        padding: 0;
         .section__items {
             text-align: left;
         }
 
-        .about-section__container {
-            @include breakpoint-md {
-                display: flex;
+        .about-section {
+            &__wrapper {
+                width: 100%;
             }
-        }
-    }
 
-    &.clients-section {
-        background-color: var(--white-yellow);
+            &__container {
+                max-width: 100%;
 
-        .section {
-            &__title {
-                color: var(--dark-yellow);
-            }
-            &__text {
-                color: var(--blue);
+                @include breakpoint-md {
+                    display: flex;
+                }
             }
         }
     }

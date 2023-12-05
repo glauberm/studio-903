@@ -15,20 +15,21 @@
 
     &__title {
         font-family: var(--headings-font-family);
-        font-size: clamp(2.5em, 4.175vw, 2.75em);
-        color: var(--dark-blue);
+        font-size: clamp(2.25em, 4vw, 2.5em);
+        color: var(--dark-purple);
+        text-transform: uppercase;
     }
 
     &__text {
         padding: 0 1em;
-        color: var(--unsatured-yellow);
+        color: var(--pink);
     }
 
     &__item {
         text-align: left;
         padding: 2em 0;
-        border-bottom: 1px dotted var(--light-yellow);
-        border-top: 1px solid var(--white-yellow);
+        border-bottom: 1px dotted var(--light-pink);
+        border-top: 1px solid var(--white-pink);
 
         @include breakpoint-sm {
             padding: 2em;
@@ -66,7 +67,7 @@
             max-width: 720px;
             max-height: 720px;
             border-radius: 720px;
-            background-color: var(--yellow);
+            background-color: var(--pink);
 
             @include breakpoint-md {
                 max-width: 200px;

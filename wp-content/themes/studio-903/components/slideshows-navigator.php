@@ -25,13 +25,7 @@
                         for="<?php s903()->attr( "radio-{$s903_slideshow_id}" ); ?>"
                         class="slideshows-navigator__label"
                     >
-                        <?php
-                        echo get_the_post_thumbnail(
-                            $s903_navigator_slideshow,
-                            'slideshow-navigator-thumbnail',
-                            array( 'loading' => 'lazy' )
-                        );
-                        ?>
+                        <span class="slideshows-navigator__label-decorator"></span>
                         <span>
                             <?php s903()->attr( $s903_slideshow_title ); ?>
                         </span>

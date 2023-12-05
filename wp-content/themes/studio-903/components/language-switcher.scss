@@ -23,7 +23,7 @@
         background: none;
         display: flex;
         align-items: center;
-        color: var(--white-blue);
+        color: var(--white-purple);
         cursor: pointer;
         transition: color var(--default-transition);
         padding: 1.5em 1em;
@@ -35,7 +35,7 @@
         &:hover,
         &:focus {
             outline: 0;
-            color: var(--light-yellow);
+            color: var(--light-pink);
 
             ~ .sub-menu {
                 display: flex;
@@ -43,7 +43,7 @@
         }
 
         &:active {
-            color: var(--yellow);
+            color: var(--pink);
         }
 
         &::after {
@@ -63,7 +63,7 @@
         position: absolute;
         right: 0;
         box-shadow: var(--default-shadow);
-        background-color: var(--dark-blue);
+        background-color: var(--dark-purple);
 
         &:hover {
             display: flex;
@@ -73,7 +73,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            color: var(--white-blue);
+            color: var(--white-purple);
             padding: 1em;
             width: 100%;
             transition: color var(--default-transition), background-color var(--default-transition);
@@ -81,12 +81,12 @@
             &:hover,
             &:focus {
                 outline: 0;
-                color: var(--light-yellow);
-                background-color: var(--black-blue);
+                color: var(--light-pink);
+                background-color: var(--black-purple);
             }
 
             &:active {
-                color: var(--light-blue);
+                color: var(--light-purple);
             }
         }
     }

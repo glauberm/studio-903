@@ -1,11 +1,11 @@
-@mixin button-gradient-focus {
-    box-shadow: 0 0 3em 0 var(--light-yellow);
+@mixin button-filled-focus {
+    background-color: var(--yellow);
 }
 
-@mixin button-gradient-active {
+@mixin button-filled-active {
     transition: none;
     box-shadow: none;
-    background: var(--yellow);
+    background-color: var(--dark-yellow);
     text-shadow: none;
 }
 
@@ -15,35 +15,81 @@
     align-items: center;
     text-decoration: none;
     padding: 1.1em 1.5em;
-    border-radius: 4em;
     font-size: 1em;
     line-height: 100%;
+    position: relative;
     cursor: pointer;
     transition: color var(--default-transition), background-color var(--default-transition),
-        background-image var(--default-transition), border-color var(--default-transition);
+        border-color var(--default-transition);
 
     &--small {
         font-size: clamp(0.8em, 0.9vw, 0.9em);
     }
 
     &--big {
-        font-size: clamp(1em, 1.125vw, 1.1em);
+        font-size: clamp(1em, 1.125vw, 1.125em);
     }
 
     &--outline {
         color: var(--light-yellow);
-        border: 1px solid var(--light-yellow);
+        border: 1px solid var(--yellow);
 
         &:hover,
         &:focus {
             outline: 0;
             color: var(--black-yellow);
+            border-color: var(--light-yellow);
             background-color: var(--light-yellow);
         }
 
         &:active {
             background-color: var(--yellow);
             border-color: var(--yellow);
+        }
+    }
+
+    &--filled {
+        background-color: var(--light-yellow);
+        color: var(--black-yellow);
+        font-weight: 500;
+
+        &:hover,
+        &:focus {
+            @include button-filled-focus;
+        }
+
+        &:active {
+            @include button-filled-active;
+        }
+    }
+
+    &--with-icon {
+        gap: 0.75em;
+        padding: 1.1em 1.3em 1.1em 1.175em;
+        border-radius: 4em;
+        border: 1px solid var(--purple);
+        color: var(--white-purple);
+
+        &:hover,
+        &:focus {
+            outline: 0;
+            color: var(--black-purple);
+            background-color: var(--light-purple);
+            border: 1px solid var(--light-purple);
+
+            svg {
+                transform: translateX(0.175em);
+
+                g,
+                path {
+                    fill: var(--black-purple);
+                }
+            }
+        }
+
+        &:active {
+            background-color: var(--purple);
+            border-color: var(--purple);
         }
 
         svg {
@@ -53,49 +99,8 @@
             g,
             path {
                 transition: fill var(--default-transition);
-                fill: var(--light-yellow);
+                fill: var(--light-purple);
             }
         }
-
-        &.button--with-icon {
-            color: var(--white-yellow);
-
-            &:hover,
-            &:focus {
-                color: var(--black-yellow);
-
-                svg {
-                    transform: translateX(0.175em);
-
-                    g,
-                    path {
-                        fill: var(--black-yellow);
-                    }
-                }
-            }
-        }
-    }
-
-    &--with-gradient {
-        background-color: var(--light-yellow);
-        background: linear-gradient(to bottom, var(--light-yellow), var(--yellow));
-        color: var(--black-yellow);
-        text-shadow: 0 1px 0 var(--light-yellow);
-        transition: box-shadow var(--slow-transition);
-        font-weight: bold;
-
-        &:hover,
-        &:focus {
-            @include button-gradient-focus;
-        }
-
-        &:active {
-            @include button-gradient-active;
-        }
-    }
-
-    &--with-icon {
-        gap: 0.75em;
-        padding: 1.1em 1.5em 1.1em 1em;
     }
 }

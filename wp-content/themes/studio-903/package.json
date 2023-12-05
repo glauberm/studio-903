@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "watch": "NODE_ENV=development webpack watch",
+        "dev": "NODE_ENV=development webpack watch",
         "build": "rm -rf ./dist && NODE_ENV=production webpack"
     },
     "dependencies": {
@@ -21,6 +21,7 @@
         "babel-loader": "^9.1.0",
         "css-loader": "^6.7.3",
         "cssnano": "^5.1.14",
+        "dotenv": "^16.3.1",
         "mini-css-extract-plugin": "^2.7.2",
         "postcss": "^8.4.20",
         "postcss-loader": "^7.0.2",

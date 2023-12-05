@@ -36,14 +36,7 @@ if ( $args['query']->have_posts() ) :
                 <?php
             endif;
             ?>
-            <div class="
-                <?php
-                array_key_exists( 'container_classname', $args )
-                    && $args['container_classname']
-                    ? s903()->attr( "{$args['name']}__{$args['container_classname']}" )
-                    : null;
-                ?>
-            ">
+            <div class="<?php s903()->attr( "section__wrapper {$args['name']}__wrapper" ); ?>">
                 <?php
                 get_template_part(
                     $args['slot_template'],

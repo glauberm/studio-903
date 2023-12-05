@@ -20,6 +20,7 @@ switch ( get_field( 'contact_type' ) ) {
         break;
 }
 
+// phpcs:ignore WordPress.Security.SafeRedirect
 wp_redirect( $s903_contact, 301 );
 
 exit();

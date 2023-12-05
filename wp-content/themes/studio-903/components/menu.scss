@@ -114,9 +114,8 @@
         z-index: 2;
 
         @include breakpoint-md {
-            display: flex;
-            justify-content: center;
-            position: unset;
+            display: block;
+            position: static;
             left: unset;
             width: unset;
         }
@@ -155,7 +154,7 @@
                     line-height: 1;
                     display: inline-block;
                     text-decoration: none;
-                    color: var(--white-blue);
+                    color: var(--white-purple);
                     transition: color var(--default-transition), background-color var(--default-transition);
                     opacity: 0;
                     animation: menu-list-item var(--default-transition);
@@ -181,7 +180,7 @@
 
                     &:focus {
                         outline: 0;
-                        background-color: var(--black-blue);
+                        background-color: var(--black-purple);
                     }
 
                     &:active {
@@ -195,7 +194,7 @@
 
                         @include breakpoint-md {
                             color: var(--light-yellow);
-                            background-color: var(--black-blue);
+                            background-color: var(--black-purple);
                         }
 
                         &:focus {

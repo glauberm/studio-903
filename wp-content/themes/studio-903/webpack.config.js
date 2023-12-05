@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv').config({ path: path.join(__dirname, '.env') });
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -15,7 +17,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
     },
-    plugins: [new MiniCssExtractPlugin({ filename: '[name].css' })],
+    plugins: [
+        new webpack.DefinePlugin({ 'process.env': JSON.stringify(dotenv.parsed) }),
+        new MiniCssExtractPlugin({ filename: '[name].css' }),
+    ],
     module: {
         rules: [
             {

@@ -63,7 +63,19 @@ class Studio903
         $this->contacts = new ContactPostType('contact');
         $this->socials = new SocialPostType('social');
 
+        add_action(
+            'wp_enqueue_scripts',
+            function () {
+                wp_enqueue_script(
+                    's903-recaptcha',
+                    "https://www.google.com/recaptcha/api.js?render={$_ENV['GOOGLE_RECAPTCHA_SITE_KEY']}",
+                );
+            }
+        );
+
         $this->form = new Form(
+            $this->getClient(),
+            $this->getLogger(),
             new GoogleCalendarClient($this->getClient(), $this->getLogger()),
             new WhatsAppClient($this->getClient(), $this->getLogger()),
             new MailClient($this->getLogger())

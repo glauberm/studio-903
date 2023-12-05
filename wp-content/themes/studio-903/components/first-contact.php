@@ -11,10 +11,12 @@ if ( $s903_contact_first->have_posts() ) :
             href="<?php the_permalink(); ?>"
             class="
             <?php
-            $s903_classname = "button button--{$args['size']} button--outline";
+            $s903_classname = "button button--{$args['size']}";
 
             if ( array_key_exists( 'has_icon', $args ) && $args['has_icon'] ) :
                 $s903_classname .= ' button--with-icon';
+            else :
+                $s903_classname .= ' button--outline';
             endif;
 
             s903()->attr( $s903_classname );

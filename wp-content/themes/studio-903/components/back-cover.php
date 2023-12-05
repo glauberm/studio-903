@@ -28,7 +28,7 @@ if ( $args['query']->have_posts() ) :
 
                         <label
                             for="back-cover-cta"
-                            class="button button--big button--with-gradient back-cover__primary-cta"
+                            class="button button--big button--filled back-cover__primary-cta"
                         >
                             <?php the_field( 'back_cover_primary_cta_label' ); ?>
                         </label>

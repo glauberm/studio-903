@@ -18,7 +18,13 @@ export default function form() {
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            submit(form);
+            const token = process.env.GOOGLE_RECAPTCHA_SITE_KEY;
+
+            grecaptcha.ready(function () {
+                grecaptcha.execute(token, { action: 'submit' }).then(function (token) {
+                    submit(form, token);
+                });
+            });
         });
     }
 }
@@ -86,7 +92,7 @@ function changeContactValueLabel(form, value) {
     }
 }
 
-function submit(form) {
+function submit(form, token) {
     const formData = new FormData(form);
 
     form.querySelector('.form__submit-loading').hidden = false;
@@ -102,6 +108,7 @@ function submit(form) {
             'X-WP-Nonce': formData.get('_wpnonce'),
         },
         body: JSON.stringify({
+            token: token,
             source: formData.get('source'),
             date: formData.get('date'),
             hour: formData.get('hour'),

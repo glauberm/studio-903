@@ -2,6 +2,7 @@
     min-height: calc(100vh - var(--header-height));
     display: flex;
     align-items: center;
+    text-align: center;
 
     &__bg {
         position: fixed;
@@ -22,8 +23,8 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: var(--black-blue);
-            opacity: 0.8;
+            background: var(--black-purple);
+            opacity: 0.65;
         }
     }
 
@@ -31,6 +32,7 @@
         position: absolute;
         max-width: unset;
         height: 100%;
+        visibility: hidden;
 
         @include breakpoint-horizontal {
             height: unset;
@@ -41,8 +43,6 @@
     &__container {
         display: flex;
         flex-direction: column;
-        max-width: var(--container-width);
-        text-align: center;
         padding: 0 2em 1.2em;
 
         @include breakpoint-sm {
@@ -54,21 +54,21 @@
         line-height: 100%;
         text-transform: uppercase;
         font-family: var(--headings-font-family);
-        font-size: clamp(3.65em, 5vw, 6em);
+        font-size: clamp(2.5em, 5vw, 6em);
         margin-bottom: 0.1em;
-        color: var(--light-yellow);
+        color: var(--light-pink);
+        font-weight: 500;
     }
 
     &__content {
         line-height: 1.25;
         font-family: var(--display-font-family);
         font-weight: 400;
-        font-size: clamp(1.35em, 1.75vw, 2em);
-        max-width: var(--container-width);
-        color: var(--white-blue);
+        font-size: clamp(1.175em, 2vw, 2em);
+        color: var(--lightest-pink);
 
         a {
-            color: var(--light-yellow);
+            color: var(--light-pink);
             text-decoration: underline;
 
             &:hover,
@@ -95,14 +95,18 @@
         }
 
         ~ .cover__primary-cta {
-            @include button-gradient-active;
+            @include button-filled-active;
         }
     }
 
     &__checkbox:focus {
         ~ .cover__primary-cta {
-            @include button-gradient-focus;
+            @include button-filled-focus;
             outline: 2px solid var(--light-yellow);
         }
+    }
+
+    &.active &__video {
+        visibility: visible;
     }
 }

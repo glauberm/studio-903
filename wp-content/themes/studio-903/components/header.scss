@@ -12,17 +12,16 @@
         order: 1;
         display: inline-flex;
         text-decoration: none;
-        padding: 1em;
-        margin: 0 auto;
+        padding: 1.75em 1.5em;
         height: var(--header-height);
 
         &:focus {
             outline: 0;
-            background-color: var(--black-blue);
+            background-color: rgba(188, 157, 251, 0.2);
         }
 
         @include breakpoint-md {
-            padding: 1em 2em;
+            padding: 1.85em 0;
             order: 0;
             flex: 0 1 auto;
             margin: 0;
@@ -30,12 +29,14 @@
 
         svg {
             margin: 0 auto;
-            width: 100%;
             height: auto;
-            max-width: 12.5rem;
 
             g {
-                fill: var(--white-blue);
+                fill: var(--lightest-yellow);
+
+                &:first-of-type {
+                    fill: var(--light-pink);
+                }
             }
         }
     }
@@ -72,7 +73,13 @@
         position: sticky;
         z-index: 100;
         top: 0;
-        background-color: var(--darker-blue);
+        background-color: var(--dark-purple);
+
+        .header__logo {
+            &:focus {
+                background-color: var(--purple);
+            }
+        }
     }
 
     @include breakpoint-xs {
@@ -94,7 +101,7 @@
                     svg {
                         g,
                         path {
-                            fill: var(--dark-yellow);
+                            fill: var(--dark-pink);
                         }
                     }
                 }

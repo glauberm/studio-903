@@ -1,6 +1,6 @@
 <div
     id="cover"
-    class="cover"
+    class="cover active"
 >
     <div class="cover__bg">
         <video
@@ -38,7 +38,7 @@
 
                     <label
                         for="cover-cta"
-                        class="button button--big button--with-gradient cover__primary-cta"
+                        class="button button--big button--filled cover__primary-cta"
                     >
                         <?php s903()->html( $args['primary_cta'] ); ?>
                     </label>

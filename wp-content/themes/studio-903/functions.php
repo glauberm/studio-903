@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( 'S903_VERSION' ) ) {
-	define( 'S903_VERSION', '0.4.1' );
+	define( 'S903_VERSION', '0.5.0' );
 }
 
 add_image_size( 'cover-poster', 720, 900, false );
@@ -44,6 +44,7 @@ add_action(
 			get_template_directory_uri() . '/dist/s903.css',
 			array(),
 			S903_VERSION,
+            'screen'
 		);
 
 		wp_enqueue_script(

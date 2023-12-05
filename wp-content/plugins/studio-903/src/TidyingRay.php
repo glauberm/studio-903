@@ -94,7 +94,6 @@ class TidyingRay
             'mce_buttons',
             function ($buttons) {
                 return [
-                    'link',
                     'undo',
                     'redo',
                     'spellchecker',
@@ -200,12 +199,10 @@ class TidyingRay
         add_action(
             'admin_head',
             function () {
-                $thumbnail_size = get_option('thumbnail_size_w', 150) . 'px';
-
                 echo <<<HTML
                 <style>
                     .column-thumbnail {
-                        width: {$thumbnail_size};
+                        width: 200px;
                     }
                 </style>
                 HTML;
@@ -220,7 +217,6 @@ class TidyingRay
             function ($toolbars) {
                 $toolbars['Essential']    = array();
                 $toolbars['Essential'][1] = array(
-                    'link',
                     'undo',
                     'redo',
                     'spellchecker',

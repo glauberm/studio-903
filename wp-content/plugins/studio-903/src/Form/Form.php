@@ -6,11 +6,19 @@ namespace Studio903\Form;
 
 use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriod;
+use Exception;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Message;
+use JsonException;
+use Monolog\Logger;
 use WP_REST_Request;
 
 class Form
 {
     public function __construct(
+        private readonly GuzzleClient $client,
+        private readonly Logger $logger,
         private readonly GoogleCalendarClient $googleCalendarClient,
         private readonly WhatsAppClient $whatsAppClient,
         private readonly MailClient $mailClient
@@ -86,11 +94,50 @@ class Form
         return $hours;
     }
 
-    public function submit(string $source, string $date, string $hour, string $name, string $contact, string $details): void
+    public function submit(string $token, string $source, string $date, string $hour, string $name, string $contact, string $details): void
     {
-        $this->whatsAppClient->sendMessage($source, $date, $hour, $name, $contact, $details);
+        try {
+            $response = $this->client->request(
+                'POST',
+                'https://www.google.com/recaptcha/api/siteverify',
+                [
+                    'secret' => $_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'],
+                    'response' => $token,
+                ]
+            );
+        } catch (ClientException $e) {
+            if (WP_DEBUG === true) {
+                throw $e;
+            } else {
+                $this->logger->error(Message::toString($e->getRequest()));
+                $this->logger->error(Message::toString($e->getResponse()));
+            }
+        }
 
-        $this->mailClient->sendEmail($source, $date, $hour, $name, $contact, $details);
+        try {
+            $resObj = json_decode(
+                $response->getBody()->getContents(),
+                associative: true,
+                flags: JSON_THROW_ON_ERROR
+            );
+        } catch (JsonException $e) {
+            if (WP_DEBUG === true) {
+                throw $e;
+            } else {
+                $this->logger->error($e->getMessage());
+            }
+        }
+
+        if ($resObj['success'] === true) {
+            $this->whatsAppClient->sendMessage($source, $date, $hour, $name, $contact, $details);
+            $this->mailClient->sendEmail($source, $date, $hour, $name, $contact, $details);
+        } else {
+            if (WP_DEBUG === true) {
+                throw new Exception('reCAPTCHA error: ' . json_encode($resObj));
+            } else {
+                $this->logger->error('reCAPTCHA error: ' . json_encode($resObj));
+            }
+        }
     }
 
     private function registerGetHoursRoute()
@@ -135,6 +182,7 @@ class Form
                         'methods' => 'POST',
                         'callback' => function (WP_REST_Request $request): void {
                             $this->submit(
+                                $request['token'],
                                 $request['source'],
                                 $request['date'],
                                 $request['hour'],
@@ -144,6 +192,10 @@ class Form
                             );
                         },
                         'args' => [
+                            'token' => [
+                                'required' => true,
+                                'type' => 'string',
+                            ],
                             'source' => [
                                 'required' => true,
                                 'type' => 'string',

@@ -12,7 +12,7 @@
         display: flex;
         align-items: center;
         padding: 0.4em;
-        color: var(--white-blue);
+        color: var(--white-purple);
         text-decoration: none;
 
         &:hover,
@@ -27,7 +27,7 @@
             margin-right: 0.5em;
 
             path {
-                fill: var(--light-yellow);
+                fill: var(--light-pink);
             }
         }
     }

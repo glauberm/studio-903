@@ -26,7 +26,7 @@
 
     <link
         rel="preload"
-        href="<?php echo get_template_directory_uri() . '/fonts/bebas-neue-v9-latin-regular.woff2'; ?>"
+        href="<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-regular.woff2'; ?>"
         type="font/woff2"
         as="font"
         crossorigin
@@ -34,7 +34,15 @@
 
     <link
         rel="preload"
-        href="<?php echo get_template_directory_uri() . '/fonts/domine-v19-latin-regular.woff2'; ?>"
+        href="<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-500.woff2'; ?>"
+        type="font/woff2"
+        as="font"
+        crossorigin
+    />
+
+    <link
+        rel="preload"
+        href="<?php echo get_template_directory_uri() . '/fonts/playfair-display-v36-latin-500italic.woff2'; ?>"
         type="font/woff2"
         as="font"
         crossorigin
@@ -42,19 +50,27 @@
 
     <style>
         @font-face {
-            font-family: 'Bebas Neue';
+            font-family: 'Jost';
             font-style: normal;
             font-weight: 400;
             font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/bebas-neue-v9-latin-regular.woff2'; ?>") format('woff2');
+            src: url("<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-regular.woff2'; ?>") format('woff2');
         }
 
         @font-face {
-            font-family: 'Domine';
+            font-family: 'Jost';
             font-style: normal;
-            font-weight: 400;
+            font-weight: 500;
             font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/domine-v19-latin-regular.woff2'; ?>") format('woff2');
+            src: url("<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-500.woff2'; ?>") format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 500;
+            font-display: block;
+            src: url("<?php echo get_template_directory_uri() . '/fonts/playfair-display-v36-latin-500italic.woff2'; ?>") format('woff2');
         }
     </style>
 
