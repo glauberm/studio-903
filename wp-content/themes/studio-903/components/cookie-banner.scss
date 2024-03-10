@@ -1,0 +1,46 @@
+@keyframes cookie-banner-appear {
+  from {
+    transform: translateY(1em);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.cookie-banner {
+  position: fixed;
+  z-index: 2;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--default-shadow);
+  background-color: var(--dark-purple);
+  width: 400px;
+  max-width: 100%;
+
+  &__paragraph {
+    color: var(--white);
+  }
+
+  &__choices {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1rem;
+  }
+
+  &__choice-label {
+    width: 100%;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &--shown {
+    animation: cookie-banner-appear var(--default-transition);
+    animation-fill-mode: forwards;
+  }
+}

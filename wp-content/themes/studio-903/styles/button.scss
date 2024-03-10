@@ -1,106 +1,107 @@
 @mixin button-filled-focus {
-    background-color: var(--yellow);
+  background-color: var(--yellow);
 }
 
 @mixin button-filled-active {
-    transition: none;
-    box-shadow: none;
-    background-color: var(--dark-yellow);
-    text-shadow: none;
+  transition: none;
+  box-shadow: none;
+  background-color: var(--dark-yellow);
+  text-shadow: none;
 }
 
 .button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    padding: 1.1em 1.5em;
-    font-size: 1em;
-    line-height: 100%;
-    position: relative;
-    cursor: pointer;
-    transition: color var(--default-transition), background-color var(--default-transition),
-        border-color var(--default-transition);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 1.1em 1.5em;
+  font-size: 1em;
+  line-height: 100%;
+  position: relative;
+  cursor: pointer;
+  transition: color var(--default-transition),
+    background-color var(--default-transition),
+    border-color var(--default-transition);
 
-    &--small {
-        font-size: clamp(0.8em, 0.9vw, 0.9em);
+  &--small {
+    font-size: clamp(0.8em, 0.9vw, 0.9em);
+  }
+
+  &--big {
+    font-size: clamp(1em, 1.125vw, 1.125em);
+  }
+
+  &--outline {
+    color: var(--light-yellow);
+    border: 1px solid var(--yellow);
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      color: var(--black-yellow);
+      border-color: var(--light-yellow);
+      background-color: var(--light-yellow);
     }
 
-    &--big {
-        font-size: clamp(1em, 1.125vw, 1.125em);
+    &:active {
+      background-color: var(--yellow);
+      border-color: var(--yellow);
+    }
+  }
+
+  &--filled {
+    background-color: var(--light-yellow);
+    color: var(--black-yellow);
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+      @include button-filled-focus;
     }
 
-    &--outline {
-        color: var(--light-yellow);
-        border: 1px solid var(--yellow);
+    &:active {
+      @include button-filled-active;
+    }
+  }
 
-        &:hover,
-        &:focus {
-            outline: 0;
-            color: var(--black-yellow);
-            border-color: var(--light-yellow);
-            background-color: var(--light-yellow);
-        }
+  &--with-icon {
+    gap: 0.75em;
+    padding: 1.1em 1.3em 1.1em 1.175em;
+    border-radius: 4em;
+    border: 1px solid var(--purple);
+    color: var(--white-purple);
 
-        &:active {
-            background-color: var(--yellow);
-            border-color: var(--yellow);
+    &:hover,
+    &:focus {
+      outline: 0;
+      color: var(--black-purple);
+      background-color: var(--light-purple);
+      border: 1px solid var(--light-purple);
+
+      svg {
+        transform: translateX(0.175em);
+
+        g,
+        path {
+          fill: var(--black-purple);
         }
+      }
     }
 
-    &--filled {
-        background-color: var(--light-yellow);
-        color: var(--black-yellow);
-        font-weight: 500;
-
-        &:hover,
-        &:focus {
-            @include button-filled-focus;
-        }
-
-        &:active {
-            @include button-filled-active;
-        }
+    &:active {
+      background-color: var(--purple);
+      border-color: var(--purple);
     }
 
-    &--with-icon {
-        gap: 0.75em;
-        padding: 1.1em 1.3em 1.1em 1.175em;
-        border-radius: 4em;
-        border: 1px solid var(--purple);
-        color: var(--white-purple);
+    svg {
+      width: clamp(1.5em, 1.125vw, 2.5em);
+      transition: transform var(--default-transition);
 
-        &:hover,
-        &:focus {
-            outline: 0;
-            color: var(--black-purple);
-            background-color: var(--light-purple);
-            border: 1px solid var(--light-purple);
-
-            svg {
-                transform: translateX(0.175em);
-
-                g,
-                path {
-                    fill: var(--black-purple);
-                }
-            }
-        }
-
-        &:active {
-            background-color: var(--purple);
-            border-color: var(--purple);
-        }
-
-        svg {
-            width: clamp(1.5em, 1.125vw, 2.5em);
-            transition: transform var(--default-transition);
-
-            g,
-            path {
-                transition: fill var(--default-transition);
-                fill: var(--light-purple);
-            }
-        }
+      g,
+      path {
+        transition: fill var(--default-transition);
+        fill: var(--light-purple);
+      }
     }
+  }
 }

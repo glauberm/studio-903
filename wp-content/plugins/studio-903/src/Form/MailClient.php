@@ -24,14 +24,12 @@ class MailClient
             }
         );
 
-        if (WP_DEBUG === true) {
-            add_action(
-                'wp_mail_failed',
-                function (WP_Error $wp_error) {
-                    $this->logger->error($wp_error->get_error_message());
-                }
-            );
-        }
+        add_action(
+            'wp_mail_failed',
+            function (WP_Error $wp_error) {
+                $this->logger->error($wp_error->get_error_message());
+            }
+        );
     }
 
     public function sendEmail(string $source, string $date, string $hour, string $name, string $contact, string $details): void

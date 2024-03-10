@@ -17,6 +17,21 @@
 
     <meta name="googlebot" content="index,follow">
 
+    <meta property="og:title" content="<?php get_the_title() ? s903()->attr( 'Studio 903 - ' . get_the_title() ) : ''; ?>">
+    <meta property="og:description" content="<?php s903()->attr( wp_strip_all_tags( get_the_content() ) ); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Studio 903">
+    <meta property="og:url" content="<?php echo site_url(); ?>">
+    <meta property="og:image" content="<?php echo get_template_directory_uri() . '/images/og-image.png'; ?>">
+    <meta property="og:image:alt" content="Studio 903 logo">
+    <meta property="og:locale" content="<?php echo pll_current_language( 'locale' ); ?>">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="<?php get_the_title() ? s903()->attr( 'Studio 903 - ' . get_the_title() ) : ''; ?>">
+    <meta name="twitter:description" content="<?php s903()->attr( wp_strip_all_tags( get_the_content() ) ); ?>">
+    <meta name="twitter:image" content="<?php echo get_template_directory_uri() . '/images/twitter-image.png'; ?>">
+    <meta name="twitter:image:alt" content="Studio 903 logo">
+
     <link
         rel="preload"
         href="<?php echo get_the_post_thumbnail_url( size: 'cover-poster' ); ?>"

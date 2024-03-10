@@ -9,8 +9,14 @@
 	<label
         for="menu-trigger"
         class="menu__trigger-label"
+        aria-label="Toggle menu"
     >
-        <?php get_template_part( 'images/menu.svg' ); ?>
+        <span class="visually-hidden">Menu</span>
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </label>
 
 	<div class="menu__bg"></div>

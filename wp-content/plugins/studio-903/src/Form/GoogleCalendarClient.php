@@ -43,12 +43,8 @@ class GoogleCalendarClient
                 ]
             );
         } catch (ClientException $e) {
-            if (WP_DEBUG === true) {
-                throw $e;
-            } else {
-                $this->logger->error(Message::toString($e->getRequest()));
-                $this->logger->error(Message::toString($e->getResponse()));
-            }
+            $this->logger->error(Message::toString($e->getRequest()));
+            $this->logger->error(Message::toString($e->getResponse()));
         }
 
         try {
@@ -58,11 +54,7 @@ class GoogleCalendarClient
                 flags: JSON_THROW_ON_ERROR
             );
         } catch (JsonException $e) {
-            if (WP_DEBUG === true) {
-                throw $e;
-            } else {
-                $this->logger->error($e->getMessage());
-            }
+            $this->logger->error($e->getMessage());
         }
 
         return $this->filterEvents($events);

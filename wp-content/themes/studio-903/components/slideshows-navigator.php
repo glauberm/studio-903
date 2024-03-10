@@ -11,7 +11,7 @@
                 <li class="slideshows-navigator__list-item">
                     <input
                         name="<?php s903()->attr( "_{$args['id']}" ); ?>"
-                        id="<?php s903()->attr( "radio-{$s903_slideshow_id}" ); ?>"
+                        id="<?php s903()->attr( "s903radio-{$s903_slideshow_id}" ); ?>"
                         value="<?php s903()->attr( "s903-{$s903_slideshow_id}" ); ?>"
                         type="radio"
                         class="slideshows-navigator__radio visually-hidden"
@@ -22,7 +22,7 @@
                         ?>
                     />
                     <label
-                        for="<?php s903()->attr( "radio-{$s903_slideshow_id}" ); ?>"
+                        for="<?php s903()->attr( "s903radio-{$s903_slideshow_id}" ); ?>"
                         class="slideshows-navigator__label"
                     >
                         <span class="slideshows-navigator__label-decorator"></span>

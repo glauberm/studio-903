@@ -94,24 +94,24 @@ class Form
         return $hours;
     }
 
-    public function submit(string $token, string $source, string $date, string $hour, string $name, string $contact, string $details): void
+    public function submit(string $token, string $source, string $date, string $hour, string $name, string $contact, string $details): array
     {
         try {
             $response = $this->client->request(
                 'POST',
                 'https://www.google.com/recaptcha/api/siteverify',
                 [
-                    'secret' => $_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'],
-                    'response' => $token,
+                    'form_params' => [
+                        'secret' => $_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'],
+                        'response' => $token,
+                    ]
                 ]
             );
         } catch (ClientException $e) {
-            if (WP_DEBUG === true) {
-                throw $e;
-            } else {
-                $this->logger->error(Message::toString($e->getRequest()));
-                $this->logger->error(Message::toString($e->getResponse()));
-            }
+            $this->logger->error(Message::toString($e->getRequest()));
+            $this->logger->error(Message::toString($e->getResponse()));
+
+            return ['status' => 'error', 'code' => 'recaptcha_req_error'];
         }
 
         try {
@@ -121,22 +121,29 @@ class Form
                 flags: JSON_THROW_ON_ERROR
             );
         } catch (JsonException $e) {
-            if (WP_DEBUG === true) {
-                throw $e;
-            } else {
-                $this->logger->error($e->getMessage());
-            }
+            $this->logger->error($e->getMessage());
+
+            return ['status' => 'error', 'code' => 'json_error'];
         }
 
         if ($resObj['success'] === true) {
-            $this->whatsAppClient->sendMessage($source, $date, $hour, $name, $contact, $details);
-            $this->mailClient->sendEmail($source, $date, $hour, $name, $contact, $details);
-        } else {
-            if (WP_DEBUG === true) {
-                throw new Exception('reCAPTCHA error: ' . json_encode($resObj));
+            if ($resObj['score'] >= 0.5) {
+                if ((bool) $_ENV['MAIL_ENABLED']) {
+                    $this->mailClient->sendEmail($source, $date, $hour, $name, $contact, $details);
+                }
+    
+                if ((bool) $_ENV['WHATSAPP_ENABLED'] && $this->whatsAppClient->hasntReachedLimit()) {
+                    $this->whatsAppClient->sendMessage($source, $date, $hour, $name, $contact, $details);
+                }
+
+                return ['status' => 'success', 'code' => 'ok'];
             } else {
-                $this->logger->error('reCAPTCHA error: ' . json_encode($resObj));
+
             }
+        } else {
+            $this->logger->error('reCAPTCHA error: ' . json_encode($resObj));
+
+            return ['status' => 'error', 'code' => 'recaptcha_error'];
         }
     }
 
@@ -180,8 +187,8 @@ class Form
                     '/submit',
                     [
                         'methods' => 'POST',
-                        'callback' => function (WP_REST_Request $request): void {
-                            $this->submit(
+                        'callback' => function (WP_REST_Request $request): array {
+                            return $this->submit(
                                 $request['token'],
                                 $request['source'],
                                 $request['date'],
@@ -308,13 +315,13 @@ class Form
             case 'pt':
                 return [
                     'success' => 'Obrigado, em breve entraremos em contato com você.',
-                    'error' => 'Há erros no formulário. Por favor, confira os campos e tente novamente.',
+                    'error' => 'Há erros no formulário. Por favor, confira os campos e tente novamente. Se o problema persistir, atualize a página.',
                     'hour-error' => 'Houve um erro ao listar nossas horas disponíveis neste dia. Por favor, tente novamente.',
                 ];
             default:
                 return [
                     'success' => 'Thank you, we will contact you shortly.',
-                    'error' => 'There are errors on the form. Please check the fields and try again.',
+                    'error' => 'There are errors on the form. Please check the fields and try again. If the problem persists, refresh the page.',
                     'hour-error' => 'There was an error listing our available hours for this day. Please try again.',
                 ];
         }

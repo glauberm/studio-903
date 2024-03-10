@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd"
 >
-    <exclude-pattern>/vendor/*</exclude-pattern>
+  <exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>*.min.js</exclude-pattern>
 
 	<rule ref="WordPress-Extra">
-        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
+    <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
 		<exclude name="WordPress.Security.EscapeOutput"/>
-        <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" />
+    <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" />
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">

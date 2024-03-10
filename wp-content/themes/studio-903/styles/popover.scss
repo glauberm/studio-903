@@ -1,13 +1,21 @@
 .popover {
-    display: none;
-    position: absolute;
-    left: 0;
-    z-index: 10;
-    max-width: 100%;
-    padding: 0 1em 1em;
+  display: none;
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  max-width: 100%;
+  padding: 0 1em 1em;
 
+  @include breakpoint-sm {
+    left: unset;
+    max-width: unset;
+  }
+}
+
+.services-section {
+  .popover {
     @include breakpoint-sm {
-        left: unset;
-        max-width: unset;
+      right: 0;
     }
+  }
 }

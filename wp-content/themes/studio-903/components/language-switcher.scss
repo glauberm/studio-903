@@ -1,98 +1,99 @@
 @keyframes language-switcher-sub-menu {
-    from {
-        transform: translateY(-1em);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0px);
-        opacity: 1;
-    }
+  from {
+    transform: translateY(-1em);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 .language-switcher {
-    position: relative;
+  position: relative;
 
-    &:focus-within {
-        .sub-menu {
-            display: flex;
-        }
-    }
-
-    &__trigger {
-        border: 0 none;
-        background: none;
-        display: flex;
-        align-items: center;
-        color: var(--white-purple);
-        cursor: pointer;
-        transition: color var(--default-transition);
-        padding: 1.5em 1em;
-
-        @include breakpoint-sm {
-            padding: 2em;
-        }
-
-        &:hover,
-        &:focus {
-            outline: 0;
-            color: var(--light-pink);
-
-            ~ .sub-menu {
-                display: flex;
-            }
-        }
-
-        &:active {
-            color: var(--pink);
-        }
-
-        &::after {
-            content: '';
-            display: inline-block;
-            margin-left: 0.5em;
-            border-top: 4px solid;
-            border-right: 4px solid transparent;
-            border-bottom: 0;
-            border-left: 4px solid transparent;
-        }
-    }
-
-    &__menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        right: 0;
-        box-shadow: var(--default-shadow);
-        background-color: var(--dark-purple);
-
-        &:hover {
-            display: flex;
-        }
-
-        li a {
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            color: var(--white-purple);
-            padding: 1em;
-            width: 100%;
-            transition: color var(--default-transition), background-color var(--default-transition);
-
-            &:hover,
-            &:focus {
-                outline: 0;
-                color: var(--light-pink);
-                background-color: var(--black-purple);
-            }
-
-            &:active {
-                color: var(--light-purple);
-            }
-        }
-    }
-
+  &:focus-within {
     .sub-menu {
-        animation: language-switcher-sub-menu var(--default-transition);
-        transform-origin: top center;
+      display: flex;
     }
+  }
+
+  &__trigger {
+    border: 0 none;
+    background: none;
+    display: flex;
+    align-items: center;
+    color: var(--white-purple);
+    cursor: pointer;
+    transition: color var(--default-transition);
+    padding: 1.5em 1em;
+
+    @include breakpoint-sm {
+      padding: 2em;
+    }
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      color: var(--light-pink);
+
+      ~ .sub-menu {
+        display: flex;
+      }
+    }
+
+    &:active {
+      color: var(--pink);
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      margin-left: 0.5em;
+      border-top: 4px solid;
+      border-right: 4px solid transparent;
+      border-bottom: 0;
+      border-left: 4px solid transparent;
+    }
+  }
+
+  &__menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    box-shadow: var(--default-shadow);
+    background-color: var(--dark-purple);
+
+    &:hover {
+      display: flex;
+    }
+
+    li a {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      color: var(--white-purple);
+      padding: 1em;
+      width: 100%;
+      transition: color var(--default-transition),
+        background-color var(--default-transition);
+
+      &:hover,
+      &:focus {
+        outline: 0;
+        color: var(--light-pink);
+        background-color: var(--black-purple);
+      }
+
+      &:active {
+        color: var(--light-purple);
+      }
+    }
+  }
+
+  .sub-menu {
+    animation: language-switcher-sub-menu var(--default-transition);
+    transform-origin: top center;
+  }
 }

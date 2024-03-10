@@ -12,6 +12,10 @@ use Monolog\Logger;
 
 class WhatsAppClient
 {
+    private string $msgCountOption = 's903_wpp_msg_count';
+
+    private string $lastMsgDatetimeOption = 's903_wpp_msg_last';
+
     public function __construct(private readonly GuzzleClient $client, private readonly Logger $logger)
     {
     }
@@ -29,10 +33,12 @@ class WhatsAppClient
 
         $dateTime = Carbon::createFromFormat('Y-m-d H:i', "{$date} {$hour}");
 
+        $now = Carbon::now();
+
         try {
-            $this->client->request(
+            $response = $this->client->request(
                 'POST',
-                "https://graph.facebook.com/v15.0/{$_ENV['WHATSAPP_PHONE_NUMBER_ID']}/messages",
+                "https://graph.facebook.com/v19.0/{$_ENV['WHATSAPP_PHONE_NUMBER_ID']}/messages",
                 [
                     'headers' => [
                         'Authorization' => "Bearer {$_ENV['WHATSAPP_ACCESS_TOKEN']}",
@@ -41,6 +47,7 @@ class WhatsAppClient
                     'json' => [
                         'messaging_product' => 'whatsapp',
                         'to' => $_ENV['WHATSAPP_RECIPIENT_WAID'],
+                        'type' => 'text',
                         'type' => 'template',
                         'template' => [
                             'name' => 's903_cta',
@@ -87,12 +94,52 @@ class WhatsAppClient
                 ]
             );
         } catch (ClientException $e) {
-            if (WP_DEBUG === true) {
-                throw $e;
-            } else {
-                $this->logger->error(Message::toString($e->getRequest()));
-                $this->logger->error(Message::toString($e->getResponse()));
-            }
+            $this->logger->error(Message::toString($e->getRequest()));
+            $this->logger->error(Message::toString($e->getResponse()));
         }
+
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300) {
+            global $wpdb;
+
+            $wpdb->replace($wpdb->prefix . "options", [
+                'option_name' => $this->msgCountOption,
+                'option_value' => $this->timerHasReset( $now ) ? 1 : $this->getMsgCount() + 1,
+                'autoload' => 'no',
+            ]);
+
+            $wpdb->replace($wpdb->prefix . "options", [
+                'option_name' => $this->lastMsgDatetimeOption,
+                'option_value' => $now->format('Y-m-d H:i'),
+                'autoload' => 'no',
+            ]);
+        }
+    }
+
+    public function hasntReachedLimit(): bool
+    {
+        $msgCount = $this->getMsgCount();
+
+        return $msgCount < 200;
+    }
+
+    private function timerHasReset( Carbon $now ): bool
+    {
+        $lastMsgDatetime = $this->getLastMsgDatetime();
+
+        return $lastMsgDatetime->diffInHours($now, false) > 30;
+    }
+
+    private function getMsgCount(): int
+    {
+        $msgCount = get_option( $this->msgCountOption );
+
+        return (int) $msgCount;
+    }
+
+    private function getLastMsgDatetime(): Carbon
+    {
+        $lastMsgDatetime = get_option( $this->lastMsgDatetimeOption );
+
+        return Carbon::parse( $lastMsgDatetime );
     }
 }

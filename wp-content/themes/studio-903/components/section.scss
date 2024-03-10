@@ -1,208 +1,253 @@
 .section {
-    text-align: center;
-    padding: 3rem 2rem 4rem;
+  text-align: center;
+  padding: 3rem 2rem 4rem;
 
-    a:hover,
-    a:focus {
-        text-decoration: none;
+  a:hover,
+  a:focus {
+    text-decoration: none;
+  }
+
+  &__title {
+    font-family: var(--headings-font-family);
+    font-size: clamp(3em, 4.5vw, 4em);
+    line-height: 100%;
+    text-transform: uppercase;
+    word-wrap: normal;
+  }
+
+  &__text {
+    font-family: var(--display-font-family);
+    font-size: clamp(1.25em, 1.35vw, 1.5em);
+    max-width: calc(var(--container-width) / 2);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__title + &__text {
+    margin-top: 1em;
+  }
+
+  &--dark {
+    background-color: var(--darkest-purple);
+    color: var(--white-purple);
+
+    a {
+      color: var(--light-purple);
     }
 
-    &__title {
-        font-family: var(--headings-font-family);
-        font-size: clamp(3em, 4.5vw, 4em);
-        line-height: 100%;
-        text-transform: uppercase;
+    .section {
+      &__title {
+        color: var(--lightest-yellow);
+      }
+      &__text {
+        color: var(--light-pink);
+      }
     }
 
-    &__text {
-        font-family: var(--display-font-family);
-        font-size: clamp(1.25em, 1.35vw, 1.5em);
-        max-width: calc(var(--container-width) / 2);
-        margin-left: auto;
-        margin-right: auto;
+    .slideshows-navigator {
+      &__label {
+        color: var(--light-purple);
+
+        &:hover {
+          background-color: var(--black-purple);
+        }
+      }
+      &__radio:checked ~ label {
+        color: var(--lightest-yellow);
+        background-color: var(--black-purple);
+      }
+      &__radio:focus ~ label {
+        outline-color: var(--lightest-yellow);
+      }
     }
 
-    &__title + &__text {
-        margin-top: 1em;
-    }
+    .slideshow {
+      &__title {
+        color: var(--lightest-yellow);
+      }
+      &__description {
+        color: var(--light-purple);
+      }
+      &__label {
+        background-color: var(--light-pink);
+        color: var(--black-pink);
 
-    &--dark {
+        &:hover {
+          background-color: var(--pink);
+        }
+        &:active {
+          color: var(--light-pink);
+          background-color: var(--dark-pink);
+        }
+      }
+      &__checkbox:checked ~ label,
+      &__checkbox:focus ~ label {
+        background-color: var(--pink);
+      }
+      &__checkbox:focus ~ label {
+        outline: 2px solid var(--light-pink);
+      }
+      &__thumbnail::after {
         background-color: var(--darkest-purple);
+      }
+      &__thumbnail img {
+        background-color: var(--black-purple);
+      }
+      &__radio:checked ~ label {
+        outline-color: var(--pink);
+      }
+      &__radio:focus ~ label {
+        outline-color: var(--light-pink);
+      }
+      &__image img {
+        background-color: var(--black-purple);
+      }
+    }
+  }
+
+  &--light {
+    background-color: var(--lightest-pink);
+    color: var(--dark-purple);
+
+    a {
+      color: var(--dark-pink);
+    }
+
+    .section {
+      &__title {
+        color: var(--dark-pink);
+      }
+      &__text {
+        color: var(--purple);
+      }
+    }
+
+    .slideshows-navigator {
+      &__label {
+        color: var(--pink);
+
+        &:hover {
+          background-color: var(--white-pink);
+        }
+      }
+      &__radio:focus ~ label {
+        outline-color: var(--pink);
+      }
+      &__radio:checked ~ label {
+        background-color: var(--white-pink);
+        color: var(--dark-pink);
+      }
+    }
+
+    .slideshow {
+      &__title {
+        color: var(--dark-pink);
+      }
+      &__description {
+        color: var(--pink);
+      }
+      &__label {
+        background-color: var(--purple);
         color: var(--white-purple);
 
-        a {
-            color: var(--light-purple);
+        &:hover {
+          background-color: var(--dark-purple);
         }
-
-        .section {
-            &__title {
-                color: var(--lightest-yellow);
-            }
-            &__text {
-                color: var(--light-pink);
-            }
+        &:active {
+          color: var(--purple);
+          background-color: var(--black-purple);
         }
-
-        .slideshows-navigator {
-            &__label {
-                color: var(--light-purple);
-
-                &:hover {
-                    background-color: var(--black-purple);
-                }
-            }
-            &__radio:checked ~ label {
-                color: var(--lightest-yellow);
-                background-color: var(--black-purple);
-            }
-            &__radio:focus ~ label {
-                outline-color: var(--lightest-yellow);
-            }
-        }
-
-        .slideshow {
-            &__title {
-                color: var(--lightest-yellow);
-            }
-            &__description {
-                color: var(--light-purple);
-            }
-            &__label {
-                background-color: var(--light-pink);
-                color: var(--black-pink);
-
-                &:hover {
-                    background-color: var(--pink);
-                }
-                &:active {
-                    color: var(--light-pink);
-                    background-color: var(--dark-pink);
-                }
-            }
-            &__checkbox:checked ~ label,
-            &__checkbox:focus ~ label {
-                background-color: var(--pink);
-            }
-            &__checkbox:focus ~ label {
-                outline: 2px solid var(--light-pink);
-            }
-            &__thumbnail::after {
-                background-color: var(--darkest-purple);
-            }
-            &__thumbnail img {
-                background-color: var(--black-purple);
-            }
-            &__radio:checked ~ label {
-                outline-color: var(--pink);
-            }
-            &__radio:focus ~ label {
-                outline-color: var(--light-pink);
-            }
-            &__image img {
-                background-color: var(--black-purple);
-            }
-        }
-    }
-
-    &--light {
+      }
+      &__checkbox:checked ~ label,
+      &__checkbox:focus ~ label {
+        background-color: var(--dark-purple);
+      }
+      &__checkbox:focus ~ label {
+        outline: 2px solid var(--light-purple);
+      }
+      &__thumbnail::after {
         background-color: var(--lightest-pink);
-        color: var(--dark-purple);
+      }
+      &__thumbnail img {
+        background-color: var(--light-pink);
+      }
+      &__radio:checked ~ label {
+        outline-color: var(--light-purple);
+      }
+      &__image img {
+        background-color: var(--white-pink);
+      }
+    }
+  }
 
-        a {
-            color: var(--dark-pink);
-        }
+  &.about-section {
+    padding: 0;
 
-        .section {
-            &__title {
-                color: var(--dark-pink);
-            }
-            &__text {
-                color: var(--purple);
-            }
-        }
-
-        .slideshows-navigator {
-            &__label {
-                color: var(--pink);
-
-                &:hover {
-                    background-color: var(--white-pink);
-                }
-            }
-            &__radio:focus ~ label {
-                outline-color: var(--pink);
-            }
-            &__radio:checked ~ label {
-                background-color: var(--white-pink);
-                color: var(--dark-pink);
-            }
-        }
-
-        .slideshow {
-            &__title {
-                color: var(--dark-pink);
-            }
-            &__description {
-                color: var(--pink);
-            }
-            &__label {
-                background-color: var(--purple);
-                color: var(--white-purple);
-
-                &:hover {
-                    background-color: var(--dark-purple);
-                }
-                &:active {
-                    color: var(--purple);
-                    background-color: var(--black-purple);
-                }
-            }
-            &__checkbox:checked ~ label,
-            &__checkbox:focus ~ label {
-                background-color: var(--dark-purple);
-            }
-            &__checkbox:focus ~ label {
-                outline: 2px solid var(--light-purple);
-            }
-            &__thumbnail::after {
-                background-color: var(--lightest-pink);
-            }
-            &__thumbnail img {
-                background-color: var(--pink);
-            }
-            &__radio:checked ~ label {
-                outline-color: var(--light-purple);
-            }
-            &__image img {
-                background-color: var(--pink);
-            }
-        }
+    .about-section__wrapper {
+      width: 100%;
+    }
+    .about-section__container {
+      max-width: 100%;
     }
 
-    &.about-section {
-        padding: 0;
-        .section__items {
-            text-align: left;
+    .section__items {
+      text-align: left;
+    }
+  }
+
+  &.services-section {
+    .slideshow {
+      flex-direction: row-reverse;
+
+      &__heading {
+        @include breakpoint-sm {
+          padding: 0 0 1.7em 3em;
         }
-
-        .about-section {
-            &__wrapper {
-                width: 100%;
-            }
-
-            &__container {
-                max-width: 100%;
-
-                @include breakpoint-md {
-                    display: flex;
-                }
-            }
+        @include breakpoint-md {
+          padding: 0 3em 1.7em;
         }
+      }
+
+      &__list {
+        @include breakpoint-sm {
+          padding: 0 0 1.7em 3em;
+        }
+        @include breakpoint-md {
+          padding: 0 3em 1em;
+        }
+      }
     }
 
-    &.services-section {
-        .slideshow {
-            flex-direction: row-reverse;
-        }
+    .form {
+      @include breakpoint-sm {
+        transform-origin: top right;
+      }
+      @include breakpoint-md {
+        transform-origin: top left;
+      }
     }
+  }
+
+  &.benefits-section {
+    padding: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+
+    .benefits-section__wrapper {
+      width: 100%;
+    }
+    .benefits-section__container {
+      max-width: 100%;
+    }
+
+    .section__title {
+      padding: 3rem 2rem 0;
+    }
+    .section__text {
+      padding: 0 2rem 0;
+    }
+    .section__items {
+      text-align: left;
+    }
+  }
 }

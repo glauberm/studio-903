@@ -5,15 +5,7 @@
     class="form"
 >
     <div class="form__hour-error" hidden>
-        <?php s903()->form->message( 'error' ); ?>
-    </div>
-
-    <div class="form__error" hidden>
         <?php s903()->form->message( 'hour-error' ); ?>
-    </div>
-
-    <div class="form__success" hidden>
-        <?php s903()->form->message( 'success' ); ?>
     </div>
 
     <fieldset class="form__fieldset">
@@ -36,7 +28,7 @@
                     class="form__date"
                     required
                 >
-                    <option disabled selected value>
+                    <option selected value="">
                         <?php s903()->form->label( 'date_select' ); ?>
                     </option>
                     <?php
@@ -104,7 +96,7 @@
                     class="form__contact-key"
                     required
                 >
-                    <option value="whatsapp"><?php s903()->form->label( 'contact_whatsapp_option' ); ?></option>
+                    <option selected value="whatsapp"><?php s903()->form->label( 'contact_whatsapp_option' ); ?></option>
                     <option value="phone"><?php s903()->form->label( 'contact_phone_option' ); ?></option>
                     <option value="email"><?php s903()->form->label( 'contact_email_option' ); ?></option>
                 </select>
@@ -160,8 +152,6 @@
                 hidden
             ></textarea>
         </div>
-
-        <?php wp_nonce_field( 'wp_rest' ); ?>
     </fieldset>
 
     <div class="form__submit">
@@ -174,11 +164,33 @@
         </span>
     </div>
 
+    <div class="form__error" hidden>
+        <?php s903()->form->message( 'error' ); ?>
+    </div>
+
+    <div class="form__success" hidden>
+        <?php s903()->form->message( 'success' ); ?>
+    </div>
+    
+    <div class="form__disclaimer">
+        <?php
+        if ( pll_current_language() === 'pt' ) {
+            ?>
+            <p>Este site é protegido pelo reCAPTCHA e a <a href="https://policies.google.com/privacy">Política de Privacidade</a> e os <a href="https://policies.google.com/terms">Termos de Serviço</a> do Google se aplicam.</p>
+        <?php
+        } else {
+            ?>
+            <p>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
+        <?php
+        }
+        ?>
+    </div>
 </form>
 
 <label
     class="form__close-label"
     for="<?php s903()->attr( $args['close_target'] ); ?>"
+    aria-label="Close form"
 >
     <?php get_template_part( 'images/close.svg' ); ?>
 </label>
