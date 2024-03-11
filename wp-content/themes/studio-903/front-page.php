@@ -83,9 +83,10 @@ get_header();
         args: array( 'query' => s903()->section( 'contracapa', 'back-cover' ) )
     );
 
-    get_template_part('components/cookie-banner');
     ?>
 </main>
+
+<?php get_template_part('components/cookie-banner'); ?>
 
 <?php
 get_footer();

@@ -85,10 +85,10 @@ $slideshow-image-size: clamp(75px, 10vw, 150px);
     align-items: center;
     gap: 1em;
     overflow: auto;
-    width: fit-content;
     padding: 1em;
-    margin-left: -2em;
-    width: calc(100% + 4em);
+    margin: 0;
+    margin-left: -1em;
+    width: calc(100% + 2em);
 
     @include breakpoint-sm {
       margin-left: 0;

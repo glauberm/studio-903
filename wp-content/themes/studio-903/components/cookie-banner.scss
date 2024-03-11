@@ -12,13 +12,20 @@
 .cookie-banner {
   position: fixed;
   z-index: 2;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 0;
+  right: 0;
   padding: 1.5rem;
-  box-shadow: var(--default-shadow);
-  background-color: var(--dark-purple);
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
+
+  @include breakpoint-sm {
+    max-width: 448px;
+  }
+
+  &__inner {
+    padding: 1.5rem;
+    box-shadow: var(--default-shadow);
+    background-color: var(--dark-purple);
+  }
 
   &__paragraph {
     color: var(--white);

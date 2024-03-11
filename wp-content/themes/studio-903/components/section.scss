@@ -218,6 +218,12 @@
       }
     }
 
+    .popover {
+      @include breakpoint-sm {
+        right: 0;
+      }
+    }
+
     .form {
       @include breakpoint-sm {
         transform-origin: top right;
