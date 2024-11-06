@@ -253,7 +253,10 @@ class Form
                                 'type' => 'string',
                                 'validate_callback' => function ($param, $request, $key) {
                                     return $param !== '';
-                                }
+                                },
+                                'sanitize_callback' => function ($value, $request, $param) {
+                                    return $this->sanitizeString($value);
+                                },
                             ],
                             'contact_key' => [
                                 'required' => true,
@@ -261,7 +264,7 @@ class Form
                                 'validate_callback' => function ($param, $request, $key) {
                                     return $param !== ''
                                         && in_array($param, ['whatsapp', 'phone', 'email'], true);
-                                }
+                                },
                             ],
                             'contact_value' => [
                                 'required' => true,
@@ -276,12 +279,18 @@ class Form
                                         default:
                                             return false;
                                     }
-                                }
+                                },
+                                'sanitize_callback' => function ($value, $request, $param) {
+                                    return $this->sanitizeString($value);
+                                },
                             ],
                             'details' => [
                                 'required' => true,
                                 'type' => 'string',
                                 'default' => '',
+                                'sanitize_callback' => function ($value, $request, $param) {
+                                    return $this->sanitizeString($value);
+                                },
                             ],
                         ],
                         'permission_callback' => function (WP_REST_Request $request) {
@@ -291,6 +300,19 @@ class Form
                 );
             }
         );
+    }
+
+    private function sanitizeString(string $value): string
+    {
+        $value = str_replace(["\r", "\n"], ' ', $value);
+
+        do {
+            $value = str_replace('  ', ' ', $value);
+        } while (str_contains($value, '  '));
+
+        $value = trim($value);
+
+        return $value;
     }
 
     private function labels()
