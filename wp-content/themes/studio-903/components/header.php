@@ -1,13 +1,18 @@
 <div class="header">
     <a
-        class="header__logo"
-        href="<?php s903()->attr( home_url() ); ?>"
-    >
-        <?php get_template_part( 'images/logo.svg' ); ?>
+        class="header__logo header__logo--xs"
+        href="<?php s903()->attr(home_url()); ?>">
+        <?php get_template_part('images/favicon.svg'); ?>
+    </a>
+
+    <a
+        class="header__logo header__logo--not-xs"
+        href="<?php s903()->attr(home_url()); ?>">
+        <?php get_template_part('images/logo.svg'); ?>
     </a>
 
     <div class="header__menu">
-        <?php get_template_part( 'components/menu' ); ?>
+        <?php get_template_part('components/menu'); ?>
     </div>
 
     <div class="header__cta">
@@ -23,7 +28,7 @@
     </div>
 
     <div class="header__lang-switcher">
-        <?php get_template_part( 'components/language-switcher' ); ?>
+        <?php get_template_part('components/language-switcher'); ?>
     </div>
 
 </div>

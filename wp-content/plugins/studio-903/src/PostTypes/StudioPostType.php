@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Studio903\PostTypes;
 
-use Studio903\PostTypes\AbstractPostType;
+use Studio903\PostTypes\PostType;
 use WP_Query;
 
-class StudioPostType extends AbstractPostType
+class StudioPostType extends PostType
 {
+    protected string $slug = 'studio';
+
     protected string $label = 'Studios';
 
     protected string $pageTitle = 'Studios';
@@ -16,6 +18,14 @@ class StudioPostType extends AbstractPostType
     protected string $menuTitle = 'Studios';
 
     protected string $icon = 'dashicons-store';
+
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'editor',
+        'revisions',
+        'page-attributes',
+    ];
 
     public function section(): WP_Query
     {
@@ -36,5 +46,15 @@ class StudioPostType extends AbstractPostType
             'order'          => 'asc',
             'orderby'        => 'menu_order',
         ]);
+    }
+
+    protected function getCustomColumns(): ?array
+    {
+        return null;
+    }
+
+    public function setCustomColumn(string $column): void
+    {
+        return;
     }
 }

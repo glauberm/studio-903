@@ -1,284 +1,310 @@
-$slideshow-image-size: clamp(75px, 10vw, 150px);
+@use '../styles/breakpoints';
+
+$slideshow-image-size-min: 75px;
+$slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
 
 @keyframes slideshow-image-appear {
-  from {
-    transform: scale(1.1);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .slideshow {
-  display: flex;
-  flex-wrap: wrap;
-
-  @include breakpoint-sm {
-    flex-wrap: nowrap;
-  }
-
-  &__content {
-    order: 2;
-    flex: 1 1 auto;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
 
-    @include breakpoint-sm {
-      order: 0;
-      flex: 0 0 calc(calc(3 * $slideshow-image-size) + 8em);
-      padding: 2em;
-    }
-  }
-
-  &__heading {
-    order: 1;
-    text-align: left;
-    margin: 1em 0 0;
-    padding: 1em 1em 0.7em;
-
-    @include breakpoint-sm {
-      order: 0;
-      margin-left: 0;
-      margin: 0 0 1em;
-      width: auto;
-      padding: 0 3em 1.7em 0;
+    @include breakpoints.breakpoint-sm {
+        flex-wrap: nowrap;
     }
 
-    @include breakpoint-md {
-      padding: 0 3em 1.7em;
-    }
-  }
+    &__content {
+        order: 2;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
-  &__title {
-    font-size: clamp(2em, 3.5vw, 2.5em);
-    line-height: 100%;
-    margin-bottom: 0.5em;
-    font-family: var(--headings-font-family);
-    font-weight: 400;
-  }
-
-  &__description {
-    margin-bottom: 2em;
-  }
-
-  &__label {
-    font-weight: 500;
-    margin-bottom: 0.8em;
-  }
-
-  &__checkbox:checked ~ .slideshow__popover {
-    display: block;
-  }
-
-  &__list-container {
-    order: 0;
-
-    @include breakpoint-sm {
-      order: 1;
-    }
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    overflow: auto;
-    padding: 1em;
-    margin: 0;
-    margin-left: -1em;
-    width: calc(100% + 2em);
-
-    @include breakpoint-sm {
-      margin-left: 0;
-      width: auto;
-      display: grid;
-      align-items: flex-start;
-      grid-template-columns: 1fr 1fr 1fr;
-      padding: 0 3em 1em 0;
-
-      &--square {
-        aspect-ratio: 1;
-      }
+        @include breakpoints.breakpoint-sm {
+            order: 0;
+            flex: 0 0 calc(calc(3 * $slideshow-image-size) + 8em);
+            padding: 2em;
+        }
     }
 
-    @include breakpoint-md {
-      padding: 0 3em 1em;
+    &__heading {
+        order: 1;
+        text-align: left;
+        margin: 1em 0 0;
+        padding: 1em 1em 0.7em;
+
+        @include breakpoints.breakpoint-sm {
+            order: 0;
+            margin-left: 0;
+            margin: 0 0 1em;
+            width: auto;
+            padding: 0 3em 1.7em 0;
+        }
+
+        @include breakpoints.breakpoint-md {
+            padding: 0 3em 1.7em;
+        }
     }
 
-    li {
-      @include breakpoint-sm {
-        flex: 1 0 auto;
-      }
-    }
-  }
-
-  &__thumbnail {
-    display: inline-block;
-    transition: transform var(--default-transition);
-    cursor: pointer;
-    position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-
-      mix-blend-mode: color;
+    &__title {
+        font-size: clamp(2em, 3.5vw, 2.5em);
+        line-height: 100%;
+        margin-bottom: 0.5em;
+        font-family: var(--headings-font-family);
+        font-weight: 400;
     }
 
-    img {
-      width: $slideshow-image-size;
-    }
-  }
-
-  &__radio:checked ~ &__thumbnail::after {
-    display: none;
-  }
-
-  &__gallery {
-    width: 100%;
-    margin-top: 1em;
-
-    @include breakpoint-sm {
-      margin-top: 0;
-    }
-  }
-
-  &__image {
-    display: none;
-    aspect-ratio: 1;
-    height: 100%;
-    width: 100%;
-    animation: slideshow-image-appear var(--default-transition);
-  }
-
-  &__image--active {
-    display: block;
-  }
-
-  &__modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-    padding: 5rem 5rem 2rem;
-    display: none;
-
-    @include breakpoint-horizontal {
-      flex-direction: row;
+    &__description {
+        margin-bottom: 2em;
     }
 
-    &--active {
-      display: flex;
+    &__label {
+        font-weight: 500;
+        margin-bottom: 0.8em;
+    }
 
-      .slideshow__modal-bg {
+    &__checkbox:checked ~ .slideshow__popover {
         display: block;
-      }
     }
 
-    > img {
-      width: auto;
-      max-width: 100%;
-      max-height: 100%;
-      animation: slideshow-image-appear var(--default-transition);
-    }
-  }
+    &__list-container {
+        order: 0;
 
-  &__modal-bg {
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border: 0 none;
-    padding: 0;
-    margin: 0;
-    cursor: zoom-out;
-    background-color: hsla(256, 64%, 4%, 0.95);
-    display: none;
-  }
-
-  &__modal-radio-label {
-    cursor: zoom-in;
-
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      background-color: var(--black-purple);
-    }
-  }
-
-  &__modal-close {
-    border: 0 none;
-    margin: 0;
-    cursor: pointer;
-    display: block;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 2.5rem;
-    padding: 0.5rem;
-    background-color: var(--dark-purple);
-    transition: transform var(--default-transition);
-
-    &:hover,
-    &:focus {
-      transform: scale(1.2);
+        @include breakpoints.breakpoint-sm {
+            order: 1;
+        }
     }
 
-    svg {
-      width: 100%;
-      fill: var(--white);
-      pointer-events: none;
-    }
-  }
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        overflow-x: auto;
+        padding: 1em 2em;
+        margin: 0;
+        margin-left: -2em;
+        width: calc(100% + 4em - 4px);
 
-  &__modal-nav {
-    border: 0 none;
-    margin: 0;
-    cursor: pointer;
-    display: block;
-    position: absolute;
-    background: transparent;
-    width: 3rem;
-    height: 3rem;
-    left: 1.25rem;
-    padding: 0.5rem;
-    transition: transform var(--default-transition);
+        @include breakpoints.breakpoint-sm {
+            margin-left: 0;
+            width: auto;
+            display: grid;
+            align-items: flex-start;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 0 3em 1em 0;
+            overflow-x: initial;
+        }
 
-    &:hover,
-    &:focus {
-      transform: translateX(-0.5rem);
-    }
+        @include breakpoints.breakpoint-md {
+            padding: 0 3em 1em;
+        }
 
-    &--next {
-      left: unset;
-      right: 1.25rem;
-
-      &:hover,
-      &:focus {
-        transform: translateX(0.5rem);
-      }
+        li {
+            @include breakpoints.breakpoint-sm {
+                flex: 1 0 auto;
+            }
+        }
     }
 
-    svg {
-      width: 100%;
-      fill: var(--white);
-      pointer-events: none;
+    &__thumbnail {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        transition: opacity var(--default-transition);
+
+        &:hover {
+            opacity: 0.75;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: color;
+        }
+
+        img {
+            width: $slideshow-image-size;
+            min-width: $slideshow-image-size-min;
+        }
     }
-  }
+
+    &__thumbnail-play {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+
+        @include breakpoints.breakpoint-lg {
+            padding: 1.5em;
+        }
+
+        svg {
+            width: 100%;
+        }
+
+        path {
+            fill: var(--white);
+        }
+    }
+
+    &__radio:focus ~ &__thumbnail {
+        outline: 2px solid;
+    }
+
+    &__radio:checked ~ &__thumbnail {
+        opacity: 1;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    &__gallery {
+        width: 100%;
+        margin-top: 1em;
+
+        @include breakpoints.breakpoint-sm {
+            margin-top: 0;
+        }
+    }
+
+    &__image {
+        display: none;
+        aspect-ratio: 1;
+        height: 100%;
+        width: 100%;
+        animation: slideshow-image-appear var(--default-transition);
+    }
+
+    &__image--active {
+        display: block;
+    }
+
+    &__modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 200;
+        padding: 5rem 3rem 2rem;
+        display: none;
+
+        @include breakpoints.breakpoint-horizontal {
+            flex-direction: row;
+        }
+
+        &--active {
+            display: flex;
+
+            .slideshow__modal-bg {
+                display: block;
+            }
+        }
+
+        > img,
+        > video {
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+            animation: slideshow-image-appear var(--default-transition);
+        }
+    }
+
+    &__modal-bg {
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 0 none;
+        padding: 0;
+        margin: 0;
+        cursor: zoom-out;
+        background-color: hsla(256, 64%, 4%, 0.95);
+        display: none;
+    }
+
+    &__modal-radio-label {
+        cursor: zoom-in;
+
+        img,
+        video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            background-color: var(--black-purple);
+        }
+    }
+
+    &__modal-close {
+        border: 0 none;
+        margin: 0;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 2.5rem;
+        padding: 0.5rem;
+        background-color: var(--dark-purple);
+        transition: transform var(--default-transition);
+
+        &:hover,
+        &:focus {
+            transform: scale(1.2);
+        }
+
+        svg {
+            width: 100%;
+            fill: var(--white);
+            pointer-events: none;
+        }
+    }
+
+    &__modal-nav {
+        border: 0 none;
+        margin: 0;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        background: transparent;
+        width: 3rem;
+        height: 3rem;
+        left: 0;
+        padding: 0.5rem;
+        transition: transform var(--default-transition);
+
+        &--next {
+            left: unset;
+            right: 0;
+        }
+
+        svg {
+            width: 100%;
+            fill: var(--white);
+            pointer-events: none;
+        }
+    }
 }

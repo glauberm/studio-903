@@ -1,53 +1,55 @@
+@use '../styles/breakpoints';
+
 @keyframes cookie-banner-appear {
-  from {
-    transform: translateY(1em);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
+    from {
+        transform: translateY(1em);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }
 
 .cookie-banner {
-  position: fixed;
-  z-index: 2;
-  bottom: 0;
-  right: 0;
-  padding: 1.5rem;
-  width: 100%;
-
-  @include breakpoint-sm {
-    max-width: 448px;
-  }
-
-  &__inner {
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
     padding: 1.5rem;
-    box-shadow: var(--default-shadow);
-    background-color: var(--dark-purple);
-  }
-
-  &__paragraph {
-    color: var(--white);
-  }
-
-  &__choices {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: 1rem;
-  }
-
-  &__choice-label {
     width: 100%;
-  }
 
-  &--hidden {
-    display: none;
-  }
+    @include breakpoints.breakpoint-sm {
+        max-width: 448px;
+    }
 
-  &--shown {
-    animation: cookie-banner-appear var(--default-transition);
-    animation-fill-mode: forwards;
-  }
+    &__inner {
+        padding: 1.5rem;
+        box-shadow: var(--default-shadow);
+        background-color: var(--dark-purple);
+    }
+
+    &__paragraph {
+        color: var(--white);
+    }
+
+    &__choices {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 1rem;
+    }
+
+    &__choice-label {
+        width: 100%;
+    }
+
+    &--hidden {
+        display: none;
+    }
+
+    &--shown {
+        animation: cookie-banner-appear var(--default-transition);
+        animation-fill-mode: forwards;
+    }
 }

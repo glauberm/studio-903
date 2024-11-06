@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace Studio903\PostTypes;
 
-use Studio903\Menu\AbstractMenuable;
+use Studio903\Menu\Menuable;
 
-abstract class AbstractPostType extends AbstractMenuable
+abstract class PostType
 {
+    use Menuable;
+
+    protected string $slug;
+
     protected string $label;
 
     /** @var string[] $supports */
@@ -19,33 +23,44 @@ abstract class AbstractPostType extends AbstractMenuable
         'page-attributes',
     ];
 
-    public function __construct(string $slug, ?string $parent = null)
+    public function init(?string $parent = null)
     {
-        if (!$parent) {
-            parent::__construct($slug);
+        if (is_null($parent)) {
+            $this->addMenu($this->slug);
         }
 
         add_action(
             'init',
-            function () use ($slug, $parent) {
+            function () use ($parent) {
                 register_post_type(
-                    post_type: $slug,
+                    post_type: $this->slug,
                     args: [
                         'label' => $this->label,
                         'public' => true,
                         'show_ui' => true,
-                        'show_in_menu' => $parent ?? $slug,
+                        'show_in_menu' => $parent ?? $this->slug,
                         'supports' => $this->supports,
+                        'delete_with_user' => false,
                     ]
                 );
             }
         );
 
-        if ($this->getCustomColumns()) {
-            $this->setCustomColumns($slug);
-            add_filter("manage_edit-{$slug}_sortable_columns", [$this, 'registerSortableCustomColumns']);
-            add_action("manage_{$slug}_posts_custom_column", [$this, 'setCustomColumn']);
+        if (is_array($this->getCustomColumns())) {
+            $this->setCustomColumns($this->slug);
+
+            add_filter(
+                "manage_edit-{$this->slug}_sortable_columns",
+                [$this, 'registerSortableCustomColumns']
+            );
+
+            add_action(
+                "manage_{$this->slug}_posts_custom_column",
+                [$this, 'setCustomColumn']
+            );
         }
+
+        return $this;
     }
 
     protected function getCustomColumns(): ?array
@@ -60,7 +75,7 @@ abstract class AbstractPostType extends AbstractMenuable
     {
         add_filter(
             "manage_{$slug}_posts_columns",
-            fn () => array_merge(['cb' => '<input type="checkbox" />'], $this->getCustomColumns())
+            fn() => array_merge(['cb' => '<input type="checkbox" />'], $this->getCustomColumns())
         );
     }
 
@@ -82,7 +97,7 @@ abstract class AbstractPostType extends AbstractMenuable
         }
     }
 
-    public function registerSortableCustomColumns(array $columns): array
+    public function registerSortableCustomColumns(array $columns)
     {
         $customColumns = $this->getCustomColumns();
 

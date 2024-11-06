@@ -1,259 +1,247 @@
+@use '../styles/breakpoints';
+
 .section {
-  text-align: center;
-  padding: 3rem 2rem 4rem;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
 
-  a:hover,
-  a:focus {
-    text-decoration: none;
-  }
-
-  &__title {
-    font-family: var(--headings-font-family);
-    font-size: clamp(3em, 4.5vw, 4em);
-    line-height: 100%;
-    text-transform: uppercase;
-    word-wrap: normal;
-  }
-
-  &__text {
-    font-family: var(--display-font-family);
-    font-size: clamp(1.25em, 1.35vw, 1.5em);
-    max-width: calc(var(--container-width) / 2);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  &__title + &__text {
-    margin-top: 1em;
-  }
-
-  &--dark {
-    background-color: var(--darkest-purple);
-    color: var(--white-purple);
-
-    a {
-      color: var(--light-purple);
+    a:hover,
+    a:focus {
+        text-decoration: none;
     }
 
-    .section {
-      &__title {
-        color: var(--lightest-yellow);
-      }
-      &__text {
-        color: var(--light-pink);
-      }
+    &__title {
+        font-family: var(--headings-font-family);
+        font-size: clamp(2.75em, 4.5vw, 4em);
+        line-height: 100%;
+        text-transform: uppercase;
+        word-wrap: normal;
     }
 
-    .slideshows-navigator {
-      &__label {
-        color: var(--light-purple);
+    &__text {
+        max-width: calc(var(--container-width) / 1.75);
+        margin-left: auto;
+        margin-right: auto;
 
-        &:hover {
-          background-color: var(--black-purple);
+        p {
+            font-weight: 500;
+            font-style: italic;
+            font-family: var(--display-font-family);
+            font-size: clamp(1.175em, 1.5vw, 1.5em);
+            text-wrap: balance;
+            line-height: 1.25;
         }
-      }
-      &__radio:checked ~ label {
-        color: var(--lightest-yellow);
-        background-color: var(--black-purple);
-      }
-      &__radio:focus ~ label {
-        outline-color: var(--lightest-yellow);
-      }
     }
 
-    .slideshow {
-      &__title {
-        color: var(--lightest-yellow);
-      }
-      &__description {
-        color: var(--light-purple);
-      }
-      &__label {
-        background-color: var(--light-pink);
-        color: var(--black-pink);
+    &__title + &__text {
+        margin-top: 1em;
+    }
 
-        &:hover {
-          background-color: var(--pink);
-        }
-        &:active {
-          color: var(--light-pink);
-          background-color: var(--dark-pink);
-        }
-      }
-      &__checkbox:checked ~ label,
-      &__checkbox:focus ~ label {
-        background-color: var(--pink);
-      }
-      &__checkbox:focus ~ label {
-        outline: 2px solid var(--light-pink);
-      }
-      &__thumbnail::after {
+    &:nth-child(even) {
         background-color: var(--darkest-purple);
-      }
-      &__thumbnail img {
-        background-color: var(--black-purple);
-      }
-      &__radio:checked ~ label {
-        outline-color: var(--pink);
-      }
-      &__radio:focus ~ label {
-        outline-color: var(--light-pink);
-      }
-      &__image img {
-        background-color: var(--black-purple);
-      }
-    }
-  }
-
-  &--light {
-    background-color: var(--lightest-pink);
-    color: var(--dark-purple);
-
-    a {
-      color: var(--dark-pink);
-    }
-
-    .section {
-      &__title {
-        color: var(--dark-pink);
-      }
-      &__text {
-        color: var(--purple);
-      }
-    }
-
-    .slideshows-navigator {
-      &__label {
-        color: var(--pink);
-
-        &:hover {
-          background-color: var(--white-pink);
-        }
-      }
-      &__radio:focus ~ label {
-        outline-color: var(--pink);
-      }
-      &__radio:checked ~ label {
-        background-color: var(--white-pink);
-        color: var(--dark-pink);
-      }
-    }
-
-    .slideshow {
-      &__title {
-        color: var(--dark-pink);
-      }
-      &__description {
-        color: var(--pink);
-      }
-      &__label {
-        background-color: var(--purple);
         color: var(--white-purple);
 
-        &:hover {
-          background-color: var(--dark-purple);
+        a {
+            color: var(--light-purple);
         }
-        &:active {
-          color: var(--purple);
-          background-color: var(--black-purple);
+
+        .section {
+            &__title {
+                color: var(--lightest-yellow);
+            }
+            &__text {
+                color: var(--light-pink);
+            }
         }
-      }
-      &__checkbox:checked ~ label,
-      &__checkbox:focus ~ label {
-        background-color: var(--dark-purple);
-      }
-      &__checkbox:focus ~ label {
-        outline: 2px solid var(--light-purple);
-      }
-      &__thumbnail::after {
+
+        .slideshows-navigator {
+            &__label {
+                color: var(--light-purple);
+
+                &:hover {
+                    background-color: var(--black-purple);
+                }
+            }
+            &__radio:checked ~ label {
+                color: var(--lightest-yellow);
+                background-color: var(--black-purple);
+            }
+            &__radio:focus ~ label {
+                outline-color: var(--light-purple);
+            }
+        }
+
+        .slideshow {
+            &__title {
+                color: var(--lightest-yellow);
+            }
+            &__description {
+                color: var(--light-purple);
+            }
+            &__label {
+                background-color: var(--light-pink);
+                color: var(--black-pink);
+
+                &:hover {
+                    background-color: var(--pink);
+                }
+                &:active {
+                    color: var(--light-pink);
+                    background-color: var(--dark-pink);
+                }
+            }
+            &__checkbox:checked ~ label,
+            &__checkbox:focus ~ label {
+                background-color: var(--pink);
+            }
+            &__checkbox:focus ~ label {
+                outline: 2px solid var(--light-pink);
+            }
+            &__thumbnail::after {
+                background-color: var(--darkest-purple);
+            }
+            &__thumbnail img {
+                background-color: var(--black-purple);
+            }
+            &__radio:focus ~ label {
+                outline-color: var(--light-purple);
+            }
+            &__image img,
+            &__image video {
+                background-color: var(--black-purple);
+            }
+        }
+    }
+
+    &:nth-child(odd) {
         background-color: var(--lightest-pink);
-      }
-      &__thumbnail img {
-        background-color: var(--light-pink);
-      }
-      &__radio:checked ~ label {
-        outline-color: var(--light-purple);
-      }
-      &__image img {
-        background-color: var(--white-pink);
-      }
-    }
-  }
+        color: var(--dark-purple);
 
-  &.about-section {
-    padding: 0;
-
-    .about-section__wrapper {
-      width: 100%;
-    }
-    .about-section__container {
-      max-width: 100%;
-    }
-
-    .section__items {
-      text-align: left;
-    }
-  }
-
-  &.services-section {
-    .slideshow {
-      flex-direction: row-reverse;
-
-      &__heading {
-        @include breakpoint-sm {
-          padding: 0 0 1.7em 3em;
+        a {
+            color: var(--dark-pink);
         }
-        @include breakpoint-md {
-          padding: 0 3em 1.7em;
+
+        .section {
+            &__title {
+                color: var(--dark-pink);
+            }
+            &__text {
+                color: var(--purple);
+            }
         }
-      }
 
-      &__list {
-        @include breakpoint-sm {
-          padding: 0 0 1.7em 3em;
+        .slideshows-navigator {
+            &__label {
+                color: var(--pink);
+
+                &:hover {
+                    background-color: var(--white-pink);
+                }
+            }
+            &__radio:focus ~ label {
+                outline-color: var(--pink);
+            }
+            &__radio:checked ~ label {
+                background-color: var(--white-pink);
+                color: var(--dark-pink);
+            }
         }
-        @include breakpoint-md {
-          padding: 0 3em 1em;
+
+        .slideshow {
+            flex-direction: row-reverse;
+
+            &__heading {
+                @include breakpoints.breakpoint-sm {
+                    padding: 0 0 1.7em 3em;
+                }
+                @include breakpoints.breakpoint-md {
+                    padding: 0 3em 1.7em;
+                }
+            }
+            &__title {
+                color: var(--dark-pink);
+            }
+            &__description {
+                color: var(--pink);
+            }
+            &__list {
+                @include breakpoints.breakpoint-sm {
+                    padding: 0 0 1.7em 3em;
+                }
+                @include breakpoints.breakpoint-md {
+                    padding: 0 3em 1em;
+                }
+            }
+            &__label {
+                background-color: var(--purple);
+                color: var(--white-purple);
+
+                &:hover {
+                    background-color: var(--dark-purple);
+                }
+                &:active {
+                    color: var(--purple);
+                    background-color: var(--black-purple);
+                }
+            }
+            &__checkbox:checked ~ label,
+            &__checkbox:focus ~ label {
+                background-color: var(--dark-purple);
+            }
+            &__checkbox:focus ~ label {
+                outline: 2px solid var(--light-purple);
+            }
+            &__thumbnail::after {
+                background-color: var(--lightest-pink);
+            }
+            &__thumbnail img {
+                background-color: var(--white-pink);
+            }
+            &__radio:checked ~ label {
+                outline-color: var(--light-pink);
+            }
+            &__image img,
+            &__image video {
+                background-color: var(--white-pink);
+            }
         }
-      }
+
+        .popover {
+            @include breakpoints.breakpoint-sm {
+                right: 0;
+            }
+        }
+
+        .form {
+            @include breakpoints.breakpoint-sm {
+                transform-origin: top right;
+            }
+            @include breakpoints.breakpoint-md {
+                transform-origin: top left;
+            }
+        }
     }
 
-    .popover {
-      @include breakpoint-sm {
-        right: 0;
-      }
-    }
+    &.benefits-section {
+        flex-direction: unset;
+        padding: 0;
+        padding-right: 0;
+        padding-bottom: 0;
 
-    .form {
-      @include breakpoint-sm {
-        transform-origin: top right;
-      }
-      @include breakpoint-md {
-        transform-origin: top left;
-      }
-    }
-  }
+        .benefits-section__wrapper {
+            width: 100%;
+        }
+        .benefits-section__container {
+            max-width: 100%;
+        }
 
-  &.benefits-section {
-    padding: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-
-    .benefits-section__wrapper {
-      width: 100%;
+        .section__title {
+            padding: 3rem 2rem 0;
+        }
+        .section__text {
+            padding: 0 2rem 0;
+        }
+        .section__items {
+            text-align: left;
+        }
     }
-    .benefits-section__container {
-      max-width: 100%;
-    }
-
-    .section__title {
-      padding: 3rem 2rem 0;
-    }
-    .section__text {
-      padding: 0 2rem 0;
-    }
-    .section__items {
-      text-align: left;
-    }
-  }
 }

@@ -1,217 +1,222 @@
+@use '../styles/breakpoints';
+
 @keyframes menu-bg {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.95;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.95;
+    }
 }
 
 @keyframes menu-list-item {
-  from {
-    transform: translateY(-1em);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
+    from {
+        transform: translateY(-1em);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+body:has(.menu__trigger-input:checked) {
+    overflow: hidden;
 }
 
 .menu {
-  &__trigger-input {
-    @include breakpoint-md {
-      display: none;
-    }
-
-    &:checked ~ .menu__bg,
-    &:checked ~ .menu__content {
-      display: block;
-    }
-
-    &:checked ~ .menu__trigger-label {
-      background-color: var(--dark-yellow);
-
-      div {
-        span {
-          background-color: var(--darkest-yellow);
-
-          &:nth-child(1) {
-            transform: scaleX(1.333333) rotate(37.75deg);
-          }
-          &:nth-child(2) {
-            opacity: 0;
-          }
-          &:nth-child(3) {
-            transform: scaleX(1.333333) rotate(-37.75deg);
-          }
-        }
-      }
-    }
-  }
-
-  &__trigger-label {
-    cursor: pointer;
-    position: relative;
-    z-index: 3;
-    padding: 1em;
-    display: block;
-
-    @include breakpoint-sm {
-      padding: 2em;
-    }
-
-    @include breakpoint-md {
-      display: none;
-    }
-
-    div {
-      height: 1em;
-      width: 1.5em;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform var(--default-transition);
-
-      @include breakpoint-sm {
-        height: 2em;
-        width: 3em;
-      }
-
-      span {
-        height: 2px;
-        background: var(--light-yellow);
-        transition: transform var(--default-transition),
-          opacity var(--default-transition);
-
-        @include breakpoint-sm {
-          height: 4px;
+    &__trigger-input {
+        @include breakpoints.breakpoint-md {
+            display: none;
         }
 
-        &:nth-child(1) {
-          transform-origin: center left;
-        }
-        &:nth-child(3) {
-          transform-origin: center left;
-        }
-      }
-    }
-  }
-
-  &__bg {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.95;
-    z-index: 1;
-    background-color: var(--pink);
-    animation: menu-bg var(--default-transition);
-
-    @include breakpoint-md {
-      display: none !important;
-    }
-  }
-
-  &__content {
-    display: none;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-
-    @include breakpoint-md {
-      display: block;
-      position: static;
-      left: unset;
-      width: unset;
-    }
-  }
-
-  &__nav {
-    @include breakpoint-md {
-      flex-grow: 1;
-    }
-
-    .menu {
-      padding: 2.5em 2em 2em;
-      text-align: left;
-
-      @include breakpoint-md {
-        padding: 0;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        gap: 1em;
-      }
-
-      li {
-        &:nth-child(2) a {
-          animation-delay: 0.3s;
+        &:checked ~ .menu__bg,
+        &:checked ~ .menu__content {
+            display: block;
         }
 
-        &:nth-child(3) a {
-          animation-delay: 0.4s;
+        &:checked ~ .menu__trigger-label {
+            background-color: var(--dark-yellow);
+
+            div {
+                span {
+                    background-color: var(--darkest-yellow);
+
+                    &:nth-child(1) {
+                        transform: scaleX(1.333333) rotate(37.75deg);
+                    }
+                    &:nth-child(2) {
+                        opacity: 0;
+                    }
+                    &:nth-child(3) {
+                        transform: scaleX(1.333333) rotate(-37.75deg);
+                    }
+                }
+            }
+        }
+    }
+
+    &__trigger-label {
+        cursor: pointer;
+        position: relative;
+        z-index: 3;
+        padding: 1em;
+        display: block;
+
+        @include breakpoints.breakpoint-md {
+            display: none;
         }
 
-        a {
-          padding: 0.5em;
-          font-family: var(--headings-font-family);
-          font-size: 3em;
-          line-height: 1;
-          display: inline-block;
-          text-decoration: none;
-          color: var(--white-purple);
-          transition: color var(--default-transition),
-            background-color var(--default-transition);
-          opacity: 0;
-          animation: menu-list-item var(--default-transition);
-          animation-delay: 0.2s;
-          animation-fill-mode: forwards;
+        div {
+            height: 1em;
+            width: 1.5em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform var(--default-transition);
 
-          @include breakpoint-md {
-            display: inline-flex;
-            align-items: center;
-            height: var(--header-height);
-            padding: 2em;
-            font-family: var(--base-font-family);
-            font-size: 1em;
-            line-height: 1.5;
-            opacity: 1;
-            animation: none;
-          }
-
-          &:hover,
-          &:focus {
-            color: var(--light-pink);
-          }
-
-          &:focus {
-            outline: 0;
-            background-color: rgba(188, 157, 251, 0.2);
-          }
-
-          &:active {
-            color: var(--white-pink);
-          }
-
-          &.active {
-            color: var(--white-pink);
-            background-color: transparent;
-
-            @include breakpoint-md {
-              color: var(--light-pink);
-              background-color: var(--black-purple);
+            @include breakpoints.breakpoint-md {
+                height: 2em;
+                width: 3em;
             }
 
-            &:focus {
-              outline: 2px solid var(--pink);
+            span {
+                height: 2px;
+                background: var(--light-yellow);
+                transition: transform var(--default-transition), opacity var(--default-transition);
+
+                @include breakpoints.breakpoint-md {
+                    height: 4px;
+                }
+
+                &:nth-child(1) {
+                    transform-origin: center left;
+                }
+                &:nth-child(3) {
+                    transform-origin: center left;
+                }
             }
-          }
         }
-      }
     }
-  }
+
+    &__bg {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.95;
+        z-index: 1;
+        background-color: var(--dark-purple);
+        animation: menu-bg var(--default-transition);
+
+        @include breakpoints.breakpoint-md {
+            display: none !important;
+        }
+    }
+
+    &__content {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+
+        @include breakpoints.breakpoint-md {
+            display: block;
+            position: static;
+            left: unset;
+            width: unset;
+        }
+    }
+
+    &__nav {
+        @include breakpoints.breakpoint-md {
+            flex-grow: 1;
+        }
+
+        .menu {
+            height: calc(100vh - var(--header-height));
+            padding: 2.5em 2em 2em;
+            text-align: left;
+
+            @include breakpoints.breakpoint-md {
+                height: auto;
+                padding: 0 1em;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            @include breakpoints.breakpoint-lg {
+                gap: 1em;
+            }
+
+            li {
+                &:nth-child(2) a {
+                    animation-delay: 0.3s;
+                }
+
+                &:nth-child(3) a {
+                    animation-delay: 0.4s;
+                }
+
+                a {
+                    padding: 0.5em;
+                    font-family: var(--headings-font-family);
+                    font-size: clamp(2.25em, 3.75vw, 3em);
+                    line-height: 1;
+                    display: inline-block;
+                    text-decoration: none;
+                    color: var(--white-purple);
+                    transition: color var(--default-transition), background-color var(--default-transition);
+                    opacity: 0;
+                    animation: menu-list-item var(--default-transition);
+                    animation-delay: 0.2s;
+                    animation-fill-mode: forwards;
+
+                    @include breakpoints.breakpoint-md {
+                        display: inline-flex;
+                        align-items: center;
+                        height: var(--header-height);
+                        padding: 2em;
+                        font-family: var(--base-font-family);
+                        font-size: 1.125em;
+                        line-height: 1.5;
+                        opacity: 1;
+                        animation: none;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        color: var(--light-pink);
+                    }
+
+                    &:focus {
+                        outline: 0;
+                        background-color: rgba(188, 157, 251, 0.2);
+                    }
+
+                    &:active {
+                        color: var(--white-pink);
+                    }
+
+                    &.active {
+                        color: var(--white-pink);
+                        background-color: transparent;
+
+                        @include breakpoints.breakpoint-md {
+                            color: var(--light-pink);
+                            background-color: var(--black-purple);
+                        }
+
+                        &:focus {
+                            outline: 2px solid var(--pink);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

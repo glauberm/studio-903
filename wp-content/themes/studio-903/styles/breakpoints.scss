@@ -1,23 +1,47 @@
 @mixin breakpoint-xs {
-  @media screen and (max-width: 767px) {
-    @content;
-  }
+    @media screen and (max-width: 767px) {
+        @content;
+    }
 }
 
 @mixin breakpoint-sm {
-  @media screen and (min-width: 768px) {
-    @content;
-  }
+    @media screen and (min-width: 768px) {
+        @content;
+    }
 }
 
 @mixin breakpoint-md {
-  @media screen and (min-width: 1024px) {
-    @content;
-  }
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lg {
+    @media screen and (min-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xl {
+    @media screen and (min-width: 1440px) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xxl {
+    @media screen and (min-width: 1920px) {
+        @content;
+    }
 }
 
 @mixin breakpoint-horizontal {
-  @media screen and (min-width: 100vh) {
-    @content;
-  }
+    @media screen and (min-width: 100vh) {
+        @content;
+    }
+}
+
+@mixin breakpoint-vertical {
+    @media screen and (min-height: 100vw) {
+        @content;
+    }
 }

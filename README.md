@@ -36,7 +36,7 @@ wp core install \
     --admin_email=<YOUR_ADMIN_EMAIL>
 ```
 
-6. Install plugins (`advanced-custom-fields` and `polylang` are required):
+6. Install vendor plugins:
 
 ```
 wp plugin install \
@@ -51,22 +51,29 @@ wp plugin install \
     --activate
 ```
 
-7. Activate the Studio 903 plugin:
+7. Install dependencies:
 
 ```
-wp plugin activate studio-903
+composer install --working-dir=wp-content/plugins/studio-903 && \
+npm install --prefix wp-content/themes/studio-903
 ```
 
-8. Activate the Studio 903 theme:
+8. Configure environment variables:
 
 ```
+cp wp-content/plugins/studio-903/.env.example wp-content/plugins/studio-903/.env && \
+cp wp-content/themes/studio-903/.env.example wp-content/themes/studio-903/.env
+```
+
+9. Activate the plugin and the theme:
+
+```
+wp plugin activate studio-903 &&
 wp theme activate studio-903
 ```
 
-9. Run the development server:
+10. Run the development server:
 
 ```
 wp server
 ```
-
-10. Visit [`http://localhost:8080`](http://localhost:8080) on your browser.

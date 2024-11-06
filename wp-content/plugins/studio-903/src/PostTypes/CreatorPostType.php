@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Studio903\PostTypes;
 
-use Studio903\PostTypes\AbstractPostType;
+use Studio903\PostTypes\PostType;
 use WP_Query;
 
-class CreatorPostType extends AbstractPostType
+class CreatorPostType extends PostType
 {
+    protected string $slug = 'creator';
+
     protected string $label = 'Artists + Creators';
 
     protected string $pageTitle = 'Artists + creators';
@@ -16,6 +18,14 @@ class CreatorPostType extends AbstractPostType
     protected string $menuTitle = 'Artists + creators';
 
     protected string $icon = 'dashicons-art';
+
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'editor',
+        'revisions',
+        'page-attributes',
+    ];
 
     public function section(): WP_Query
     {
@@ -36,5 +46,15 @@ class CreatorPostType extends AbstractPostType
             'order'          => 'asc',
             'orderby'        => 'menu_order',
         ]);
+    }
+
+    protected function getCustomColumns(): ?array
+    {
+        return null;
+    }
+
+    public function setCustomColumn(string $column): void
+    {
+        return;
     }
 }

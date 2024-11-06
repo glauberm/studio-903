@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Studio903\PostTypes;
 
-use Studio903\PostTypes\AbstractPostType;
+use Studio903\PostTypes\PostType;
 use WP_Query;
 
-class SocialPostType extends AbstractPostType
+class SocialPostType extends PostType
 {
+    protected string $slug = 'social';
+
     protected string $label = 'Social media profiles';
 
     protected string $pageTitle = 'Social media profiles';

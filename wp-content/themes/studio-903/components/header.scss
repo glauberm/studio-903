@@ -1,124 +1,140 @@
+@use '../styles/breakpoints';
+
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: var(--container-width);
-  max-height: var(--header-height);
-  position: relative;
-  z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: var(--container-width);
+    max-height: var(--header-height);
+    position: relative;
+    z-index: 1;
 
-  &__logo {
-    order: 1;
-    display: inline-flex;
-    text-decoration: none;
-    padding: 1.75em 1.25em;
-    height: var(--header-height);
+    &__logo {
+        order: 1;
+        text-decoration: none;
+        padding: 0.75em 1.25em;
+        height: var(--header-height);
+        z-index: 3;
 
-    &:focus {
-      outline: 0;
-      background-color: rgba(188, 157, 251, 0.2);
-    }
-
-    @include breakpoint-md {
-      padding: 1.85em 0;
-      order: 0;
-      flex: 0 1 auto;
-      margin: 0;
-    }
-
-    svg {
-      margin: 0 auto;
-      height: auto;
-
-      g {
-        fill: var(--lightest-yellow);
-
-        &:first-of-type {
-          fill: var(--light-pink);
-        }
-      }
-    }
-  }
-
-  &__menu {
-    order: 0;
-    margin-right: auto;
-
-    @include breakpoint-md {
-      order: 1;
-      flex: 3 0 auto;
-      margin-left: auto;
-    }
-  }
-
-  &__cta {
-    text-align: center;
-    order: 2;
-
-    @include breakpoint-md {
-      flex: 1 0 auto;
-    }
-
-    @include breakpoint-sm {
-      margin-left: auto;
-    }
-  }
-
-  &__lang-switcher {
-    order: 3;
-  }
-
-  &--sticky {
-    position: sticky;
-    z-index: 100;
-    top: 0;
-    background-color: var(--dark-purple);
-
-    .header__logo {
-      &:focus {
-        background-color: var(--purple);
-      }
-    }
-  }
-
-  @include breakpoint-xs {
-    .first-contact {
-      display: flex;
-
-      &__label {
-        display: none;
-      }
-
-      .button {
-        padding: 0.75em;
-        border: 0;
-
-        &:hover,
         &:focus {
-          svg {
-            transform: none;
+            outline: 0;
+            background-color: rgba(188, 157, 251, 0.2);
+        }
 
-            g,
-            path {
-              fill: var(--dark-purple);
-            }
-          }
+        @include breakpoints.breakpoint-md {
+            padding: 1.85em 1em;
+            order: 0;
+            flex: 0 1 auto;
+            margin: 0;
         }
 
         svg {
-          width: 3.25em;
+            margin: 0 auto;
+            height: auto;
 
-          g,
-          path {
-            fill: var(--white);
-          }
+            g {
+                fill: var(--lightest-yellow);
+
+                &:first-of-type {
+                    fill: var(--light-pink);
+                }
+            }
         }
-      }
+
+        &--xs {
+            display: none;
+
+            @include breakpoints.breakpoint-xs {
+                display: inline-flex;
+            }
+        }
+
+        &--not-xs {
+            display: none;
+
+            @include breakpoints.breakpoint-sm {
+                display: inline-flex;
+            }
+        }
     }
-  }
+
+    &__menu {
+        order: 0;
+        margin-right: auto;
+
+        @include breakpoints.breakpoint-md {
+            order: 1;
+            flex: 3 0 auto;
+            margin-left: auto;
+        }
+    }
+
+    &__cta {
+        text-align: center;
+        order: 2;
+        margin-left: auto;
+
+        @include breakpoints.breakpoint-md {
+            flex: 1 0 auto;
+        }
+    }
+
+    &__lang-switcher {
+        order: 3;
+    }
+
+    &--sticky {
+        position: sticky;
+        z-index: 100;
+        top: 0;
+        background-color: rgba(29, 15, 67, 0.95);
+
+        .header__logo {
+            &:focus {
+                background-color: var(--purple);
+            }
+        }
+    }
+
+    @include breakpoints.breakpoint-xs {
+        .first-contact {
+            display: flex;
+
+            &__label {
+                display: none;
+            }
+
+            .button {
+                padding: 0.75em;
+                border: 0;
+
+                &:hover,
+                &:focus {
+                    svg {
+                        transform: none;
+
+                        g,
+                        path {
+                            fill: var(--dark-purple);
+                        }
+                    }
+                }
+
+                svg {
+                    width: 3.25em;
+                    max-width: 28px;
+
+                    g,
+                    path {
+                        fill: var(--white);
+                    }
+                }
+            }
+        }
+    }
 }
 
 #header {
-  transition: background-color var(--default-transition);
+    transition: background-color var(--default-transition);
 }

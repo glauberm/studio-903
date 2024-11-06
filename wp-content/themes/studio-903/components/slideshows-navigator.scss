@@ -1,73 +1,86 @@
+@use '../styles/breakpoints';
+
 .slideshows-navigator {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  &__container {
-    overflow-x: auto;
-    margin-left: -1em;
-    width: calc(100% + 2em);
-    padding: 1em 0 1em;
-    position: relative;
-  }
-
-  &__list {
-    display: inline-flex;
-    gap: 0.5em;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__list-item {
-    flex: 1 0 auto;
-  }
-
-  &__label {
-    position: relative;
-    font-size: clamp(1.125em, 1.175vw, 1.175em);
-    padding: 0.85em 1.1em 0.85em 1em;
     display: flex;
-    align-items: center;
-    border-radius: 4em;
-    cursor: pointer;
-    transition: background-color var(--default-transition),
-      color var(--default-transition);
-  }
-
-  &__label-decorator {
-    position: relative;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: 12px;
-    height: 12px;
-    margin-right: 0.65em;
-    border: 1px solid var(--yellow);
-    transform: rotate(45deg);
 
-    &::before {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background-color: var(--yellow);
-      transform: scale(0);
+    &__container {
+        overflow-x: auto;
+        position: relative;
+        margin-left: -2em;
+        width: calc(100% + 4em - 4px);
+        padding: 1em;
+
+        @include breakpoints.breakpoint-sm {
+            overflow-x: initial;
+            margin-left: 0;
+            width: auto;
+            padding: 1em 0;
+        }
     }
-  }
 
-  &__radio:focus ~ &__label {
-    outline: 1px solid;
-  }
+    &__spacer {
+        padding: 1em 0 0;
+    }
 
-  &__radio:checked ~ &__label &__label-decorator::before {
-    transform: scale(1);
-  }
+    &__list {
+        display: inline-flex;
+        gap: 0.5em;
+        margin: 0;
+        padding: 0;
+    }
 
-  &__slideshow {
-    display: none;
-  }
+    &__list-item {
+        flex: 1 0 auto;
+    }
 
-  &__slideshow--active {
-    display: block;
-  }
+    &__label {
+        position: relative;
+        font-size: clamp(1.125em, 1.175vw, 1.175em);
+        padding: 0.85em 1.1em 0.85em 1em;
+        display: flex;
+        align-items: center;
+        border-radius: 4em;
+        cursor: pointer;
+        transition: background-color var(--default-transition), color var(--default-transition);
+    }
+
+    &__label-decorator {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 12px;
+        height: 12px;
+        margin-right: 0.65em;
+        border: 1px solid var(--yellow);
+        transform: rotate(45deg);
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--yellow);
+            transform: scale(0);
+            transition: transform var(--default-transition);
+        }
+    }
+
+    &__radio:focus ~ &__label {
+        outline: 1px solid;
+    }
+
+    &__radio:checked ~ &__label &__label-decorator::before {
+        transform: scale(1);
+    }
+
+    &__slideshow {
+        display: none;
+    }
+
+    &__slideshow--active {
+        display: block;
+    }
 }

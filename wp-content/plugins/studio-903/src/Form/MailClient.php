@@ -6,7 +6,6 @@ namespace Studio903\Form;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use WP_Error;
-use Exception;
 use Monolog\Logger;
 
 class MailClient
@@ -16,7 +15,7 @@ class MailClient
         add_action(
             'phpmailer_init',
             function (PHPMailer $mailer) {
-                $mailer->IsSMTP();
+                $mailer->isSMTP();
                 $mailer->SMTPDebug = WP_DEBUG ? 2 : 0;
                 $mailer->CharSet  = "utf-8";
                 $mailer->Host = $_ENV['MAIL_HOST'];
@@ -57,7 +56,7 @@ class MailClient
             $details
         );
 
-        $details = $details ?? "Não há observações";
+        $details = (bool) $details ? $details : 'Não há observações';
 
         return <<<TXT
         Origem: {$source} 

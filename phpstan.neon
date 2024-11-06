@@ -1,0 +1,13 @@
+includes:
+  - vendor/phpstan/phpstan-strict-rules/rules.neon
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+  level: 5
+  paths:
+    - wp-content/plugins/studio-903/src/
+    - wp-content/plugins/studio-903/tests/
+    - wp-content/plugins/studio-903/studio-903.php
+  bootstrapFiles:
+    - wp-content/plugins/studio-903/vendor/autoload.php
+    - vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+    - vendor/wpsyntex/polylang-stubs/polylang-stubs.php

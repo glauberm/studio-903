@@ -101,9 +101,9 @@ class TidyingRay
             }
         );
 
-        add_filter('mce_buttons_2', fn ($buttons) => []);
-        add_filter('mce_buttons_3', fn ($buttons) => []);
-        add_filter('mce_buttons_4', fn ($buttons) => []);
+        add_filter('mce_buttons_2', fn($buttons) => []);
+        add_filter('mce_buttons_3', fn($buttons) => []);
+        add_filter('mce_buttons_4', fn($buttons) => []);
     }
 
     private static function adjustAdminMenus(): void

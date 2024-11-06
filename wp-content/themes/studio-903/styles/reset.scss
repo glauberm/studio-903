@@ -1,21 +1,21 @@
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-  min-height: 100%;
+    min-height: 100%;
 }
 
 img,
@@ -23,20 +23,20 @@ picture,
 video,
 canvas,
 svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 
 fieldset {
-  border: 0;
+    border: 0;
 }
 
 p,
@@ -46,14 +46,14 @@ h3,
 h4,
 h5,
 h6 {
-  overflow-wrap: break-word;
-  font-size: 100%;
-  font-weight: 400;
+    overflow-wrap: break-word;
+    font-size: 100%;
+    font-weight: 400;
 }
 
 p {
-  margin-bottom: 1em;
-  font-weight: 400;
+    margin-bottom: 1em;
+    font-weight: 400;
 }
 
 h1,
@@ -62,13 +62,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 address {
-  font-style: normal;
+    font-style: normal;
 }

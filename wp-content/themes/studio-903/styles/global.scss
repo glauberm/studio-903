@@ -1,120 +1,115 @@
-:root {
-  // Colors
-  --white: hsl(0, 0%, 100%);
-  --gray: hsl(0, 0%, 80%);
-  --dark-gray: hsl(0, 0%, 48%);
-  // pink
-  --white-pink: hsl(344, 100%, 98%);
-  --lightest-pink: hsl(344, 100%, 96%);
-  --light-pink: hsl(344, 92%, 80%);
-  --pink: hsl(344, 44%, 48%);
-  --dark-pink: hsl(344, 64%, 24%);
-  --darkest-pink: hsl(344, 64%, 20%);
-  --black-pink: hsl(344, 64%, 16%);
-  // yellow
-  --white-yellow: hsl(32, 100%, 98%);
-  --lightest-yellow: hsl(32, 100%, 96%);
-  --light-yellow: hsl(32, 92%, 80%);
-  --yellow: hsl(32, 80%, 64%);
-  --dark-yellow: hsl(32, 80%, 48%);
-  --darkest-yellow: hsl(32, 64%, 20%);
-  --black-yellow: hsl(32, 64%, 16%);
-  // purple
-  --white-purple: hsl(256, 100%, 98%);
-  --lightest-purple: hsl(256, 100%, 96%);
-  --light-purple: hsl(256, 92%, 80%);
-  --purple: hsl(256, 44%, 48%);
-  --dark-purple: hsl(256, 64%, 16%);
-  --darkest-purple: hsl(256, 64%, 12%);
-  --black-purple: hsl(256, 64%, 4%);
-  // red
-  --white-red: hsl(0, 100%, 98%);
-  --lightest-red: hsl(0, 100%, 96%);
-  --light-red: hsl(0, 92%, 80%);
-  --red: hsl(0, 80%, 64%);
-  --dark-red: hsl(0, 80%, 48%);
-  --darkest-red: hsl(0, 64%, 20%);
-  --black-red: hsl(0, 64%, 16%);
-  // green
-  --white-green: hsl(128, 100%, 98%);
-  --lightest-green: hsl(128, 100%, 96%);
-  --light-green: hsl(128, 92%, 80%);
-  --green: hsl(128, 44%, 48%);
-  --dark-green: hsl(128, 64%, 16%);
-  --darkest-green: hsl(128, 64%, 12%);
-  --black-green: hsl(128, 64%, 4%);
-  // Shadows
-  --default-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
-  // Transitions
-  --default-transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --slow-transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  // Fonts
-  --base-font-family: "Jost", system-ui, -apple-system, "Segoe UI",
-    "Helvetica Neue", "Noto Sans", Candara, "Trebuchet MS", sans-serif;
-  --headings-font-family: var(--base-font-family);
-  --display-font-family: "Playfair Display", Constantia, "Lucida Bright",
-    Lucidabright, "Lucida Serif", Lucida, Georgia, serif;
-  // Sizes
-  --body-min-width: 360px;
-  --container-width: 1200px;
-  --header-height: 125px;
+@use 'breakpoints';
 
-  @media screen and (min-width: 1920px) {
-    --container-width: 1440px;
-  }
+:root {
+    // Colors
+    --white: hsl(0, 0%, 100%);
+    --gray: hsl(0, 0%, 80%);
+    --dark-gray: hsl(0, 0%, 48%);
+    // pink
+    --white-pink: hsl(344, 100%, 98%);
+    --lightest-pink: hsl(344, 100%, 96%);
+    --light-pink: hsl(344, 92%, 80%);
+    --pink: hsl(344, 44%, 48%);
+    --dark-pink: hsl(344, 64%, 24%);
+    --darkest-pink: hsl(344, 64%, 20%);
+    --black-pink: hsl(344, 64%, 16%);
+    // yellow
+    --white-yellow: hsl(32, 100%, 98%);
+    --lightest-yellow: hsl(32, 100%, 96%);
+    --light-yellow: hsl(32, 92%, 80%);
+    --yellow: hsl(32, 80%, 64%);
+    --dark-yellow: hsl(32, 80%, 48%);
+    --darkest-yellow: hsl(32, 64%, 20%);
+    --black-yellow: hsl(32, 64%, 16%);
+    // purple
+    --white-purple: hsl(256, 100%, 98%);
+    --lightest-purple: hsl(256, 100%, 96%);
+    --light-purple: hsl(256, 92%, 80%);
+    --purple: hsl(256, 44%, 48%);
+    --dark-purple: hsl(256, 64%, 16%);
+    --darkest-purple: hsl(256, 64%, 12%);
+    --black-purple: hsl(256, 64%, 4%);
+    // red
+    --white-red: hsl(0, 100%, 98%);
+    --lightest-red: hsl(0, 100%, 96%);
+    --light-red: hsl(0, 92%, 80%);
+    --red: hsl(0, 80%, 64%);
+    --dark-red: hsl(0, 80%, 48%);
+    --darkest-red: hsl(0, 64%, 20%);
+    --black-red: hsl(0, 64%, 16%);
+    // green
+    --white-green: hsl(128, 100%, 98%);
+    --lightest-green: hsl(128, 100%, 96%);
+    --light-green: hsl(128, 92%, 80%);
+    --green: hsl(128, 44%, 48%);
+    --dark-green: hsl(128, 64%, 16%);
+    --darkest-green: hsl(128, 64%, 12%);
+    --black-green: hsl(128, 64%, 4%);
+    // Shadows
+    --default-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
+    // Transitions
+    --default-transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --slow-transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    // Fonts
+    --base-font-family: 'Jost', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', 'Noto Sans', Candara,
+        'Trebuchet MS', sans-serif;
+    --headings-font-family: var(--base-font-family);
+    --display-font-family: 'EB Garamond', Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida, Georgia,
+        serif;
+    --counter-font-family: 'Playfair Display', Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida,
+        Georgia, serif;
+    // Sizes
+    --body-min-width: 360px;
+    --container-width: 1200px;
+    --header-height: 75px;
+
+    @include breakpoints.breakpoint-md {
+        --header-height: 125px;
+    }
+
+    @include breakpoints.breakpoint-xxl {
+        --container-width: 1440px;
+    }
 }
 
 html,
 body {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height);
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
 }
 
 body {
-  min-width: var(--body-min-width);
-  font-size: 18px;
-  line-height: 1.5;
-  font-family: var(--base-font-family);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
-  background-color: var(--dark-purple);
+    min-width: var(--body-min-width);
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: var(--base-font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    background-color: var(--dark-purple);
 }
 
 [href]:focus,
 [tabindex]:focus,
 button:focus {
-  outline: 2px solid currentColor;
+    outline: 2px solid currentColor;
 }
 
 .container {
-  width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-}
-
-.jumbotron {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 2rem 8rem;
-  min-height: calc(100vh - var(--header-height));
-  text-align: center;
-  font-family: var(--headings-font-family);
-  font-size: 7.5vw;
-  line-height: 100%;
-  color: var(--light-pink);
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
 .visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }

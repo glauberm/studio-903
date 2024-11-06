@@ -6,40 +6,62 @@ namespace Studio903\Form;
 
 use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriod;
-use Exception;
-use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Message;
 use JsonException;
 use Monolog\Logger;
+use Studio903\Studio903;
 use WP_REST_Request;
 
 class Form
 {
+    private GoogleCalendarClient $googleCalendarClient;
+
+    private WhatsAppClient $whatsAppClient;
+
+    private MailClient $mailClient;
+
     public function __construct(
-        private readonly GuzzleClient $client,
+        private readonly Client $client,
         private readonly Logger $logger,
-        private readonly GoogleCalendarClient $googleCalendarClient,
-        private readonly WhatsAppClient $whatsAppClient,
-        private readonly MailClient $mailClient
+
     ) {
+        $this->googleCalendarClient = new GoogleCalendarClient($this->client, $this->logger);
+
+        $this->whatsAppClient = new WhatsAppClient($this->client, $this->logger);
+
+        $this->mailClient = new MailClient($this->logger);
+
         $this->registerSubmitRoute();
+
         $this->registerGetHoursRoute();
+
+        add_action(
+            'wp_enqueue_scripts',
+            function () {
+                wp_enqueue_script(
+                    's903-recaptcha',
+                    'https://www.google.com/recaptcha/api.js'
+                        . '?render=' . $_ENV['GOOGLE_RECAPTCHA_SITE_KEY'],
+                );
+            }
+        );
     }
 
-    public function label(string $label)
+    public function label(string $label): void
     {
         echo $this->labels()[$label];
     }
 
-    public function message(string $message)
+    public function message(string $message): void
     {
         echo $this->messages()[$message];
     }
 
     public function getDates(?CarbonImmutable $now = null): array
     {
-        $now = $now ?? CarbonImmutable::now();
+        $now = $now ?? CarbonImmutable::now()->timezone(Studio903::TIMEZONE);
 
         $start = intval($now->format('H')) >= 18 ? $now->addDay() : $now;
 
@@ -66,7 +88,8 @@ class Form
 
     public function getHours(string $dateString): array
     {
-        $date = CarbonImmutable::createFromFormat('Y-m-d', $dateString);
+        $date = CarbonImmutable::createFromFormat('Y-m-d', $dateString)
+            ->timezone(Studio903::TIMEZONE);
 
         $start = $date->isSaturday()
             ? $date->setHour(8)->setMinutes(0)
@@ -131,14 +154,16 @@ class Form
                 if ((bool) $_ENV['MAIL_ENABLED']) {
                     $this->mailClient->sendEmail($source, $date, $hour, $name, $contact, $details);
                 }
-    
+
                 if ((bool) $_ENV['WHATSAPP_ENABLED'] && $this->whatsAppClient->hasntReachedLimit()) {
                     $this->whatsAppClient->sendMessage($source, $date, $hour, $name, $contact, $details);
                 }
 
                 return ['status' => 'success', 'code' => 'ok'];
             } else {
+                $this->logger->warning('Form submission denied with score ' . $resObj['score']);
 
+                return ['status' => 'warning', 'code' => 'score_error'];
             }
         } else {
             $this->logger->error('reCAPTCHA error: ' . json_encode($resObj));
@@ -164,7 +189,7 @@ class Form
                             'date' => [
                                 'required' => true,
                                 'validate_callback' => function ($param, $request, $key) {
-                                    return in_array($param, array_column($this->getDates(), 'value'));
+                                    return in_array($param, array_column($this->getDates(), 'value'), true);
                                 }
                             ],
                         ],
@@ -212,7 +237,7 @@ class Form
                                 'type' => 'string',
                                 'validate_callback' => function ($param, $request, $key) {
                                     return $param !== ''
-                                        && in_array($param, array_column($this->getDates(), 'value'));
+                                        && in_array($param, array_column($this->getDates(), 'value'), true);
                                 }
                             ],
                             'hour' => [
@@ -220,7 +245,7 @@ class Form
                                 'type' => 'string',
                                 'validate_callback' => function ($param, $request, $key) {
                                     return $param !== ''
-                                        && in_array($param, $this->getHours($request['date']));
+                                        && in_array($param, $this->getHours($request['date']), true);
                                 }
                             ],
                             'name' => [
@@ -235,7 +260,7 @@ class Form
                                 'type' => 'string',
                                 'validate_callback' => function ($param, $request, $key) {
                                     return $param !== ''
-                                        && in_array($param, ['whatsapp', 'phone', 'email']);
+                                        && in_array($param, ['whatsapp', 'phone', 'email'], true);
                                 }
                             ],
                             'contact_value' => [
@@ -296,7 +321,6 @@ class Form
                     'name' => 'Name',
                     'contact_key' => 'Contact you by',
                     'contact_phone_value' => 'Phone number',
-                    'contact_email_value' => 'Email address',
                     'contact_email_value' => 'Email',
                     'contact_whatsapp_option' => 'WhatsApp',
                     'contact_phone_option' => 'Phone',

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Studio903\PostTypes;
 
-use Studio903\PostTypes\AbstractPostType;
+use Studio903\PostTypes\PostType;
 use WP_Query;
 
-class ContactPostType extends AbstractPostType
+class ContactPostType extends PostType
 {
+    protected string $slug = 'contact';
+
     protected string $label = 'Contact methods';
 
     protected string $pageTitle = 'Contact methods';

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Studio903\PostTypes;
 
-use Studio903\PostTypes\AbstractPostType;
+use Studio903\PostTypes\PostType;
 use WP_Query;
 
-class ServicePostType extends AbstractPostType
+class ServicePostType extends PostType
 {
+    protected string $slug = 'service';
+
     protected string $label = 'Services';
 
     protected string $pageTitle = 'Services';
@@ -16,6 +18,14 @@ class ServicePostType extends AbstractPostType
     protected string $menuTitle = 'Services';
 
     protected string $icon = 'dashicons-index-card';
+
+    /** @var string[] $supports */
+    protected array $supports  = [
+        'title',
+        'editor',
+        'revisions',
+        'page-attributes',
+    ];
 
     public function section(): WP_Query
     {
@@ -36,5 +46,15 @@ class ServicePostType extends AbstractPostType
             'order'          => 'asc',
             'orderby'        => 'menu_order',
         ]);
+    }
+
+    protected function getCustomColumns(): ?array
+    {
+        return null;
+    }
+
+    public function setCustomColumn(string $column): void
+    {
+        return;
     }
 }

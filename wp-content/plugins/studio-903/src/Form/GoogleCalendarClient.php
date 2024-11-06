@@ -5,25 +5,32 @@ declare(strict_types=1);
 namespace Studio903\Form;
 
 use Carbon\CarbonImmutable;
-use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Message;
 use JsonException;
 use Monolog\Logger;
+use Studio903\Studio903;
 
 class GoogleCalendarClient
 {
-    public function __construct(private readonly GuzzleClient $client, private readonly Logger $logger)
-    {
-    }
+    public function __construct(private readonly Client $client, private readonly Logger $logger) {}
 
     public function getEvents(string $dateString): array
     {
-        $date = CarbonImmutable::createFromFormat('Y-m-d', $dateString);
+        $date = CarbonImmutable::createFromFormat('Y-m-d', $dateString)
+            ->timezone(Studio903::TIMEZONE);
 
-        $timeMin = $date->isToday()
-            ? $date->setHour((int) CarbonImmutable::now()->addHour()->format('H'))
-            : ($date->isSaturday() ? $date->setHour(8) : $date->setHour(7));
+        if ($date->isToday()) {
+            $hour = CarbonImmutable::now()->timezone(Studio903::TIMEZONE)
+                ->addHour()->format('H');
+
+            $timeMin = $date->setHour((int) $hour);
+        } else {
+            $timeMin = $date->isSaturday()
+                ? $date->setHour(8)
+                : $date->setHour(7);
+        }
 
         $timeMax = $date->setHour(22);
 
@@ -45,6 +52,8 @@ class GoogleCalendarClient
         } catch (ClientException $e) {
             $this->logger->error(Message::toString($e->getRequest()));
             $this->logger->error(Message::toString($e->getResponse()));
+
+            return [];
         }
 
         try {
@@ -55,6 +64,8 @@ class GoogleCalendarClient
             );
         } catch (JsonException $e) {
             $this->logger->error($e->getMessage());
+
+            return [];
         }
 
         return $this->filterEvents($events);

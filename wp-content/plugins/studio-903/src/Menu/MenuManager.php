@@ -6,17 +6,22 @@ namespace Studio903\Menu;
 
 class MenuManager
 {
-    public static int $initialPosition = 25;
+    private static int $initialPosition = 25;
 
-    public static function addMenu(string $pageTitle, string $menuTitle, string $capability, string $slug, string $icon): void
-    {
+    public static function addMenu(
+        string $pageTitle,
+        string $menuTitle,
+        string $capability,
+        string $menuSlug,
+        string $icon
+    ): void {
         add_action(
             'admin_menu',
             add_menu_page(
                 page_title: $pageTitle,
                 menu_title: $menuTitle,
                 capability: $capability,
-                menu_slug: $slug,
+                menu_slug: $menuSlug,
                 icon_url: $icon,
                 position: self::$initialPosition
             )

@@ -1,255 +1,257 @@
+@use '../styles/breakpoints';
+
 @keyframes form-appear {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes form-close-appear {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes form-spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes form-message-appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .form {
-  padding: 2em 2em 1.5em;
-  text-align: left;
-  background-color: var(--white-purple);
-  color: var(--black-purple);
-  box-shadow: var(--default-shadow);
-  width: 480px;
-  max-width: 100%;
-  transform-origin: top center;
-  animation: form-appear var(--default-transition);
-
-  @include breakpoint-sm {
-    transform-origin: top left;
-  }
-
-  &__row {
-    display: flex;
-    flex-wrap: wrap;
-
-    @include breakpoint-sm {
-      flex-wrap: nowrap;
-      gap: 1em;
-    }
-  }
-
-  &__field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
-    width: 100%;
-    position: relative;
-    margin-bottom: 1em;
-
-    input,
-    textarea,
-    select {
-      background-color: var(--white);
-      border: 1px solid var(--gray);
-      padding: 0.5em 0.75em;
-      color: var(--black-purple);
-
-      &:disabled {
-        background-color: var(--gray);
-        opacity: 0.25;
-      }
-
-      &:focus {
-        outline: 2px solid var(--yellow);
-        border-color: var(--yellow);
-      }
-
-      &:active {
-        outline: 2px solid var(--light-yellow);
-        border-color: var(--light-yellow);
-      }
-
-      &.with-error {
-        outline: 2px solid red;
-        border-color: red;
-      }
-    }
-
-    textarea {
-      resize: vertical;
-    }
-
-    label {
-      font-style: italic;
-    }
-
-    small {
-      opacity: 0.7;
-    }
-  }
-
-  &__details-checkbox-label {
-    color: var(--purple);
-    text-decoration: underline;
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  &__details-checkbox:focus ~ .form__details-checkbox-label {
-    text-decoration: none;
-  }
-
-  &__details-checkbox:checked {
-    ~ .form__details-checkbox-label {
-      display: none;
-    }
-
-    ~ .form__details-label,
-    ~ .form__details {
-      display: block;
-    }
-  }
-
-  &__submit {
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-
-  &__button {
-    border: 0 none;
-    background-color: var(--purple);
-    color: var(--white-purple);
-    font-weight: 500;
-
-    &:hover,
-    &:focus {
-      background-color: var(--dark-purple);
-    }
-
-    &:active {
-      color: var(--light-purple);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  &__disclaimer {
-    p {
-      margin-bottom: 0;
-      font-size: 0.8em;
-      color: var(--dark-gray);
-
-      a {
-        color: var(--dark-gray);
-      }
-    }
-  }
-
-  &__close-label {
-    display: block;
-    margin: 0.5em 0.5em 0 auto;
-    width: 3em;
-    height: 3em;
-    border-radius: 4em;
-    padding: 0.5em;
+    padding: 2em 2em 1.5em;
+    text-align: left;
     background-color: var(--white-purple);
-    position: sticky;
-    bottom: 0.5em;
+    color: var(--black-purple);
     box-shadow: var(--default-shadow);
-    cursor: pointer;
-    transform: scale(0);
-    opacity: 0;
-    animation: form-close-appear var(--default-transition);
-    animation-delay: 0.3s;
-    animation-fill-mode: forwards;
-    transition: background-color var(--default-transition);
+    width: 480px;
+    max-width: 100%;
+    transform-origin: top center;
+    animation: form-appear var(--default-transition);
 
-    &:hover {
-      background-color: var(--lightest-yellow);
+    @include breakpoints.breakpoint-sm {
+        transform-origin: top left;
     }
 
-    &:active {
-      background-color: var(--gray);
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include breakpoints.breakpoint-sm {
+            flex-wrap: nowrap;
+            gap: 1em;
+        }
     }
 
-    svg {
-      width: 100%;
-      fill: var(--purple);
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25em;
+        width: 100%;
+        position: relative;
+        margin-bottom: 1em;
+
+        input,
+        textarea,
+        select {
+            background-color: var(--white);
+            border: 1px solid var(--gray);
+            padding: 0.5em 0.75em;
+            color: var(--black-purple);
+
+            &:disabled {
+                background-color: var(--gray);
+                opacity: 0.25;
+            }
+
+            &:focus {
+                outline: 2px solid var(--yellow);
+                border-color: var(--yellow);
+            }
+
+            &:active {
+                outline: 2px solid var(--light-yellow);
+                border-color: var(--light-yellow);
+            }
+
+            &.with-error {
+                outline: 2px solid red;
+                border-color: red;
+            }
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        label {
+            font-style: italic;
+        }
+
+        small {
+            opacity: 0.7;
+        }
     }
-  }
 
-  &__hour-label-loading,
-  &__submit-loading {
-    opacity: 0.7;
-    animation: form-spinner 0.5s infinite linear;
-  }
+    &__details-checkbox-label {
+        color: var(--purple);
+        text-decoration: underline;
+        cursor: pointer;
 
-  &__hour-label {
-    display: flex;
-    gap: 0.5em;
-    align-items: center;
-  }
-
-  &__submit-loading {
-    svg {
-      width: 1.5em;
-      height: 1.5em;
+        &:hover {
+            text-decoration: none;
+        }
     }
-  }
 
-  &__error,
-  &__hour-error,
-  &__success {
-    padding: 1em;
-    margin-bottom: 1em;
-    animation: form-message-appear var(--default-transition);
-  }
+    &__details-checkbox:focus ~ .form__details-checkbox-label {
+        text-decoration: none;
+    }
 
-  &__error,
-  &__hour-error {
-    background-color: var(--lightest-red);
-    color: var(--dark-red);
-  }
+    &__details-checkbox:checked {
+        ~ .form__details-checkbox-label {
+            display: none;
+        }
 
-  &__success {
-    background-color: var(--lightest-green);
-    color: var(--dark-green);
-  }
+        ~ .form__details-label,
+        ~ .form__details {
+            display: block;
+        }
+    }
+
+    &__submit {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+
+    &__button {
+        border: 0 none;
+        background-color: var(--purple);
+        color: var(--white-purple);
+        font-weight: 500;
+
+        &:hover,
+        &:focus {
+            background-color: var(--dark-purple);
+        }
+
+        &:active {
+            color: var(--light-purple);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &__disclaimer {
+        p {
+            margin-bottom: 0;
+            font-size: 0.8em;
+            color: var(--dark-gray);
+
+            a {
+                color: var(--dark-gray);
+            }
+        }
+    }
+
+    &__close-label {
+        display: block;
+        margin: 0.5em 0.5em 0 auto;
+        width: 3em;
+        height: 3em;
+        border-radius: 4em;
+        padding: 0.5em;
+        background-color: var(--white-purple);
+        position: sticky;
+        bottom: 0.5em;
+        box-shadow: var(--default-shadow);
+        cursor: pointer;
+        transform: scale(0);
+        opacity: 0;
+        animation: form-close-appear var(--default-transition);
+        animation-delay: 0.3s;
+        animation-fill-mode: forwards;
+        transition: background-color var(--default-transition);
+
+        &:hover {
+            background-color: var(--lightest-yellow);
+        }
+
+        &:active {
+            background-color: var(--gray);
+        }
+
+        svg {
+            width: 100%;
+            fill: var(--purple);
+        }
+    }
+
+    &__hour-label-loading,
+    &__submit-loading {
+        opacity: 0.7;
+        animation: form-spinner 0.5s infinite linear;
+    }
+
+    &__hour-label {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    &__submit-loading {
+        svg {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
+
+    &__error,
+    &__hour-error,
+    &__success {
+        padding: 1em;
+        margin-bottom: 1em;
+        animation: form-message-appear var(--default-transition);
+    }
+
+    &__error,
+    &__hour-error {
+        background-color: var(--lightest-red);
+        color: var(--dark-red);
+    }
+
+    &__success {
+        background-color: var(--lightest-green);
+        color: var(--dark-green);
+    }
 }
 
 .grecaptcha-badge {
-  visibility: hidden;
+    visibility: hidden;
 }

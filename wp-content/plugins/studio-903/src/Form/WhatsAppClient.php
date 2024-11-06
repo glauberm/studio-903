@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Studio903\Form;
 
-use Carbon\Carbon;
-use GuzzleHttp\Client as GuzzleClient;
+use Carbon\CarbonImmutable;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Message;
 use Monolog\Logger;
+use Studio903\Studio903;
 
 class WhatsAppClient
 {
@@ -16,9 +17,7 @@ class WhatsAppClient
 
     private string $lastMsgDatetimeOption = 's903_wpp_msg_last';
 
-    public function __construct(private readonly GuzzleClient $client, private readonly Logger $logger)
-    {
-    }
+    public function __construct(private readonly Client $client, private readonly Logger $logger) {}
 
     public function sendMessage(string $source, string $date, string $hour, string $name, string $contact, string $details): void
     {
@@ -31,14 +30,15 @@ class WhatsAppClient
             $details
         );
 
-        $dateTime = Carbon::createFromFormat('Y-m-d H:i', "{$date} {$hour}");
+        $dateTime = CarbonImmutable::createFromFormat('Y-m-d H:i', "{$date} {$hour}")
+            ->timezone(Studio903::TIMEZONE);
 
-        $now = Carbon::now();
+        $now = CarbonImmutable::now()->timezone(Studio903::TIMEZONE);
 
         try {
             $response = $this->client->request(
                 'POST',
-                "https://graph.facebook.com/v19.0/{$_ENV['WHATSAPP_PHONE_NUMBER_ID']}/messages",
+                "https://graph.facebook.com/v20.0/{$_ENV['WHATSAPP_PHONE_NUMBER_ID']}/messages",
                 [
                     'headers' => [
                         'Authorization' => "Bearer {$_ENV['WHATSAPP_ACCESS_TOKEN']}",
@@ -47,7 +47,6 @@ class WhatsAppClient
                     'json' => [
                         'messaging_product' => 'whatsapp',
                         'to' => $_ENV['WHATSAPP_RECIPIENT_WAID'],
-                        'type' => 'text',
                         'type' => 'template',
                         'template' => [
                             'name' => 's903_cta',
@@ -96,6 +95,8 @@ class WhatsAppClient
         } catch (ClientException $e) {
             $this->logger->error(Message::toString($e->getRequest()));
             $this->logger->error(Message::toString($e->getResponse()));
+
+            return;
         }
 
         if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300) {
@@ -103,7 +104,7 @@ class WhatsAppClient
 
             $wpdb->replace($wpdb->prefix . "options", [
                 'option_name' => $this->msgCountOption,
-                'option_value' => $this->timerHasReset( $now ) ? 1 : $this->getMsgCount() + 1,
+                'option_value' => $this->timerHasReset($now) ? 1 : $this->getMsgCount() + 1,
                 'autoload' => 'no',
             ]);
 
@@ -119,10 +120,10 @@ class WhatsAppClient
     {
         $msgCount = $this->getMsgCount();
 
-        return $msgCount < 200;
+        return $msgCount < 100;
     }
 
-    private function timerHasReset( Carbon $now ): bool
+    private function timerHasReset(CarbonImmutable $now): bool
     {
         $lastMsgDatetime = $this->getLastMsgDatetime();
 
@@ -131,15 +132,15 @@ class WhatsAppClient
 
     private function getMsgCount(): int
     {
-        $msgCount = get_option( $this->msgCountOption );
+        $msgCount = get_option($this->msgCountOption);
 
         return (int) $msgCount;
     }
 
-    private function getLastMsgDatetime(): Carbon
+    private function getLastMsgDatetime(): CarbonImmutable
     {
-        $lastMsgDatetime = get_option( $this->lastMsgDatetimeOption );
+        $lastMsgDatetime = get_option($this->lastMsgDatetimeOption);
 
-        return Carbon::parse( $lastMsgDatetime );
+        return CarbonImmutable::parse($lastMsgDatetime)->timezone(Studio903::TIMEZONE);
     }
 }

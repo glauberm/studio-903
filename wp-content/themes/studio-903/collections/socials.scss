@@ -1,34 +1,34 @@
 .socials {
-  &__list,
-  &__item {
-    width: max-content;
-  }
-
-  &__list {
-    margin: 0 auto;
-  }
-
-  &__link {
-    display: flex;
-    align-items: center;
-    padding: 0.4em;
-    color: var(--white-purple);
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      outline: 0;
-      text-decoration: underline;
+    &__list,
+    &__item {
+        width: max-content;
     }
 
-    svg {
-      width: 1.2em;
-      height: 1.2em;
-      margin-right: 0.5em;
-
-      path {
-        fill: var(--light-pink);
-      }
+    &__list {
+        margin: 0 auto;
     }
-  }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        padding: 0.4em;
+        color: var(--white-purple);
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            outline: 0;
+            text-decoration: underline;
+        }
+
+        svg {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 0.5em;
+
+            path {
+                fill: var(--light-pink);
+            }
+        }
+    }
 }
