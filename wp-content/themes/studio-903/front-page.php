@@ -70,7 +70,9 @@ get_header();
 
     get_template_part(
         'components/back-cover',
-        args: array('query' => s903()->section('contracapa', 'back-cover'))
+        args: array(
+            'query' => s903()->section('contracapa', 'back-cover'),
+        )
     );
 
     ?>

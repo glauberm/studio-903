@@ -75,8 +75,8 @@ class Studio903
         $this->studios = (new StudioPostType())->init();
         $this->services = (new ServicePostType())->init();
         $this->creators = (new CreatorPostType())->init();
-        $this->clients = (new ClientPostType())->init();
         $this->benefits = (new BenefitPostType())->init();
+        $this->clients = (new ClientPostType())->init();
         $this->socials = (new SocialPostType())->init();
         $this->contacts = (new ContactPostType())->init();
     }

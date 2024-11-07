@@ -43,7 +43,7 @@ if ($args['query']->have_posts()) :
                                         args: array(
                                             'id'           => 'back-cover',
                                             'close_target' => 'back-cover-cta',
-                                            'source'       => wp_strip_all_tags($args['title']),
+                                            'source'       => wp_strip_all_tags(get_the_title()),
                                         )
                                     );
                                     ?>
