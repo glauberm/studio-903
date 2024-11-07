@@ -1,13 +1,17 @@
 <div class="header">
     <a
         class="header__logo header__logo--xs"
-        href="<?php s903()->attr(home_url()); ?>">
+        tabindex="-1"
+        href="<?php s903()->attr(home_url()); ?>"
+        aria-label="Studio 903">
         <?php get_template_part('images/favicon.svg'); ?>
     </a>
 
     <a
         class="header__logo header__logo--not-xs"
-        href="<?php s903()->attr(home_url()); ?>">
+        tabindex="-1"
+        href="<?php s903()->attr(home_url()); ?>"
+        aria-label="Studio 903">
         <?php get_template_part('images/logo.svg'); ?>
     </a>
 

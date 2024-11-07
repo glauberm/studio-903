@@ -41,9 +41,13 @@ class Form
             'wp_enqueue_scripts',
             function () {
                 wp_enqueue_script(
-                    's903-recaptcha',
-                    'https://www.google.com/recaptcha/api.js'
+                    handle: 's903-recaptcha',
+                    src: 'https://www.google.com/recaptcha/api.js'
                         . '?render=' . $_ENV['GOOGLE_RECAPTCHA_SITE_KEY'],
+                    args: [
+                        'strategy' => 'async',
+                        'in_footer' => false,
+                    ]
                 );
             }
         );

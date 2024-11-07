@@ -32,6 +32,10 @@
     <meta name="twitter:image" content="<?php echo get_template_directory_uri() . '/images/twitter-image.png'; ?>">
     <meta name="twitter:image:alt" content="Studio 903 logo">
 
+    <link rel="preconnect" href="https://www.google.com">
+
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+
     <link
         rel="preload"
         href="<?php echo get_the_post_thumbnail_url(size: 'cover-poster'); ?>"

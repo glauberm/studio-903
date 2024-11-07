@@ -68,7 +68,8 @@
                             ?> />
                         <label
                             for="<?php s903()->attr("s903-radio-{$s903_image_id}"); ?>"
-                            class="slideshow__thumbnail">
+                            class="slideshow__thumbnail"
+                            aria-label="Show image">
                             <?php
 
                             echo wp_get_attachment_image(
@@ -96,7 +97,8 @@
 
                         <label
                             for="<?php s903()->attr("s903-radio-{$s903_video_poster_id}"); ?>"
-                            class="slideshow__thumbnail">
+                            class="slideshow__thumbnail"
+                            aria-label="Show video">
                             <?php
 
                             echo wp_get_attachment_image(
@@ -202,7 +204,14 @@
                     <?php get_template_part('images/chevron-left.svg'); ?>
                 </button>
 
-                <?php echo wp_get_attachment_image($s903_image_id, 'full'); ?>
+                <?php
+
+                echo wp_get_attachment_image(
+                    $s903_image_id,
+                    size: 'full',
+                    attr: ['loading' => 'lazy'],
+                );
+                ?>
 
                 <button
                     type="button"

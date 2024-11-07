@@ -19,7 +19,6 @@
 
         &:focus {
             outline: 0;
-            background-color: rgba(188, 157, 251, 0.2);
         }
 
         @include breakpoints.breakpoint-md {
