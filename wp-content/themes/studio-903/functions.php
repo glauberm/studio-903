@@ -1,7 +1,7 @@
 <?php
 
 if (! defined('S903_VERSION')) {
-    define('S903_VERSION', '0.8.3');
+    define('S903_VERSION', '0.8.4');
 }
 
 add_image_size('cover-poster', 720, 900, false);

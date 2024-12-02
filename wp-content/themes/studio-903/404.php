@@ -34,7 +34,7 @@ if ($s903_cover->have_posts()) :
                     <?php if (pll_current_language() === 'pt'): ?>
                         A página que você está procurando não existe ou foi movida. Vá para a <a href="<?php echo site_url(); ?>">página inicial</a>.
                     <?php else: ?>
-                        The page you are looking for doesn\'t exist or has been moved. Go to the <a href="<?php echo site_url(); ?>">homepage</a>.
+                        The page you are looking for doesn't exist or has been moved. Go to the <a href="<?php echo site_url(); ?>">homepage</a>.
                     <?php endif; ?>
                 </p>
 

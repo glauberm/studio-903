@@ -22,14 +22,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Studio 903">
     <meta property="og:url" content="<?php echo site_url(); ?>">
-    <meta property="og:image" content="<?php echo get_template_directory_uri() . '/images/og-image.png'; ?>">
+    <meta property="og:image" content="<?php echo get_template_directory_uri() . '/images/og-image.png?v=' . wp_get_theme()->get('Version'); ?>">
     <meta property="og:image:alt" content="Studio 903 logo">
     <meta property="og:locale" content="<?php echo pll_current_language('locale'); ?>">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<?php get_the_title() ? s903()->attr('Studio 903 - ' . get_the_title()) : ''; ?>">
     <meta name="twitter:description" content="<?php s903()->attr(wp_strip_all_tags(get_the_content())); ?>">
-    <meta name="twitter:image" content="<?php echo get_template_directory_uri() . '/images/twitter-image.png'; ?>">
+    <meta name="twitter:image" content="<?php echo get_template_directory_uri() . '/images/twitter-image.png?v=' . wp_get_theme()->get('Version'); ?>">
     <meta name="twitter:image:alt" content="Studio 903 logo">
 
     <link rel="preconnect" href="https://www.google.com">
@@ -44,21 +44,21 @@
 
     <link
         rel="preload"
-        href="<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-regular.woff2'; ?>"
+        href="<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-regular.woff2?v=' . wp_get_theme()->get('Version'); ?>"
         type="font/woff2"
         as="font"
         crossorigin />
 
     <link
         rel="preload"
-        href="<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-500.woff2'; ?>"
+        href="<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-500.woff2?v=' . wp_get_theme()->get('Version'); ?>"
         type="font/woff2"
         as="font"
         crossorigin />
 
     <link
         rel="preload"
-        href="<?php echo get_template_directory_uri() . '/fonts/eb-garamond-v30-latin-500italic.woff2'; ?>"
+        href="<?php echo get_template_directory_uri() . '/fonts/eb-garamond-v30-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>"
         type="font/woff2"
         as="font"
         crossorigin />
@@ -69,7 +69,7 @@
             font-style: normal;
             font-weight: 400;
             font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-regular.woff2'; ?>") format('woff2');
+            src: url("<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-regular.woff2?v=' . wp_get_theme()->get('Version'); ?>") format('woff2');
         }
 
         @font-face {
@@ -77,7 +77,7 @@
             font-style: normal;
             font-weight: 500;
             font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-500.woff2'; ?>") format('woff2');
+            src: url("<?php echo get_template_directory_uri() . '/fonts/jost-v15-latin-500.woff2?v=' . wp_get_theme()->get('Version'); ?>") format('woff2');
         }
 
         @font-face {
@@ -85,7 +85,7 @@
             font-style: italic;
             font-weight: 500;
             font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/eb-garamond-v30-latin-500italic.woff2'; ?>") format('woff2');
+            src: url("<?php echo get_template_directory_uri() . '/fonts/eb-garamond-v30-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>") format('woff2');
         }
 
         @font-face {
@@ -93,7 +93,7 @@
             font-style: normal;
             font-weight: 500;
             font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/playfair-display-v36-latin-500italic.woff2'; ?>") format('woff2');
+            src: url("<?php echo get_template_directory_uri() . '/fonts/playfair-display-v36-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>") format('woff2');
         }
     </style>
 
