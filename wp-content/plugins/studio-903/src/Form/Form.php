@@ -336,6 +336,7 @@ class Form
                     'contact_email_option' => 'Email',
                     'add_details' => 'Adicionar observações',
                     'details' => 'Observações',
+                    'details_instructions' => 'Exemplo: “Precisarei de 3 flashes e 3 leds, etc.”',
                     'not_required' => '(Não obrigatório)',
                     'submit' => 'Enviar'
                 ];
@@ -353,6 +354,7 @@ class Form
                     'contact_email_option' => 'Email',
                     'add_details' => 'Add notes',
                     'details' => 'Notes',
+                    'details_instructions' => '',
                     'not_required' => '(Not required)',
                     'submit' => 'Submit'
                 ];

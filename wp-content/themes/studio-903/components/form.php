@@ -133,6 +133,7 @@
             <textarea
                 name="details"
                 id="<?php s903()->attr("{$args['id']}-form-details"); ?>"
+                placeholder="<?php s903()->form->label('details_instructions'); ?>"
                 class="form__details"
                 hidden></textarea>
         </div>

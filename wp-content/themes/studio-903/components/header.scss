@@ -11,6 +11,7 @@
     z-index: 1;
 
     &__logo {
+        display: inline-flex;
         order: 1;
         text-decoration: none;
         padding: 0.75em 1.25em;
@@ -38,22 +39,6 @@
                 &:first-of-type {
                     fill: var(--light-pink);
                 }
-            }
-        }
-
-        &--xs {
-            display: none;
-
-            @include breakpoints.breakpoint-xs {
-                display: inline-flex;
-            }
-        }
-
-        &--not-xs {
-            display: none;
-
-            @include breakpoints.breakpoint-sm {
-                display: inline-flex;
             }
         }
     }
