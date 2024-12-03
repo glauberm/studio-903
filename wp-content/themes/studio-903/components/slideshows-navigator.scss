@@ -5,21 +5,6 @@
     flex-direction: column;
     justify-content: center;
 
-    &__container {
-        overflow-x: auto;
-        position: relative;
-        margin-left: -2em;
-        width: calc(100% + 4em - 4px);
-        padding: 1em;
-
-        @include breakpoints.breakpoint-sm {
-            overflow-x: initial;
-            margin-left: 0;
-            width: auto;
-            padding: 1em 0;
-        }
-    }
-
     &__spacer {
         padding: 1em 0 0;
     }
@@ -27,12 +12,23 @@
     &__list {
         display: inline-flex;
         gap: 0.5em;
-        margin: 0;
-        padding: 0;
+        margin-left: -2em;
+        width: calc(100% + 4em - 4px);
+        padding: 1em;
+        overflow-x: auto;
+
+        @include breakpoints.breakpoint-sm {
+            margin-left: 0;
+            width: auto;
+            padding: 1em 0;
+            overflow-x: initial;
+        }
     }
 
     &__list-item {
         flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
     }
 
     &__label {

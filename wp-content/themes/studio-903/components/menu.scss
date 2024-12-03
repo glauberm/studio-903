@@ -140,6 +140,7 @@ body:has(.menu__trigger-input:checked) {
             height: calc(100vh - var(--header-height));
             padding: 2.5em 2em 2em;
             text-align: left;
+            overflow-y: auto;
 
             @include breakpoints.breakpoint-md {
                 height: auto;

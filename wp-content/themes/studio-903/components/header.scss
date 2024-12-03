@@ -11,7 +11,6 @@
     z-index: 1;
 
     &__logo {
-        display: inline-flex;
         order: 1;
         text-decoration: none;
         padding: 0.75em 1.25em;
@@ -27,6 +26,22 @@
             order: 0;
             flex: 0 1 auto;
             margin: 0;
+        }
+
+        &--xs {
+            display: none;
+
+            @include breakpoints.breakpoint-xs {
+                display: inline-flex;
+            }
+        }
+
+        &--not-xs {
+            display: none;
+
+            @include breakpoints.breakpoint-sm {
+                display: inline-flex;
+            }
         }
 
         svg {
@@ -73,12 +88,6 @@
         z-index: 100;
         top: 0;
         background-color: rgba(29, 15, 67, 0.95);
-
-        .header__logo {
-            &:focus {
-                background-color: var(--purple);
-            }
-        }
     }
 
     @include breakpoints.breakpoint-xs {

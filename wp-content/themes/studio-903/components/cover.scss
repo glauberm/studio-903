@@ -105,8 +105,22 @@
 
         > .button,
         > .first-contact {
-            display: inline-block;
-            margin: 0 0.8em 0.8em 0;
+            display: block;
+            margin: 0 0 0.8em;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            @include breakpoints.breakpoint-sm {
+                display: inline-block;
+            }
+        }
+
+        @include breakpoints.breakpoint-sm {
+            > .button + .popover + .first-contact {
+                margin-left: 0.8em;
+            }
         }
     }
 
