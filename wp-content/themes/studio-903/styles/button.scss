@@ -1,11 +1,15 @@
 @mixin button-filled-focus {
-    background-color: var(--yellow);
+    background-color: var(--light-gray);
+    border-color: var(--light-gray);
+    outline: 0;
 }
 
 @mixin button-filled-active {
     transition: none;
     box-shadow: none;
-    background-color: var(--dark-yellow);
+    background-color: var(--gray);
+    border-color: var(--gray);
+    color: var(--black-gray);
     text-shadow: none;
 }
 
@@ -31,26 +35,27 @@
     }
 
     &--outline {
-        color: var(--light-yellow);
-        border: 1px solid var(--yellow);
+        color: var(--lightest-gray);
+        border: 1px solid var(--lightest-gray);
 
         &:hover,
         &:focus {
             outline: 0;
-            color: var(--black-yellow);
-            border-color: var(--light-yellow);
-            background-color: var(--light-yellow);
+            color: var(--dark-gray);
+            border-color: var(--lightest-gray);
+            background-color: var(--lightest-gray);
         }
 
         &:active {
-            background-color: var(--yellow);
-            border-color: var(--yellow);
+            background-color: var(--lightest-gray);
+            border-color: var(--lightest-gray);
         }
     }
 
     &--filled {
-        background-color: var(--light-yellow);
-        color: var(--black-yellow);
+        background-color: var(--lightest-gray);
+        border: 1px solid var(--lightest-gray);
+        color: var(--darkest-gray);
         font-weight: 500;
 
         &:hover,
@@ -67,29 +72,29 @@
         gap: 0.75em;
         padding: 1.1em 1.3em 1.1em 1.175em;
         border-radius: 4em;
-        border: 1px solid var(--purple);
-        color: var(--white-purple);
+        border: 1px solid var(--light-gray);
+        color: var(--white);
 
         &:hover,
         &:focus {
             outline: 0;
-            color: var(--black-purple);
-            background-color: var(--light-purple);
-            border: 1px solid var(--light-purple);
+            color: var(--darkest-gray);
+            background-color: var(--lightest-gray);
+            border: 1px solid var(--lightest-gray);
 
             svg {
                 transform: translateX(0.175em);
 
                 g,
                 path {
-                    fill: var(--black-purple);
+                    fill: var(--darkest-gray);
                 }
             }
         }
 
         &:active {
-            background-color: var(--purple);
-            border-color: var(--purple);
+            background-color: var(--light-gray);
+            border-color: var(--light-gray);
         }
 
         svg {
@@ -99,7 +104,7 @@
             g,
             path {
                 transition: fill var(--default-transition);
-                fill: var(--light-purple);
+                fill: var(--lightest-gray);
             }
         }
     }

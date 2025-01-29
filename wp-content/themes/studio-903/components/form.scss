@@ -43,8 +43,8 @@
 .form {
     padding: 2em 2em 1.5em;
     text-align: left;
-    background-color: var(--white-purple);
-    color: var(--black-purple);
+    background-color: var(--white-gray);
+    color: var(--dark-gray);
     box-shadow: var(--default-shadow);
     width: 480px;
     max-width: 100%;
@@ -77,37 +77,32 @@
         textarea,
         select {
             background-color: var(--white);
-            border: 1px solid var(--gray);
+            border: 1px solid var(--light-gray);
             padding: 0.5em 0.75em;
-            color: var(--black-purple);
+            color: var(--black-gray);
 
             &:disabled {
-                background-color: var(--gray);
+                background-color: var(--light-gray);
                 opacity: 0.25;
             }
 
             &:focus {
-                outline: 2px solid var(--yellow);
-                border-color: var(--yellow);
+                outline: 2px solid var(--light-gray);
+                border-color: var(--light-gray);
             }
 
             &:active {
-                outline: 2px solid var(--light-yellow);
-                border-color: var(--light-yellow);
+                outline: 2px solid var(--light-gray);
+                border-color: var(--light-gray);
             }
 
-            &.with-error {
-                outline: 2px solid red;
-                border-color: red;
+            &::placeholder {
+                color: var(--gray);
             }
         }
 
         textarea {
             resize: vertical;
-        }
-
-        label {
-            font-style: italic;
         }
 
         small {
@@ -116,7 +111,7 @@
     }
 
     &__details-checkbox-label {
-        color: var(--purple);
+        color: var(--dark-gray);
         text-decoration: underline;
         cursor: pointer;
 
@@ -149,17 +144,17 @@
 
     &__button {
         border: 0 none;
-        background-color: var(--purple);
-        color: var(--white-purple);
+        background-color: var(--gray);
+        color: var(--white-gray);
         font-weight: 500;
 
         &:hover,
         &:focus {
-            background-color: var(--dark-purple);
+            background-color: var(--dark-gray);
         }
 
         &:active {
-            color: var(--light-purple);
+            color: var(--light-gray);
         }
 
         &:disabled {
@@ -172,10 +167,10 @@
         p {
             margin-bottom: 0;
             font-size: 0.8em;
-            color: var(--dark-gray);
+            color: var(--gray);
 
             a {
-                color: var(--dark-gray);
+                color: var(--gray);
             }
         }
     }
@@ -187,7 +182,7 @@
         height: 3em;
         border-radius: 4em;
         padding: 0.5em;
-        background-color: var(--white-purple);
+        background-color: var(--white-gray);
         position: sticky;
         bottom: 0.5em;
         box-shadow: var(--default-shadow);
@@ -200,16 +195,16 @@
         transition: background-color var(--default-transition);
 
         &:hover {
-            background-color: var(--lightest-yellow);
+            background-color: var(--lightest-gray);
         }
 
         &:active {
-            background-color: var(--gray);
+            background-color: var(--light-gray);
         }
 
         svg {
             width: 100%;
-            fill: var(--purple);
+            fill: var(--gray);
         }
     }
 

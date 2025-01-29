@@ -36,11 +36,11 @@ body:has(.menu__trigger-input:checked) {
         }
 
         &:checked ~ .menu__trigger-label {
-            background-color: var(--dark-yellow);
+            background-color: var(--dark-gray);
 
             div {
                 span {
-                    background-color: var(--darkest-yellow);
+                    background-color: var(--lightest-gray);
 
                     &:nth-child(1) {
                         transform: scaleX(1.333333) rotate(37.75deg);
@@ -82,7 +82,7 @@ body:has(.menu__trigger-input:checked) {
 
             span {
                 height: 2px;
-                background: var(--light-yellow);
+                background: var(--lightest-gray);
                 transition: transform var(--default-transition), opacity var(--default-transition);
 
                 @include breakpoints.breakpoint-md {
@@ -108,7 +108,7 @@ body:has(.menu__trigger-input:checked) {
         height: 100%;
         opacity: 0.95;
         z-index: 1;
-        background-color: var(--dark-purple);
+        background-color: var(--dark-gray);
         animation: menu-bg var(--default-transition);
 
         @include breakpoints.breakpoint-md {
@@ -170,7 +170,7 @@ body:has(.menu__trigger-input:checked) {
                     line-height: 1;
                     display: inline-block;
                     text-decoration: none;
-                    color: var(--white-purple);
+                    color: var(--white-gray);
                     transition: color var(--default-transition), background-color var(--default-transition);
                     opacity: 0;
                     animation: menu-list-item var(--default-transition);
@@ -196,7 +196,6 @@ body:has(.menu__trigger-input:checked) {
 
                     &:focus {
                         outline: 0;
-                        background-color: rgba(188, 157, 251, 0.2);
                     }
 
                     &:active {
@@ -209,7 +208,7 @@ body:has(.menu__trigger-input:checked) {
 
                         @include breakpoints.breakpoint-md {
                             color: var(--light-pink);
-                            background-color: var(--black-purple);
+                            background-color: var(--darkest-gray);
                         }
 
                         &:focus {

@@ -24,7 +24,7 @@ if ($s903_contact_first->have_posts()) :
             ?>"
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Contact us">
+            aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Fale conosco' : 'Contact us') ?>">
             <?php
 
             if (array_key_exists('has_icon', $args) && $args['has_icon']) :

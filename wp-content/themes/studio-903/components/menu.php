@@ -8,7 +8,7 @@
     <label
         for="menu-trigger"
         class="menu__trigger-label"
-        aria-label="Toggle menu">
+        aria-label="Menu">
         <span class="visually-hidden">Menu</span>
         <div>
             <span></span>

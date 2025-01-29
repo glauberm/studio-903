@@ -26,7 +26,7 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: var(--black-purple);
+            background: var(--black-gray);
             opacity: 0.65;
         }
     }
@@ -137,7 +137,6 @@
     &__checkbox:focus {
         ~ .cover__primary-cta {
             @include button.button-filled-focus;
-            outline: 2px solid var(--light-yellow);
         }
     }
 

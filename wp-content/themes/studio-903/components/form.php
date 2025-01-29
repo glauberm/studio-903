@@ -175,6 +175,6 @@
 <label
     class="form__close-label"
     for="<?php s903()->attr($args['close_target']); ?>"
-    aria-label="Close form">
+    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Fechar formulário' : 'Close form') ?>">
     <?php get_template_part('images/close.svg'); ?>
 </label>

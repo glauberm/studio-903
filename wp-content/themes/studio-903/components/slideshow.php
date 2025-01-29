@@ -69,7 +69,7 @@
                         <label
                             for="<?php s903()->attr("s903-radio-{$s903_image_id}"); ?>"
                             class="slideshow__thumbnail"
-                            aria-label="Show image">
+                            aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Mostrar imagem' : 'Show image') ?>">
                             <?php
 
                             echo wp_get_attachment_image(
@@ -98,7 +98,7 @@
                         <label
                             for="<?php s903()->attr("s903-radio-{$s903_video_poster_id}"); ?>"
                             class="slideshow__thumbnail"
-                            aria-label="Show video">
+                            aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Mostrar vídeo' : 'Show video') ?>">
                             <?php
 
                             echo wp_get_attachment_image(
@@ -161,7 +161,7 @@
                 <label
                     for="<?php s903()->attr("s903-{$s903_image_id}-modal"); ?>"
                     class="slideshow__modal-radio-label"
-                    aria-label="Show full image">
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Mostrar imagem completa' : 'Show full image') ?>">
                     <?php
                     echo wp_get_attachment_image(
                         $s903_image_id,
@@ -177,7 +177,7 @@
                 </label>
             </div>
 
-            <div
+            <div role="dialog" aria-modal="true"
                 id="<?php s903()->attr("s903-modal-{$s903_image_id}"); ?>"
                 class="slideshow__modal"
                 data-media-type="image">
@@ -185,23 +185,17 @@
                 <button
                     type="button"
                     class="slideshow__modal-bg"
-                    aria-label="Close full image">
+                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_image_id}"); ?>"
+                    tabindex="-1"
+                    aria-hidden="true">
                 </button>
 
                 <button
                     type="button"
                     class="slideshow__modal-close"
-                    aria-label="Close full image">
+                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_image_id}"); ?>"
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Fechar imagem completa' : 'Close full image') ?>">
                     <?php get_template_part('images/close.svg'); ?>
-                </button>
-
-                <button
-                    type="button"
-                    class="slideshow__modal-nav slideshow__modal-nav--prev"
-                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_prev_image_id}"); ?>"
-                    data-modal-radio-id="<?php s903()->attr("s903-{$s903_prev_image_id}-modal"); ?>"
-                    aria-label="Previous">
-                    <?php get_template_part('images/chevron-left.svg'); ?>
                 </button>
 
                 <?php
@@ -215,10 +209,19 @@
 
                 <button
                     type="button"
+                    class="slideshow__modal-nav slideshow__modal-nav--prev"
+                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_prev_image_id}"); ?>"
+                    data-modal-radio-id="<?php s903()->attr("s903-{$s903_prev_image_id}-modal"); ?>"
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Anterior' : 'Previous') ?>">
+                    <?php get_template_part('images/chevron-left.svg'); ?>
+                </button>
+
+                <button
+                    type="button"
                     class="slideshow__modal-nav slideshow__modal-nav--next"
                     data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_next_image_id}"); ?>"
                     data-modal-radio-id="<?php s903()->attr("s903-{$s903_next_image_id}-modal"); ?>"
-                    aria-label="Next">
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Seguinte' : 'Next') ?>">
                     <?php get_template_part('images/chevron-right.svg'); ?>
                 </button>
             </div>
@@ -249,7 +252,7 @@
                 <label
                     for="<?php s903()->attr("s903-{$s903_video_poster_id}-modal"); ?>"
                     class="slideshow__modal-radio-label"
-                    aria-label="Show full video">
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Mostrar vídeo completo' : 'Show full video') ?>">
 
                     <video
                         tabindex="-1"
@@ -265,7 +268,7 @@
                 </label>
             </div>
 
-            <div
+            <div role="dialog" aria-modal="true"
                 id="<?php s903()->attr("s903-modal-{$s903_video_poster_id}"); ?>"
                 class="slideshow__modal"
                 data-media-type="video">
@@ -273,23 +276,17 @@
                 <button
                     type="button"
                     class="slideshow__modal-bg"
-                    aria-label="Close full video">
+                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_video_poster_id}"); ?>"
+                    tabindex="-1"
+                    aria-hidden="true">
                 </button>
 
                 <button
                     type="button"
                     class="slideshow__modal-close"
-                    aria-label="Close full video">
+                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_video_poster_id}"); ?>"
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Fechar vídeo completo' : 'Close full video') ?>">
                     <?php get_template_part('images/close.svg'); ?>
-                </button>
-
-                <button
-                    type="button"
-                    class="slideshow__modal-nav slideshow__modal-nav--prev"
-                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_prev_image_id}"); ?>"
-                    data-modal-radio-id="<?php s903()->attr("s903-{$s903_prev_image_id}-modal"); ?>"
-                    aria-label="Previous">
-                    <?php get_template_part('images/chevron-left.svg'); ?>
                 </button>
 
                 <video
@@ -306,10 +303,19 @@
 
                 <button
                     type="button"
+                    class="slideshow__modal-nav slideshow__modal-nav--prev"
+                    data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_prev_image_id}"); ?>"
+                    data-modal-radio-id="<?php s903()->attr("s903-{$s903_prev_image_id}-modal"); ?>"
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Anterior' : 'Previous') ?>">
+                    <?php get_template_part('images/chevron-left.svg'); ?>
+                </button>
+
+                <button
+                    type="button"
                     class="slideshow__modal-nav slideshow__modal-nav--next"
                     data-thumbnail-radio-id="<?php s903()->attr("s903-radio-{$s903_next_image_id}"); ?>"
                     data-modal-radio-id="<?php s903()->attr("s903-{$s903_next_image_id}-modal"); ?>"
-                    aria-label="Next">
+                    aria-label="<?php s903()->attr(pll_current_language() === 'pt' ? 'Seguinte' : 'Next') ?>">
                     <?php get_template_part('images/chevron-right.svg'); ?>
                 </button>
             </div>

@@ -49,7 +49,7 @@
             height: auto;
 
             g {
-                fill: var(--lightest-yellow);
+                fill: var(--lightest-gray);
 
                 &:first-of-type {
                     fill: var(--light-pink);
@@ -87,7 +87,7 @@
         position: sticky;
         z-index: 100;
         top: 0;
-        background-color: rgba(29, 15, 67, 0.95);
+        background-color: hsla(196, 8%, 18%, 0.95);
     }
 
     @include breakpoints.breakpoint-xs {
@@ -109,7 +109,7 @@
 
                         g,
                         path {
-                            fill: var(--dark-purple);
+                            fill: var(--dark-gray);
                         }
                     }
                 }

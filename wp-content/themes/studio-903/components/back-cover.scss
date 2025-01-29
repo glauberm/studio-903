@@ -1,67 +1,66 @@
-@use "../styles/breakpoints";
-@use "../styles/button";
+@use '../styles/breakpoints';
+@use '../styles/button';
 
 .back-cover {
-  text-align: center;
+    text-align: center;
 
-  &__container {
-    display: flex;
-    flex-direction: column;
-    max-width: var(--container-width);
-    padding: 4em 2em 3.2em;
+    &__container {
+        display: flex;
+        flex-direction: column;
+        max-width: var(--container-width);
+        padding: 4em 2em 3.2em;
 
-    @include breakpoints.breakpoint-sm {
-      padding: 6em 2em 5.2em;
-    }
-  }
-
-  &__title {
-    line-height: 100%;
-    text-transform: uppercase;
-    font-family: var(--headings-font-family);
-    font-size: clamp(2.5em, 4.5vw, 4em);
-    margin-bottom: 0.2em;
-    color: var(--light-pink);
-  }
-
-  &__content {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.25;
-    font-family: var(--display-font-family);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(1.175em, 2.35vw, 2em);
-    max-width: var(--container-width);
-    color: var(--white-purple);
-  }
-
-  &__ctas {
-    max-width: fit-content;
-    margin: 0 auto;
-
-    > .button,
-    > .first-contact {
-      display: inline-block;
-      margin: 0 0.8em 0.8em 0;
-    }
-  }
-
-  &__checkbox:checked {
-    ~ .back-cover__popover {
-      display: block;
+        @include breakpoints.breakpoint-sm {
+            padding: 6em 2em 5.2em;
+        }
     }
 
-    ~ .back-cover__primary-cta {
-      @include button.button-filled-active;
+    &__title {
+        line-height: 100%;
+        text-transform: uppercase;
+        font-family: var(--headings-font-family);
+        font-size: clamp(2.5em, 4.5vw, 4em);
+        margin-bottom: 0.2em;
+        color: var(--light-pink);
     }
-  }
 
-  &__checkbox:focus {
-    ~ .back-cover__primary-cta {
-      @include button.button-filled-focus;
-      outline: 2px solid var(--light-pink);
+    &__content {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.25;
+        font-family: var(--display-font-family);
+        font-weight: 500;
+        font-style: italic;
+        font-size: clamp(1.175em, 2.35vw, 2em);
+        max-width: var(--container-width);
+        color: var(--white-gray);
     }
-  }
+
+    &__ctas {
+        max-width: fit-content;
+        margin: 0 auto;
+
+        > .button,
+        > .first-contact {
+            display: inline-block;
+            margin: 0 0.8em 0.8em 0;
+        }
+    }
+
+    &__checkbox:checked {
+        ~ .back-cover__popover {
+            display: block;
+        }
+
+        ~ .back-cover__primary-cta {
+            @include button.button-filled-active;
+        }
+    }
+
+    &__checkbox:focus {
+        ~ .back-cover__primary-cta {
+            @include button.button-filled-focus;
+        }
+    }
 }

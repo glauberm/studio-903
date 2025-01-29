@@ -19,10 +19,10 @@ class GoogleCalendarClient
     public function getEvents(string $dateString): array
     {
         $date = CarbonImmutable::createFromFormat('Y-m-d', $dateString)
-            ->timezone(Studio903::TIMEZONE);
+            ->setTimezone(Studio903::TIMEZONE);
 
         if ($date->isToday()) {
-            $hour = CarbonImmutable::now()->timezone(Studio903::TIMEZONE)
+            $hour = CarbonImmutable::now()->setTimezone(Studio903::TIMEZONE)
                 ->addHour()->format('H');
 
             $timeMin = $date->setHour((int) $hour);
@@ -73,7 +73,8 @@ class GoogleCalendarClient
 
     public static function getRenderLink(string $source, string $date, string $hour, string $name, string $contact, string $details): string
     {
-        $startDate = CarbonImmutable::createFromFormat('Y-m-d H:i', "{$date} {$hour}");
+        $startDate = CarbonImmutable::createFromFormat('Y-m-d H:i', "{$date} {$hour}")
+            ->shiftTimezone(Studio903::TIMEZONE);
 
         $endDate = $startDate->addHours(4);
 

@@ -2,9 +2,16 @@
 
 :root {
     // Colors
+    // grayscale
     --white: hsl(0, 0%, 100%);
-    --gray: hsl(0, 0%, 80%);
-    --dark-gray: hsl(0, 0%, 48%);
+    --white-gray: hsl(196, 1%, 98%);
+    --lightest-gray: hsl(196, 1%, 96%);
+    --light-gray: hsl(196, 2%, 64%);
+    --gray: hsl(196, 4%, 36%);
+    --dark-gray: hsl(196, 8%, 18%);
+    --darkest-gray: hsl(192, 8%, 12%);
+    --black-gray: hsl(192, 8%, 8%);
+    --black: hsl(0, 0%, 0%);
     // pink
     --white-pink: hsl(344, 100%, 98%);
     --lightest-pink: hsl(344, 100%, 96%);
@@ -13,22 +20,6 @@
     --dark-pink: hsl(344, 64%, 24%);
     --darkest-pink: hsl(344, 64%, 20%);
     --black-pink: hsl(344, 64%, 16%);
-    // yellow
-    --white-yellow: hsl(32, 100%, 98%);
-    --lightest-yellow: hsl(32, 100%, 96%);
-    --light-yellow: hsl(32, 92%, 80%);
-    --yellow: hsl(32, 80%, 64%);
-    --dark-yellow: hsl(32, 80%, 48%);
-    --darkest-yellow: hsl(32, 64%, 20%);
-    --black-yellow: hsl(32, 64%, 16%);
-    // purple
-    --white-purple: hsl(256, 100%, 98%);
-    --lightest-purple: hsl(256, 100%, 96%);
-    --light-purple: hsl(256, 92%, 80%);
-    --purple: hsl(256, 44%, 48%);
-    --dark-purple: hsl(256, 64%, 16%);
-    --darkest-purple: hsl(256, 64%, 12%);
-    --black-purple: hsl(256, 64%, 4%);
     // red
     --white-red: hsl(0, 100%, 98%);
     --lightest-red: hsl(0, 100%, 96%);
@@ -54,10 +45,7 @@
     --base-font-family: 'Jost', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', 'Noto Sans', Candara,
         'Trebuchet MS', sans-serif;
     --headings-font-family: var(--base-font-family);
-    --display-font-family: 'EB Garamond', Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida, Georgia,
-        serif;
-    --counter-font-family: 'Playfair Display', Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida,
-        Georgia, serif;
+    --display-font-family: var(--base-font-family);
     // Sizes
     --body-min-width: 360px;
     --container-width: 1200px;
@@ -87,7 +75,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
-    background-color: var(--dark-purple);
+    background-color: var(--darkest-gray);
+
+    &:has(.slideshow__modal--active) {
+        overflow: hidden;
+    }
 }
 
 [href]:focus,

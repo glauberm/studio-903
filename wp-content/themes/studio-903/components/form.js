@@ -2,6 +2,7 @@ import { debounce } from 'lodash';
 
 export default function form() {
     const forms = document.querySelectorAll('.form');
+    const triggers = document.querySelectorAll('#cover-cta, #back-cover-cta, .slideshow__checkbox');
 
     for (const form of forms) {
         destroyHours(form);
@@ -36,6 +37,16 @@ export default function form() {
                     submit(form, token);
                 });
             });
+        });
+    }
+
+    for (const trigger of triggers) {
+        trigger.addEventListener('change', function () {
+            const script = document.getElementById('s903-recaptcha-js');
+
+            if (trigger.checked && !script) {
+                insertScript();
+            }
         });
     }
 }
@@ -155,4 +166,14 @@ function submit(form, token) {
             form.querySelector('.form__fieldset').disabled = false;
             form.removeAttribute('data-submitting');
         });
+}
+
+function insertScript() {
+    const script = document.createElement('script');
+
+    script.type = 'text/javascript';
+    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.GOOGLE_RECAPTCHA_SITE_KEY}`;
+    script.id = 's903-recaptcha-js';
+
+    document.head.appendChild(script);
 }

@@ -8,12 +8,12 @@ if ($args['query']->have_posts()) :
         <div class="container">
             <div class="back-cover__container">
                 <h2 class="back-cover__title">
-                    <?php the_title(); ?>
+                    <?php s903()->html(get_the_title()); ?>
                 </h2>
 
-                <div class="back-cover__content">
-                    <?php the_content(); ?>
-                </div>
+                <p class="back-cover__content">
+                    <?php s903()->html(get_the_content()); ?>
+                </p>
 
                 <?php
                 if (get_field('back_cover_primary_cta_label') || get_field('back_cover_secondary_cta_label')) :

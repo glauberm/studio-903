@@ -5,7 +5,8 @@
                 <div class="footer__me">
                     <a
                         class="footer__logo"
-                        href="<?php s903()->attr(home_url()); ?>">
+                        href="<?php s903()->attr(home_url()); ?>"
+                        tabindex="-1">
                         <?php get_template_part('images/logo.svg'); ?>
                     </a>
                     <div>

@@ -18,15 +18,16 @@
     right: 0;
     padding: 1.5rem;
     width: 100%;
+    max-width: 100%;
 
     @include breakpoints.breakpoint-sm {
-        max-width: 448px;
+        width: 448px;
     }
 
     &__inner {
         padding: 1.5rem;
         box-shadow: var(--default-shadow);
-        background-color: var(--dark-purple);
+        background-color: var(--dark-gray);
     }
 
     &__paragraph {

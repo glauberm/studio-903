@@ -3,19 +3,17 @@
 $s903_clients_collection = s903()->clients->collection();
 
 if ($s903_clients_collection->have_posts()) :
-    function s903_clients_collection_item(bool $aria_hidden = false): void
+    function s903_clients_collection_item(bool $sr_only = false): void
     {
 ?>
-        <li
-            class="clients__item"
-            <?php $aria_hidden ? s903()->attr('aria-hidden=true') : ''; ?>>
+        <li class="clients__item">
             <a
                 href="<?php the_permalink(); ?>"
                 target="_blank"
                 rel="noreferrer noopener"
                 title="<?php s903()->attr(get_the_title()); ?>"
                 class="clients__link"
-                tabindex="-1">
+                <?php !$sr_only ? s903()->attr('tabindex=-1') : ''; ?>>
                 <?php
                 the_post_thumbnail(
                     'client-thumbnail',
@@ -36,21 +34,33 @@ if ($s903_clients_collection->have_posts()) :
     ?>
 
     <div class="clients">
+        <ul class="visually-hidden">
+            <?php
+
+            while ($s903_clients_collection->have_posts()) {
+                $s903_clients_collection->the_post();
+                s903_clients_collection_item(true);
+            }
+            ?>
+        </ul>
+
         <?php
         for ($s903_i = 0; $s903_i < 3; $s903_i++) :
         ?>
             <div class="clients__group">
-                <ul class="<?php s903()->attr("clients__list clients__list--{$s903_i}"); ?>">
+                <ul
+                    class="<?php s903()->attr("clients__list clients__list--{$s903_i}"); ?>"
+                    aria-hidden="true">
                     <?php
 
                     while ($s903_clients_collection->have_posts()) {
                         $s903_clients_collection->the_post();
-                        s903_clients_collection_item(0 !== $s903_i);
+                        s903_clients_collection_item();
                     }
 
                     while ($s903_clients_collection->have_posts()) {
                         $s903_clients_collection->the_post();
-                        s903_clients_collection_item(true);
+                        s903_clients_collection_item();
                     }
                     ?>
                 </ul>

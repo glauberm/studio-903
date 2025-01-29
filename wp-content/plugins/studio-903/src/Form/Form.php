@@ -25,7 +25,6 @@ class Form
     public function __construct(
         private readonly Client $client,
         private readonly Logger $logger,
-
     ) {
         $this->googleCalendarClient = new GoogleCalendarClient($this->client, $this->logger);
 
@@ -36,21 +35,6 @@ class Form
         $this->registerSubmitRoute();
 
         $this->registerGetHoursRoute();
-
-        add_action(
-            'wp_enqueue_scripts',
-            function () {
-                wp_enqueue_script(
-                    handle: 's903-recaptcha',
-                    src: 'https://www.google.com/recaptcha/api.js'
-                        . '?render=' . $_ENV['GOOGLE_RECAPTCHA_SITE_KEY'],
-                    args: [
-                        'strategy' => 'async',
-                        'in_footer' => false,
-                    ]
-                );
-            }
-        );
     }
 
     public function label(string $label): void
@@ -65,7 +49,7 @@ class Form
 
     public function getDates(?CarbonImmutable $now = null): array
     {
-        $now = $now ?? CarbonImmutable::now()->timezone(Studio903::TIMEZONE);
+        $now = $now ?? CarbonImmutable::now()->setTimezone(Studio903::TIMEZONE);
 
         $start = intval($now->format('H')) >= 18 ? $now->addDay() : $now;
 
@@ -93,7 +77,7 @@ class Form
     public function getHours(string $dateString): array
     {
         $date = CarbonImmutable::createFromFormat('Y-m-d', $dateString)
-            ->timezone(Studio903::TIMEZONE);
+            ->setTimezone(Studio903::TIMEZONE);
 
         $start = $date->isSaturday()
             ? $date->setHour(8)->setMinutes(0)
@@ -336,7 +320,7 @@ class Form
                     'contact_email_option' => 'Email',
                     'add_details' => 'Adicionar observações',
                     'details' => 'Observações',
-                    'details_instructions' => 'Exemplo: “Precisarei de 3 flashes e 3 leds, etc.”',
+                    'details_instructions' => 'Exemplo: “Precisarei de 3 flashes e 3 leds” etc.',
                     'not_required' => '(Não obrigatório)',
                     'submit' => 'Enviar'
                 ];

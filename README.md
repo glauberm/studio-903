@@ -2,15 +2,15 @@
 
 ## Running the project locally
 
-1. Install [wp-cli](https://wp-cli.org/#installing).
+Install [wp-cli](https://wp-cli.org/#installing).
 
-2. Download WordPress core at the root of the project:
+Download WordPress core at the root of the project:
 
 ```
 wp core download
 ```
 
-3. Create a new `wp-config.php` file:
+Create a new `wp-config.php` file:
 
 ```
 wp config create \
@@ -19,13 +19,13 @@ wp config create \
     --dbpass=<YOUR_DB_PASS>
 ```
 
-4. Enable `WP_DEBUG`:
+Enable `WP_DEBUG`:
 
 ```
 wp config set WP_DEBUG true --raw --type=constant
 ```
 
-5. Install WordPress core:
+Install WordPress core:
 
 ```
 wp core install \
@@ -36,7 +36,7 @@ wp core install \
     --admin_email=<YOUR_ADMIN_EMAIL>
 ```
 
-6. Install vendor plugins:
+Install vendor plugins:
 
 ```
 wp plugin install \
@@ -51,29 +51,42 @@ wp plugin install \
     --activate
 ```
 
-7. Install dependencies:
+Install dependencies:
 
 ```
 composer install --working-dir=wp-content/plugins/studio-903 && \
 npm install --prefix wp-content/themes/studio-903
 ```
 
-8. Configure environment variables:
+Configure environment variables:
 
 ```
 cp wp-content/plugins/studio-903/.env.example wp-content/plugins/studio-903/.env && \
 cp wp-content/themes/studio-903/.env.example wp-content/themes/studio-903/.env
 ```
 
-9. Activate the plugin and the theme:
+Activate the plugin and the theme:
 
 ```
 wp plugin activate studio-903 &&
 wp theme activate studio-903
 ```
 
-10. Run the development server:
+Run the development server:
 
 ```
 wp server
+```
+
+## Running the tests
+
+```
+php wp-content/plugins/studio-903/vendor/bin/phpunit \
+    --configuration=wp-content/plugins/studio-903/phpunit.xml
+```
+
+## Watching for assets changes
+
+```
+npm run dev --prefix wp-content/themes/studio-903
 ```

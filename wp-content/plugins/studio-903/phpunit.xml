@@ -9,4 +9,8 @@
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <env name="MAIL_ENABLED" value="0" force="true" />
+        <env name="WHATSAPP_ENABLED" value="0" force="true" />
+    </php>
 </phpunit>

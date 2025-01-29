@@ -37,45 +37,47 @@
     }
 
     &:nth-child(even) {
-        background-color: var(--darkest-purple);
-        color: var(--white-purple);
-
-        a {
-            color: var(--light-purple);
-        }
+        background-color: var(--darkest-gray);
+        color: var(--white-gray);
 
         .section {
             &__title {
-                color: var(--lightest-yellow);
+                color: var(--light-pink);
             }
             &__text {
-                color: var(--light-pink);
+                color: var(--lightest-gray);
             }
         }
 
         .slideshows-navigator {
+            &__list:focus-visible {
+                outline: 2px solid var(--black-gray);
+            }
             &__label {
-                color: var(--light-purple);
+                color: var(--light-gray);
 
                 &:hover {
-                    background-color: var(--black-purple);
+                    background-color: var(--black-gray);
                 }
             }
             &__radio:checked ~ label {
-                color: var(--lightest-yellow);
-                background-color: var(--black-purple);
+                color: var(--lightest-gray);
+                background-color: var(--black-gray);
             }
             &__radio:focus ~ label {
-                outline-color: var(--light-purple);
+                outline-color: var(--light-gray);
             }
         }
 
         .slideshow {
+            &__list:focus-visible {
+                outline: 2px solid var(--black-gray);
+            }
             &__title {
-                color: var(--lightest-yellow);
+                color: var(--lightest-gray);
             }
             &__description {
-                color: var(--light-purple);
+                color: var(--light-gray);
             }
             &__label {
                 background-color: var(--light-pink);
@@ -97,51 +99,53 @@
                 outline: 2px solid var(--light-pink);
             }
             &__thumbnail::after {
-                background-color: var(--darkest-purple);
+                background-color: var(--darkest-gray);
             }
             &__thumbnail img {
-                background-color: var(--black-purple);
+                background-color: var(--black-gray);
             }
             &__radio:focus ~ label {
-                outline-color: var(--light-purple);
+                outline-color: var(--light-gray);
             }
             &__image img,
             &__image video {
-                background-color: var(--black-purple);
+                background-color: var(--black-gray);
+            }
+            &__modal-radio:focus ~ label {
+                outline-color: var(--light-gray);
             }
         }
     }
 
     &:nth-child(odd) {
-        background-color: var(--lightest-pink);
-        color: var(--dark-purple);
-
-        a {
-            color: var(--dark-pink);
-        }
+        background-color: var(--lightest-gray);
+        color: var(--dark-gray);
 
         .section {
             &__title {
                 color: var(--dark-pink);
             }
             &__text {
-                color: var(--purple);
+                color: var(--gray);
             }
         }
 
         .slideshows-navigator {
+            &__list:focus-visible {
+                outline: 2px solid var(--white-gray);
+            }
             &__label {
                 color: var(--pink);
 
                 &:hover {
-                    background-color: var(--white-pink);
+                    background-color: var(--white-gray);
                 }
             }
             &__radio:focus ~ label {
-                outline-color: var(--pink);
+                outline-color: var(--light-gray);
             }
             &__radio:checked ~ label {
-                background-color: var(--white-pink);
+                background-color: var(--white);
                 color: var(--dark-pink);
             }
         }
@@ -149,6 +153,9 @@
         .slideshow {
             flex-direction: row-reverse;
 
+            &__list:focus-visible {
+                outline: 2px solid var(--white-gray);
+            }
             &__heading {
                 @include breakpoints.breakpoint-sm {
                     padding: 0 0 1.7em 3em;
@@ -158,10 +165,10 @@
                 }
             }
             &__title {
-                color: var(--dark-pink);
+                color: var(--dark-gray);
             }
             &__description {
-                color: var(--pink);
+                color: var(--gray);
             }
             &__list {
                 @include breakpoints.breakpoint-sm {
@@ -172,36 +179,39 @@
                 }
             }
             &__label {
-                background-color: var(--purple);
-                color: var(--white-purple);
+                background-color: var(--pink);
+                color: var(--white-pink);
 
                 &:hover {
-                    background-color: var(--dark-purple);
+                    background-color: var(--dark-pink);
                 }
                 &:active {
-                    color: var(--purple);
-                    background-color: var(--black-purple);
+                    color: var(--light-pink);
+                    background-color: var(--black-pink);
                 }
             }
             &__checkbox:checked ~ label,
             &__checkbox:focus ~ label {
-                background-color: var(--dark-purple);
+                background-color: var(--dark-pink);
             }
             &__checkbox:focus ~ label {
-                outline: 2px solid var(--light-purple);
+                outline: 2px solid var(--light-pink);
             }
             &__thumbnail::after {
-                background-color: var(--lightest-pink);
+                background-color: var(--lightest-gray);
             }
             &__thumbnail img {
-                background-color: var(--white-pink);
+                background-color: var(--white-gray);
             }
             &__radio:checked ~ label {
-                outline-color: var(--light-pink);
+                outline-color: var(--light-gray);
             }
             &__image img,
             &__image video {
-                background-color: var(--white-pink);
+                background-color: var(--white-gray);
+            }
+            &__modal-radio:focus ~ label {
+                outline-color: var(--light-gray);
             }
         }
 

@@ -13,9 +13,13 @@ use Studio903\Studio903;
 
 class WhatsAppClient
 {
-    private string $msgCountOption = 's903_wpp_msg_count';
+    public static string $msgCountOption = 's903_wpp_msg_count';
 
-    private string $lastMsgDatetimeOption = 's903_wpp_msg_last';
+    public static string $lastMsgDatetimeOption = 's903_wpp_msg_last';
+
+    private int $msgCountLimit = 100;
+
+    private int $msgDatetimeLimitInHours = 30;
 
     public function __construct(private readonly Client $client, private readonly Logger $logger) {}
 
@@ -31,9 +35,9 @@ class WhatsAppClient
         );
 
         $dateTime = CarbonImmutable::createFromFormat('Y-m-d H:i', "{$date} {$hour}")
-            ->timezone(Studio903::TIMEZONE);
+            ->setTimezone(Studio903::TIMEZONE);
 
-        $now = CarbonImmutable::now()->timezone(Studio903::TIMEZONE);
+        $now = CarbonImmutable::now()->setTimezone(Studio903::TIMEZONE);
 
         try {
             $response = $this->client->request(
@@ -103,13 +107,13 @@ class WhatsAppClient
             global $wpdb;
 
             $wpdb->replace($wpdb->prefix . "options", [
-                'option_name' => $this->msgCountOption,
+                'option_name' => self::$msgCountOption,
                 'option_value' => $this->timerHasReset($now) ? 1 : $this->getMsgCount() + 1,
                 'autoload' => 'no',
             ]);
 
             $wpdb->replace($wpdb->prefix . "options", [
-                'option_name' => $this->lastMsgDatetimeOption,
+                'option_name' => self::$lastMsgDatetimeOption,
                 'option_value' => $now->format('Y-m-d H:i'),
                 'autoload' => 'no',
             ]);
@@ -120,27 +124,27 @@ class WhatsAppClient
     {
         $msgCount = $this->getMsgCount();
 
-        return $msgCount < 100;
+        return $msgCount < $this->msgCountLimit;
     }
 
     private function timerHasReset(CarbonImmutable $now): bool
     {
         $lastMsgDatetime = $this->getLastMsgDatetime();
 
-        return $lastMsgDatetime->diffInHours($now, false) > 30;
+        return $lastMsgDatetime->diffInHours($now, false) > $this->msgDatetimeLimitInHours;
     }
 
     private function getMsgCount(): int
     {
-        $msgCount = get_option($this->msgCountOption);
+        $msgCount = get_option(self::$msgCountOption);
 
         return (int) $msgCount;
     }
 
     private function getLastMsgDatetime(): CarbonImmutable
     {
-        $lastMsgDatetime = get_option($this->lastMsgDatetimeOption);
+        $lastMsgDatetime = get_option(self::$lastMsgDatetimeOption);
 
-        return CarbonImmutable::parse($lastMsgDatetime)->timezone(Studio903::TIMEZONE);
+        return CarbonImmutable::parse($lastMsgDatetime)->shiftTimezone(Studio903::TIMEZONE);
     }
 }

@@ -225,6 +225,7 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
             width: auto;
             max-width: 100%;
             max-height: 100%;
+            background-color: var(--black-gray);
             animation: slideshow-image-appear var(--default-transition);
         }
     }
@@ -240,7 +241,7 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
         padding: 0;
         margin: 0;
         cursor: zoom-out;
-        background-color: hsla(256, 64%, 4%, 0.95);
+        background-color: hsla(192, 8%, 8%, 0.95);
         display: none;
     }
 
@@ -252,8 +253,12 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
             height: 100%;
             width: 100%;
             object-fit: cover;
-            background-color: var(--black-purple);
+            background-color: var(--black-gray);
         }
+    }
+
+    &__modal-radio:focus ~ label {
+        outline: 2px solid;
     }
 
     &__modal-close {
@@ -268,11 +273,12 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
         height: 2.5rem;
         border-radius: 2.5rem;
         padding: 0.5rem;
-        background-color: var(--dark-purple);
+        background-color: var(--dark-gray);
         transition: transform var(--default-transition);
 
         &:hover,
         &:focus {
+            outline: 0;
             transform: scale(1.2);
         }
 
@@ -294,7 +300,13 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
         height: 3rem;
         left: 0;
         padding: 0.5rem;
-        transition: transform var(--default-transition);
+        transition: transform var(--default-transition), background-color var(--default-transition);
+
+        &:hover,
+        &:focus {
+            outline: 0;
+            background-color: var(--dark-gray);
+        }
 
         &--next {
             left: unset;

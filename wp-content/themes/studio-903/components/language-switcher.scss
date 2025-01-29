@@ -25,7 +25,7 @@
         background: none;
         display: flex;
         align-items: center;
-        color: var(--white-purple);
+        color: var(--white-gray);
         cursor: pointer;
         transition: color var(--default-transition);
         font-size: 1rem;
@@ -66,7 +66,7 @@
         position: absolute;
         right: 0;
         box-shadow: var(--default-shadow);
-        background-color: var(--dark-purple);
+        background-color: var(--dark-gray);
 
         &:hover {
             display: flex;
@@ -76,7 +76,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            color: var(--white-purple);
+            color: var(--white-gray);
             padding: 1em;
             width: 100%;
             transition: color var(--default-transition), background-color var(--default-transition);
@@ -85,11 +85,11 @@
             &:focus {
                 outline: 0;
                 color: var(--light-pink);
-                background-color: var(--black-purple);
+                background-color: var(--black-gray);
             }
 
             &:active {
-                color: var(--light-purple);
+                color: var(--light-gray);
             }
         }
     }

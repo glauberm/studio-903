@@ -58,7 +58,7 @@
 
     <link
         rel="preload"
-        href="<?php echo get_template_directory_uri() . '/fonts/eb-garamond-v30-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>"
+        href="<?php echo get_template_directory_uri() . '/fonts/jost-v18-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>"
         type="font/woff2"
         as="font"
         crossorigin />
@@ -81,19 +81,11 @@
         }
 
         @font-face {
-            font-family: 'EB Garamond';
+            font-family: 'Jost';
             font-style: italic;
             font-weight: 500;
             font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/eb-garamond-v30-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>") format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Playfair Display';
-            font-style: normal;
-            font-weight: 500;
-            font-display: block;
-            src: url("<?php echo get_template_directory_uri() . '/fonts/playfair-display-v36-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>") format('woff2');
+            src: url("<?php echo get_template_directory_uri() . '/fonts/jost-v18-latin-500italic.woff2?v=' . wp_get_theme()->get('Version'); ?>") format('woff2');
         }
     </style>
 
