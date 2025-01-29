@@ -109,6 +109,8 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
         }
 
         li {
+            position: relative;
+
             @include breakpoints.breakpoint-sm {
                 flex: 1 0 auto;
             }

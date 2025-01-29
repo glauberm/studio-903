@@ -123,7 +123,7 @@
 
         .section {
             &__title {
-                color: var(--dark-pink);
+                color: var(--pink);
             }
             &__text {
                 color: var(--gray);
@@ -179,20 +179,20 @@
                 }
             }
             &__label {
-                background-color: var(--pink);
-                color: var(--white-pink);
+                background-color: var(--light-pink);
+                color: var(--black-pink);
 
                 &:hover {
-                    background-color: var(--dark-pink);
+                    background-color: var(--pink);
                 }
                 &:active {
                     color: var(--light-pink);
-                    background-color: var(--black-pink);
+                    background-color: var(--dark-pink);
                 }
             }
             &__checkbox:checked ~ label,
             &__checkbox:focus ~ label {
-                background-color: var(--dark-pink);
+                background-color: var(--pink);
             }
             &__checkbox:focus ~ label {
                 outline: 2px solid var(--light-pink);
