@@ -1,7 +1,7 @@
 <?php
 
 if (! defined('S903_VERSION')) {
-    define('S903_VERSION', '0.9.1');
+    define('S903_VERSION', '0.9.2');
 }
 
 add_image_size('cover-poster', 720, 900, false);
@@ -36,6 +36,7 @@ add_action(
         wp_dequeue_style('wp-block-library');
         wp_dequeue_style('classic-theme-styles');
         wp_dequeue_style('global-styles');
+        wp_dequeue_style('wp-components');
 
         wp_enqueue_style(
             handle: 's903-styles',

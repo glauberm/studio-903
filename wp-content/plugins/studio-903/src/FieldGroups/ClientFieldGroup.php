@@ -21,18 +21,6 @@ class ClientFieldGroup extends FieldGroup
                     'instructions' => 'URL of the website of the client. Outbound links improve SEO performance.',
                     'required' => 1,
                 ],
-                [
-                    'key' => 'cover_primary_cta_label',
-                    'label' => 'Primary call-to-action label',
-                    'name' => 'cover_primary_cta_label',
-                    'type' => 'text',
-                ],
-                [
-                    'key' => 'cover_secondary_cta_label',
-                    'label' => 'Secondary call-to-action label',
-                    'name' => 'cover_secondary_cta_label',
-                    'type' => 'text',
-                ],
             ],
             'location' => [
                 [
