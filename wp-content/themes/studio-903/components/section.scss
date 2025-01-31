@@ -36,126 +36,89 @@
         margin-top: 1em;
     }
 
-    &:nth-child(even) {
-        background-color: var(--darkest-gray);
-        color: var(--white-gray);
+    background-color: var(--darkest-gray);
+    color: var(--white-gray);
 
-        .section {
-            &__title {
-                color: var(--light-pink);
-            }
-            &__text {
-                color: var(--lightest-gray);
-            }
+    .section {
+        &__title {
+            color: var(--light-pink);
         }
+        &__text {
+            color: var(--lightest-gray);
+        }
+    }
 
-        .slideshows-navigator {
-            &__list:focus-visible {
-                outline: 2px solid var(--black-gray);
-            }
-            &__label {
-                color: var(--light-gray);
+    .slideshows-navigator {
+        &__list:focus-visible {
+            outline: 2px solid var(--black-gray);
+        }
+        &__label {
+            color: var(--light-gray);
 
-                &:hover {
-                    background-color: var(--black-gray);
-                }
-            }
-            &__radio:checked ~ label {
-                color: var(--lightest-gray);
+            &:hover {
                 background-color: var(--black-gray);
             }
-            &__radio:focus ~ label {
-                outline-color: var(--light-gray);
-            }
         }
+        &__radio:checked ~ label {
+            color: var(--lightest-gray);
+            background-color: var(--black-gray);
+        }
+        &__radio:focus ~ label {
+            outline-color: var(--light-gray);
+        }
+    }
 
-        .slideshow {
-            &__list:focus-visible {
-                outline: 2px solid var(--black-gray);
-            }
-            &__title {
-                color: var(--lightest-gray);
-            }
-            &__description {
-                color: var(--light-gray);
-            }
-            &__label {
-                background-color: var(--light-pink);
-                color: var(--black-pink);
+    .slideshow {
+        &__list:focus-visible {
+            outline: 2px solid var(--black-gray);
+        }
+        &__title {
+            color: var(--lightest-gray);
+        }
+        &__description {
+            color: var(--light-gray);
+        }
+        &__label {
+            background-color: var(--light-pink);
+            color: var(--black-pink);
 
-                &:hover {
-                    background-color: var(--pink);
-                }
-                &:active {
-                    color: var(--light-pink);
-                    background-color: var(--dark-pink);
-                }
-            }
-            &__checkbox:checked ~ label,
-            &__checkbox:focus ~ label {
+            &:hover {
                 background-color: var(--pink);
             }
-            &__checkbox:focus ~ label {
-                outline: 2px solid var(--light-pink);
+            &:active {
+                color: var(--light-pink);
+                background-color: var(--dark-pink);
             }
-            &__thumbnail::after {
-                background-color: var(--darkest-gray);
-            }
-            &__thumbnail img {
-                background-color: var(--black-gray);
-            }
-            &__radio:focus ~ label {
-                outline-color: var(--light-gray);
-            }
-            &__image img,
-            &__image video {
-                background-color: var(--black-gray);
-            }
-            &__modal-radio:focus ~ label {
-                outline-color: var(--light-gray);
-            }
+        }
+        &__checkbox:checked ~ label,
+        &__checkbox:focus ~ label {
+            background-color: var(--pink);
+        }
+        &__checkbox:focus ~ label {
+            outline: 2px solid var(--light-pink);
+        }
+        &__thumbnail::after {
+            background-color: var(--darkest-gray);
+        }
+        &__thumbnail img {
+            background-color: var(--black-gray);
+        }
+        &__radio:focus ~ label {
+            outline-color: var(--light-gray);
+        }
+        &__image img,
+        &__image video {
+            background-color: var(--black-gray);
+        }
+        &__modal-radio:focus ~ label {
+            outline-color: var(--light-gray);
         }
     }
 
     &:nth-child(odd) {
-        background-color: var(--lightest-gray);
-        color: var(--dark-gray);
-
-        .section {
-            &__title {
-                color: var(--pink);
-            }
-            &__text {
-                color: var(--gray);
-            }
-        }
-
-        .slideshows-navigator {
-            &__list:focus-visible {
-                outline: 2px solid var(--white-gray);
-            }
-            &__label {
-                color: var(--pink);
-
-                &:hover {
-                    background-color: var(--white-gray);
-                }
-            }
-            &__radio:focus ~ label {
-                outline-color: var(--light-gray);
-            }
-            &__radio:checked ~ label {
-                background-color: var(--white);
-                color: var(--dark-pink);
-            }
-        }
-
         .slideshow {
             flex-direction: row-reverse;
 
-            &__list:focus-visible {
-                outline: 2px solid var(--white-gray);
-            }
             &__heading {
                 @include breakpoints.breakpoint-sm {
                     padding: 0 0 1.7em 3em;
@@ -164,12 +127,6 @@
                     padding: 0 3em 1.7em;
                 }
             }
-            &__title {
-                color: var(--dark-gray);
-            }
-            &__description {
-                color: var(--gray);
-            }
             &__list {
                 @include breakpoints.breakpoint-sm {
                     padding: 0 0 1.7em 3em;
@@ -177,41 +134,6 @@
                 @include breakpoints.breakpoint-md {
                     padding: 0 3em 1em;
                 }
-            }
-            &__label {
-                background-color: var(--light-pink);
-                color: var(--black-pink);
-
-                &:hover {
-                    background-color: var(--pink);
-                }
-                &:active {
-                    color: var(--light-pink);
-                    background-color: var(--dark-pink);
-                }
-            }
-            &__checkbox:checked ~ label,
-            &__checkbox:focus ~ label {
-                background-color: var(--pink);
-            }
-            &__checkbox:focus ~ label {
-                outline: 2px solid var(--light-pink);
-            }
-            &__thumbnail::after {
-                background-color: var(--lightest-gray);
-            }
-            &__thumbnail img {
-                background-color: var(--white-gray);
-            }
-            &__radio:checked ~ label {
-                outline-color: var(--light-gray);
-            }
-            &__image img,
-            &__image video {
-                background-color: var(--white-gray);
-            }
-            &__modal-radio:focus ~ label {
-                outline-color: var(--light-gray);
             }
         }
 
@@ -252,6 +174,18 @@
         }
         .section__items {
             text-align: left;
+        }
+    }
+
+    &.clients-section {
+        background-color: var(--lightest-gray);
+        color: var(--dark-gray);
+
+        .section__title {
+            color: var(--pink);
+        }
+        .section__text {
+            color: var(--gray);
         }
     }
 }
