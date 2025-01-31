@@ -3,6 +3,8 @@
 .section {
     text-align: center;
     padding: 3rem 2rem 4rem;
+    background-color: var(--darkest-gray);
+    color: var(--white-gray);
 
     a:hover,
     a:focus {
@@ -35,9 +37,6 @@
     &__title + &__text {
         margin-top: 1em;
     }
-
-    background-color: var(--darkest-gray);
-    color: var(--white-gray);
 
     .section {
         &__title {
