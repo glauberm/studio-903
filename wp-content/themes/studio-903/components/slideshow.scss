@@ -72,6 +72,10 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
         margin-bottom: 0.8em;
     }
 
+    &__checkbox:focus ~ label {
+        outline: 2px solid;
+    }
+
     &__checkbox:checked ~ .slideshow__popover {
         display: block;
     }
@@ -106,6 +110,10 @@ $slideshow-image-size: clamp($slideshow-image-size-min, 10vw, 150px);
 
         @include breakpoints.breakpoint-md {
             padding: 0 3em 1em;
+        }
+
+        &:focus-visible {
+            outline: 2px solid;
         }
 
         li {
