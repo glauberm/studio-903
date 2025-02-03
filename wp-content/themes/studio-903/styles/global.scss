@@ -76,6 +76,7 @@ body {
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     background-color: var(--darkest-gray);
+    -webkit-tap-highlight-color: transparent;
 
     &:has(.slideshow__modal--active) {
         overflow: hidden;

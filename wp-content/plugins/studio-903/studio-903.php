@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Studio 903
- * Version: 0.9.7
+ * Version: 0.9.8
  */
 
 declare(strict_types=1);
