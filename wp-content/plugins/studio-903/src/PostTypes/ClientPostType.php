@@ -41,7 +41,7 @@ class ClientPostType extends PostType
     {
         return new WP_Query([
             'post_type'      => 'client',
-            'posts_per_page' => 20,
+            'posts_per_page' => 30,
             'nopagination'   => true,
             'order'          => 'asc',
             'orderby'        => 'menu_order',
